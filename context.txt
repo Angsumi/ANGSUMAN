@@ -1,0 +1,24 @@
+This folder (`/home/angsuman/extra_spac/certificates`) contains various personal, academic, and professional documents belonging to Angsuman. It serves as a centralized repository for important certificates, records, and related materials.
+
+# Directory Structure
+
+*   **`ACADEMIC/`**: Likely contains academic transcripts, degree certificates, or school/university records.
+*   **`Certificates_and_Diplomas/`**: Contains various certifications, diplomas, or course completion documents.
+*   **`Exam_Certificates_and_Marksheets/`**: Specifically for standardized test scores, board exam marksheets, or competitive exam certificates.
+*   **`Identity_and_Personal/`**: Personal identification documents (e.g., passport copies, national ID, birth certificate).
+*   **`LOR_and_Recommendations/`**: Letters of Recommendation from professors, managers, or colleagues.
+*   **`Published_Papers/`**: Research papers, articles, or publications authored or co-authored by the user.
+*   **`RESUME/`**: Contains resumes, CVs, and potentially cover letters.
+*   **`Study_Materials/`**: Resources, notes, or materials related to ongoing or past studies.
+*   **`Work_and_Experience/`**: Professional documents such as offer letters, experience letters, payslips, or employment contracts.
+*   **`angsumi.github.io/`**: A local clone or directory for the user's GitHub Pages personal website or portfolio.
+
+# Scripts and Tools
+
+*   **`organize.py`**: A Python script likely used to automatically sort and categorize loose files in this directory into the appropriate subfolders mentioned above.
+*   **`venv/`**: A Python virtual environment, presumably for running `organize.py` and managing its dependencies.
+
+# Instructions for AI
+* When asked to find a specific document, infer the most likely subdirectory based on the document type (e.g., looking for a transcript? Check `ACADEMIC/` or `Exam_Certificates_and_Marksheets/`).
+* If adding new files, consider whether `organize.py` needs to be run or if the file should be placed manually into a specific folder.
+* Be cautious when reading or modifying files in `Identity_and_Personal/` due to the sensitive nature of the information.

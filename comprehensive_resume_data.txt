@@ -1,0 +1,125 @@
+======================================================================
+                   ANGSUMAN'S COMPREHENSIVE DATA RECORD
+======================================================================
+
+----------------------------------------------------------------------
+1. PERSONAL & IDENTITY DOCUMENTS
+----------------------------------------------------------------------
+* Identity Cards: Aadhaar Card, Driving License, Voter ID Card
+* Passport: Front Page, Back Page
+* Demographic Certificates:
+  - Birth Certificate
+  - Permanent Residence Certificate
+  - OBC Caste Certificate (Digital & NCL)
+  - Father's OBC Certificate
+  - Annual Income Certificate
+* Personal Assets: Passport Photo, Signature, Thumb Impression, Portrait Stencil
+
+----------------------------------------------------------------------
+2. ACADEMIC QUALIFICATIONS (Detailed Marks)
+----------------------------------------------------------------------
+* Master's Degree (M.Sc. Zoology) - Rajiv Gandhi University:
+  - Result: PASS
+  - CGPA: 7.29
+
+* Bachelor's Degree (B.Sc.) - Gauhati University:
+  - C.G.P.A.: 7.9
+  - Major C.G.P.A.: 7.9
+  - General Subjects Total: 398 / 800
+
+* High School (12th / HS - AHSEC):
+  - Marks Obtained: 414 / 500
+  - Division: First
+  - Subject Marks: English (84), MIL Assamese (95), Physics (73), Chemistry (77), Biology (85), Mathematics (30)
+
+* Matriculation (10th / HSLC - SEBA):
+  - Marks Obtained: 449 / 600
+  - Division: 1st (I)
+  - Subject Marks: Assamese (77), English (66), General Science (82), General Mathematics (82), Social Science (80), Hindi (62)
+
+----------------------------------------------------------------------
+3. COMPETITIVE EXAMS & QUALIFICATIONS
+----------------------------------------------------------------------
+* CSIR-UGC NET (Dec 2022 - June 2023):
+  - Subject: Life Sciences
+  - Result: JRF(NET)-UGC
+  - Total Percentile Score: 97.5011068
+  - Rank: 180
+* IELTS (Academic - Dec 18, 2021):
+  - Overall Band Score: 7.0
+  - CEFR Level: C1
+  - Section Scores: Listening (7.0), Reading (7.5), Writing (7.0), Speaking (6.5)
+* SLET: Result Sheet (2023), Confirmation Page (2022)
+
+----------------------------------------------------------------------
+4. WORK EXPERIENCE & INTERNSHIPS
+----------------------------------------------------------------------
+* THB College (Tyagbir Hem Baruah College):
+  - Role: Asstt. Prof. (Tutor) in the Department of Zoology
+  - Duration: May 2022 to Present
+
+* RASA Life Science Informatics:
+  - Role: Research Trainee (Homology Modelling and Structural Analysis of Human TLR)
+  - Duration: March 2021 to October 2021
+
+* Other Employment & Offers:
+  - Tocklai Appointment Letter
+  - University of East London Offer Letter
+  - University of Portsmouth Offer Letter
+  - Teaching Experience Certificate
+
+* Internships, Training & Workshops:
+  - Edufabrica Bioinformatics Internship
+  - Training Internship in Bioinformatics
+  - Campus Ambassador Internship
+  - Internshala ISP Carnival & ISP 19 Resume Contest
+  - Birding Programme
+  - Medicinal Chemistry Workshop
+* Awards: Anandaram Baruah Bota Award
+
+----------------------------------------------------------------------
+5. CERTIFICATIONS & DIPLOMAS
+----------------------------------------------------------------------
+* Genomic Data Science Specialization:
+  - Institution: Coursera (Johns Hopkins University)
+  - Date: March 22, 2021
+* PGDCA (Post Graduate Diploma in Computer Application):
+  - Institution: DIT Education
+  - Duration: 1 Year
+  - Date of Examination: March 2018 (Issued April 2018)
+* Rajiv Gandhi Computer Literacy Certificate
+* Drawing Junior Diploma Certificate
+
+----------------------------------------------------------------------
+6. PUBLICATIONS & RESEARCH
+----------------------------------------------------------------------
+* "A green solution to industrial dye pollution Exploring the"
+* "Analysis of the physico-chemical parameters of"
+* "Aquatic Remedies An Ethnopharmacological"
+* "Clinical Applications of Mass Spectrometry in Toxicological"
+* "Conversational Interfaces in Bioinformatics Bridging Computational"
+* "Cultural Zoology Unveiling The Ethnozoological Tradition Of Assamese Tribes"
+* "GPT Vision Meets Taxonomy"
+* "Green Heritage Of Assam A Comprehensive Metaanalysis Of Traditional"
+* Gut Microbiome Research Proposal
+
+----------------------------------------------------------------------
+7. LETTERS OF RECOMMENDATION & REFERENCES
+----------------------------------------------------------------------
+* Academic & Research References: MRes Reference Letter, PhD Reference Letter
+* Recommendation Letters from:
+  - Abhijit Das (MRes & PhD recommendations)
+  - Pankaj Kumar
+  - Malobika Padmapati
+  - Rasa Sameer Choudhary
+  - Rasa Erasmus
+
+----------------------------------------------------------------------
+8. OTHER MATERIALS & STUDY DOCUMENTS
+----------------------------------------------------------------------
+* Academic Notes: Ecology, Evolution, Developmental Biology
+* Technical Resources: Pandas Cheat Sheet
+* Documents: Tezpur University Document, Comparative Marking Statement (Zoology)
+* RASA Life Science Informatics Brochure
+
+======================================================================

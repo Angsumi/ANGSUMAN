@@ -1,12 +1,11 @@
 /* ==========================================================================
-   ANGSUMAN DAS - MODERN SLEEK PORTFOLIO SYSTEM
-   Awwwards & Agency-Tier CSS System
+   ANGSUMAN DAS - INTERACTIVE AGENT-TIER DESIGN SYSTEM
    ========================================================================== */
 
 :root {
-    --bg-dark: #060810;
-    --bg-dark-card: #0c1222;
-    --bg-dark-elevation: #11192e;
+    --bg-dark: #050812;
+    --bg-dark-card: #0b101d;
+    --bg-dark-elevation: #111827;
     
     --accent: #38bdf8;
     --accent-light: #7dd3fc;
@@ -18,18 +17,15 @@
     --text-sub: #cbd5e1;
     --text-muted: #94a3b8;
     
-    --glass-bg: rgba(15, 23, 42, 0.65);
+    --glass-bg: rgba(11, 16, 29, 0.75);
     --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-highlight: rgba(255, 255, 255, 0.12);
     
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
     
     --ease-out-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Reset & Smooth Scroll */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -49,9 +45,10 @@ body {
     line-height: 1.6;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -67,88 +64,20 @@ body {
     background: var(--accent);
 }
 
-/* Selection Color */
 ::selection {
     background: rgba(56, 189, 248, 0.25);
     color: var(--accent-light);
 }
 
-/* ==========================================================================
-   Ambient GPU Light Glows & Grid Overlay
-   ========================================================================== */
-.ambient-light-container {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.ambient-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(140px);
-    opacity: 0.25;
-    will-change: transform;
-    animation: orbFloat 20s infinite alternate ease-in-out;
-}
-
-.orb-1 {
-    top: -10%;
-    left: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
-}
-
-.orb-2 {
-    top: 40%;
-    right: -15%;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, #6366f1 0%, transparent 70%);
-    animation-delay: -5s;
-}
-
-.orb-3 {
-    bottom: -10%;
-    left: 20%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, #10b981 0%, transparent 70%);
-    animation-delay: -10s;
-}
-
-@keyframes orbFloat {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(50px, 30px) scale(1.1); }
-    100% { transform: translate(-30px, 60px) scale(0.95); }
-}
-
-.cyber-grid {
-    position: absolute;
-    inset: 0;
-    background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
-}
-
-/* ==========================================================================
-   Typography & Gradient Accents
-   ========================================================================== */
 .text-gradient {
     background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #34d399 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* ==========================================================================
-   Double Bezel Architecture (Doppelrand)
-   ========================================================================== */
+/* Double Bezel Architecture (Doppelrand) */
 .outer-shell {
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     transition: transform 0.4s var(--ease-out-smooth), border-color 0.4s ease;
 }
 
@@ -160,9 +89,6 @@ body {
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
-/* ==========================================================================
-   Pills, Buttons & Badges
-   ========================================================================== */
 .doc-btn-pill {
     display: inline-flex;
     align-items: center;
@@ -183,24 +109,6 @@ body {
     background: rgba(56, 189, 248, 0.1);
     border-color: rgba(56, 189, 248, 0.4);
     transform: translateY(-2px);
-}
-
-.tech-pill {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 500;
-    padding: 0.35rem 0.85rem;
-    border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--glass-border);
-    color: var(--text-sub);
-    transition: all 0.25s ease;
-}
-
-.tech-pill:hover {
-    color: var(--accent);
-    border-color: rgba(56, 189, 248, 0.3);
-    background: rgba(56, 189, 248, 0.08);
 }
 
 .social-link-pill {
@@ -232,9 +140,6 @@ body {
     box-shadow: 0 0 35px rgba(56, 189, 248, 0.5);
 }
 
-/* ==========================================================================
-   Navigation
-   ========================================================================== */
 .nav-link {
     color: var(--text-muted);
     text-decoration: none;
@@ -245,9 +150,7 @@ body {
     color: var(--text-main);
 }
 
-/* ==========================================================================
-   SVG Signature Drawing Animation
-   ========================================================================== */
+/* Signature Path Animation */
 .signature-path {
     stroke-dasharray: 600;
     stroke-dashoffset: 600;
@@ -260,9 +163,7 @@ body {
     }
 }
 
-/* ==========================================================================
-   Interactive Contact Modal
-   ========================================================================== */
+/* Modal Dynamics */
 .modal-backdrop.active {
     opacity: 1;
     pointer-events: auto;
@@ -272,16 +173,22 @@ body {
     transform: scale(1);
 }
 
-/* Responsive Overrides */
+/* Terminal & Chips */
+.cmd-chip {
+    transition: all 0.2s ease;
+}
+
+.cmd-chip:hover {
+    transform: translateY(-1px);
+}
+
 @media (max-width: 768px) {
     .desktop-nav {
         display: none;
     }
-    
     #mobile-menu-btn {
         display: block;
     }
-    
     .mobile-drawer.active {
         display: flex;
     }

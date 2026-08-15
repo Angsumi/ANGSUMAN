@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angsuman Das | CSIR NET JRF Researcher & Bioinformatician</title>
-    <meta name="description" content="Portfolio of Angsuman Das - CSIR-NET JRF (AIR 180) Qualified Researcher specializing in Zoology, Genomic Data Science, Bioinformatics & Structural Biology.">
-    <meta name="keywords" content="Angsuman Das, Bioinformatics, Genomic Data Science, CSIR NET JRF, Zoology, Structural Biology, Portfolio">
-    <meta name="author" content="Angsuman Das">
-
-    <!-- Premium Google Fonts -->
+    <title>Angsuman Das | Interactive Bioinformatician & Researcher Portfolio</title>
+    <meta name="description" content="Interactive digital portfolio of Angsuman Das - CSIR NET JRF AIR 180 Qualified Bioinformatician & Zoology Researcher.">
+    <meta name="keywords" content="Angsuman Das, Bioinformatics, Genomic Data Science, CSIR NET JRF, Zoology, Interactive Portfolio">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -19,84 +18,85 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-dark text-main font-sans selection-accent antialiased">
+<body class="bg-dark text-main font-sans antialiased overflow-x-hidden">
 
-    <!-- Ambient Glow System (GPU Layer) -->
-    <div class="ambient-light-container" aria-hidden="true">
-        <div class="ambient-orb orb-1"></div>
-        <div class="ambient-orb orb-2"></div>
-        <div class="ambient-orb orb-3"></div>
-        <div class="cyber-grid"></div>
-    </div>
+    <!-- Interactive Interactive DNA Helix & Particle Canvas (Dynamic Background) -->
+    <canvas id="dna-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Cursor Glow Spot -->
+    <div id="cursor-glow" class="fixed w-96 h-96 rounded-full blur-[120px] bg-cyan-500/15 pointer-events-none -translate-x-1/2 -translate-y-1/2 transition-transform duration-75 z-0" aria-hidden="true"></div>
 
     <!-- Floating Island Navbar -->
-    <header id="navbar-header" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl transition-all duration-300">
-        <nav class="glass-island px-6 py-3.5 rounded-full flex items-center justify-between border border-white/10 shadow-2xl backdrop-blur-2xl bg-dark/70">
+    <header id="navbar-header" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-6xl">
+        <nav class="glass-island px-6 py-3.5 rounded-full flex items-center justify-between border border-white/10 shadow-2xl backdrop-blur-2xl bg-dark/80">
             <a href="#hero" class="brand-logo flex items-center gap-3 group text-decoration-none">
-                <div class="logo-mark w-9 h-9 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-mono font-bold text-sm group-hover:scale-105 transition-transform">
+                <div class="logo-mark w-9 h-9 rounded-full bg-cyan-500/10 border border-cyan-400/40 flex items-center justify-center text-cyan-400 font-mono font-bold text-sm group-hover:rotate-12 transition-transform">
                     AD
                 </div>
-                <span class="font-bold text-slate-100 tracking-tight group-hover:text-accent transition-colors">
-                    Angsuman<span class="text-accent">.</span>
+                <span class="font-bold text-slate-100 tracking-tight group-hover:text-cyan-400 transition-colors">
+                    Angsuman<span class="text-cyan-400">.bio</span>
                 </span>
             </a>
 
             <!-- Desktop Links -->
             <ul class="desktop-nav flex items-center gap-7 list-none m-0 p-0 text-sm font-medium">
-                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#hero" class="nav-link">Overview</a></li>
+                <li><a href="#workbench" class="nav-link">Terminal & Workbench</a></li>
                 <li><a href="#credentials" class="nav-link">Credentials</a></li>
-                <li><a href="#skills" class="nav-link">Expertise</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#publications" class="nav-link">Publications</a></li>
             </ul>
 
-            <!-- Actions -->
+            <!-- Audio & Action Buttons -->
             <div class="flex items-center gap-3">
-                <a href="download.html" class="nav-btn-secondary hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-slate-300 bg-white/5 border border-white/10 hover:border-accent/40 hover:text-accent transition-all">
-                    <i class="fas fa-folder-open text-accent"></i>
-                    <span>Download Center</span>
-                </a>
-                <button id="contactBtn" class="nav-btn-primary inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold text-dark bg-accent hover:bg-accent-light shadow-glow transition-all active:scale-95 cursor-pointer">
-                    <span>Contact</span>
-                    <div class="w-4 h-4 rounded-full bg-dark/20 flex items-center justify-center text-[10px]">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
+                <button id="soundToggleBtn" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-400/40 flex items-center justify-center text-xs transition-all cursor-pointer" title="Toggle Audio FX">
+                    <i class="fas fa-volume-xmark" id="soundIcon"></i>
                 </button>
 
-                <!-- Mobile Menu Button -->
+                <a href="download.html" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-slate-300 bg-white/5 border border-white/10 hover:border-cyan-400/40 hover:text-cyan-400 transition-all text-decoration-none">
+                    <i class="fas fa-folder-open text-cyan-400"></i>
+                    <span>Download Center</span>
+                </a>
+
+                <button id="contactBtn" class="magnetic-btn inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold text-dark bg-cyan-400 hover:bg-cyan-300 shadow-glow transition-all active:scale-95 cursor-pointer">
+                    <span>Get In Touch</span>
+                    <i class="fas fa-arrow-right text-[10px]"></i>
+                </button>
+
                 <button id="mobile-menu-btn" class="mobile-toggle sm:hidden text-slate-300 text-lg p-2 focus:outline-none" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </nav>
 
-        <!-- Mobile Drawer Navigation -->
+        <!-- Mobile Drawer -->
         <div id="mobile-drawer" class="mobile-drawer hidden mt-3 p-6 rounded-3xl glass-card border border-white/10 shadow-2xl backdrop-blur-3xl bg-dark/95 flex flex-col gap-4 text-center">
-            <a href="#about" class="mobile-nav-link text-slate-200 font-semibold py-2">About</a>
+            <a href="#hero" class="mobile-nav-link text-slate-200 font-semibold py-2">Overview</a>
+            <a href="#workbench" class="mobile-nav-link text-slate-200 font-semibold py-2">Terminal & Workbench</a>
             <a href="#credentials" class="mobile-nav-link text-slate-200 font-semibold py-2">Credentials</a>
-            <a href="#skills" class="mobile-nav-link text-slate-200 font-semibold py-2">Expertise</a>
             <a href="#experience" class="mobile-nav-link text-slate-200 font-semibold py-2">Experience</a>
             <a href="#publications" class="mobile-nav-link text-slate-200 font-semibold py-2">Publications</a>
-            <a href="download.html" class="mobile-nav-link text-accent font-semibold py-2 flex items-center justify-center gap-2">
+            <a href="download.html" class="mobile-nav-link text-cyan-400 font-semibold py-2 flex items-center justify-center gap-2">
                 <i class="fas fa-download"></i> Download Center
             </a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative min-h-[100dvh] pt-36 pb-20 px-6 max-w-7xl mx-auto flex flex-col justify-center">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section id="hero" class="relative min-h-[100dvh] pt-36 pb-16 px-6 max-w-7xl mx-auto flex flex-col justify-center">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <!-- Left Hero Column -->
-            <div class="lg:col-span-7 flex flex-col items-start gap-6">
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-7 flex flex-col items-start gap-6 z-10">
                 
-                <!-- Status Pill -->
-                <div class="status-pill inline-flex items-center gap-3 px-4 py-2 rounded-full bg-accent/10 border border-accent/25 backdrop-blur-md">
+                <!-- Live Status Pill -->
+                <div class="status-pill inline-flex items-center gap-3 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-400/30 backdrop-blur-md">
                     <span class="relative flex h-2.5 w-2.5">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400"></span>
                     </span>
-                    <span class="font-mono text-xs font-semibold text-accent tracking-wide uppercase">CSIR-UGC NET JRF AIR 180 &bull; Available for Research</span>
+                    <span class="font-mono text-xs font-semibold text-cyan-400 tracking-wide uppercase">CSIR-UGC NET JRF AIR 180 &bull; Research & Collaboration</span>
                 </div>
 
                 <!-- Headline -->
@@ -106,8 +106,8 @@
                     </h1>
                     
                     <!-- SVG Signature Mark -->
-                    <div class="signature-container my-3 opacity-90 hover:opacity-100 transition-opacity">
-                        <svg class="signature-svg w-64 h-16" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="signature-container my-2">
+                        <svg class="signature-svg w-64 h-14" viewBox="0 0 320 80" fill="none">
                             <path d="M20 50 C 35 15, 45 10, 50 45 C 55 70, 40 75, 65 35 C 75 20, 85 45, 95 40 C 105 35, 110 50, 120 38 C 130 25, 140 45, 155 35 M160 55 C 175 20, 185 15, 195 48 C 200 60, 215 30, 230 40 C 240 45, 250 35, 270 42 C 285 48, 295 40, 310 45" stroke="url(#sig-grad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="signature-path"/>
                             <defs>
                                 <linearGradient id="sig-grad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -119,405 +119,241 @@
                         </svg>
                     </div>
 
-                    <h2 class="text-xl sm:text-2xl font-semibold text-slate-300 mt-1">
-                        Bridging <span class="text-cyan-400">Zoology</span>, <span class="text-indigo-400">Genomic Data Science</span> & <span class="text-emerald-400">Bioinformatics</span>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-slate-300">
+                        Computational Bioinformatician &amp; Zoology Researcher
                     </h2>
                 </div>
 
-                <!-- Subtitle -->
                 <p class="text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed m-0">
-                    CSIR-NET JRF qualified researcher with expertise in Homology Modelling of Toll-Like Receptors, RNA-seq transcriptomics, and ecological analysis. Dedicated to advancing computational biology and structural bioinformatics.
+                    Specializing in Homology Modelling of Toll-Like Receptors, Genomic Data Science, RNA-seq transcriptomics pipelines, and ethnozoological analysis.
                 </p>
 
-                <!-- Hero Action Buttons -->
+                <!-- Quick Action Buttons -->
                 <div class="hero-actions flex flex-wrap gap-4 mt-2">
-                    <button id="heroContactBtn" class="btn-primary inline-flex items-center gap-3 px-7 py-3.5 rounded-full text-sm font-bold text-dark bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 hover:brightness-110 shadow-glow transition-all active:scale-95 cursor-pointer">
+                    <button id="heroContactBtn" class="magnetic-btn inline-flex items-center gap-3 px-7 py-3.5 rounded-full text-sm font-bold text-dark bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 hover:brightness-110 shadow-glow transition-all active:scale-95 cursor-pointer">
                         <i class="fas fa-paper-plane"></i>
-                        <span>Get In Touch</span>
+                        <span>Contact Me</span>
                     </button>
 
-                    <a href="download.html" class="btn-secondary inline-flex items-center gap-3 px-6 py-3.5 rounded-full text-sm font-semibold text-slate-200 bg-white/5 border border-white/10 hover:border-cyan-400/40 hover:bg-white/10 transition-all">
-                        <i class="fas fa-folder-open text-cyan-400"></i>
-                        <span>Download Center</span>
+                    <a href="#workbench" class="inline-flex items-center gap-3 px-6 py-3.5 rounded-full text-sm font-semibold text-slate-200 bg-white/5 border border-white/10 hover:border-cyan-400/40 hover:bg-white/10 transition-all text-decoration-none">
+                        <i class="fas fa-terminal text-cyan-400"></i>
+                        <span>Launch Interactive Terminal</span>
                     </a>
 
-                    <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/RESUME/NEW_RESUME.pdf" target="_blank" class="btn-secondary inline-flex items-center gap-3 px-6 py-3.5 rounded-full text-sm font-semibold text-slate-200 bg-white/5 border border-white/10 hover:border-indigo-400/40 hover:bg-white/10 transition-all">
+                    <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/RESUME/NEW_RESUME.pdf" target="_blank" class="inline-flex items-center gap-3 px-6 py-3.5 rounded-full text-sm font-semibold text-slate-200 bg-white/5 border border-white/10 hover:border-indigo-400/40 hover:bg-white/10 transition-all text-decoration-none">
                         <i class="fas fa-file-pdf text-indigo-400"></i>
-                        <span>Resume PDF</span>
+                        <span>Resume</span>
                     </a>
                 </div>
 
             </div>
 
-            <!-- Right Hero Column: Double-Bezel Interactive Metrics Cards -->
-            <div class="lg:col-span-5 flex flex-col gap-5">
+            <!-- Right Hero Content: 3D Protein Structure Viewer Component -->
+            <div class="lg:col-span-5 z-10">
+                <div class="outer-shell p-2 rounded-[2.5rem] bg-white/[0.03] border border-cyan-400/30 backdrop-blur-xl shadow-2xl relative">
+                    <div class="inner-core p-6 rounded-[calc(2.5rem-0.5rem)] bg-dark-card/95 relative overflow-hidden">
+                        
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-3">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                                <span class="font-mono text-xs text-slate-400 ml-2">TLR4_HOMOLOGY_3D.PDB</span>
+                            </div>
+                            <span class="font-mono text-[10px] text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/30">ROTATABLE 3D CANVAS</span>
+                        </div>
+
+                        <!-- 3D Canvas Container -->
+                        <div class="relative h-64 w-full rounded-2xl bg-dark/80 border border-white/5 overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing" id="molecule-container">
+                            <canvas id="molecule-canvas" class="w-full h-full"></canvas>
+                            <div class="absolute bottom-3 left-3 font-mono text-[11px] text-slate-400 bg-dark/80 px-2.5 py-1 rounded-md border border-white/10 pointer-events-none">
+                                Drag to Rotate Molecule &bull; Toll-Like Receptor
+                            </div>
+                        </div>
+
+                        <!-- Viewer Control Toggles -->
+                        <div class="flex justify-between items-center mt-4 pt-2">
+                            <div class="flex gap-2 font-mono text-xs">
+                                <button onclick="setMoleculeMode('ribbon')" class="mol-btn active px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 cursor-pointer">Ribbon</button>
+                                <button onclick="setMoleculeMode('atoms')" class="mol-btn px-3 py-1 rounded-full bg-white/5 text-slate-400 border border-white/10 hover:text-white cursor-pointer">Atoms</button>
+                                <button onclick="setMoleculeMode('bonds')" class="mol-btn px-3 py-1 rounded-full bg-white/5 text-slate-400 border border-white/10 hover:text-white cursor-pointer">Lattice</button>
+                            </div>
+                            <div class="font-mono text-xs text-emerald-400">
+                                <i class="fas fa-check-circle"></i> RMSD: 0.42 Å
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Interactive Terminal & Bio-Workbench Section -->
+    <section id="workbench" class="py-24 px-6 max-w-7xl mx-auto z-10 relative">
+        <div class="section-header mb-12 text-center max-w-3xl mx-auto">
+            <span class="section-tag font-mono text-xs text-cyan-400 uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">Interactive Environment</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4">Bio-CLI Terminal &amp; Workbench</h2>
+            <p class="text-slate-400 text-base sm:text-lg mt-3">Click any command to execute bioinformatics pipelines, fetch verification data, and inspect sequence alignments live.</p>
+        </div>
+
+        <!-- Terminal Outer Window -->
+        <div class="outer-shell p-2 rounded-[2.5rem] bg-white/[0.03] border border-cyan-500/30 backdrop-blur-xl shadow-2xl max-w-5xl mx-auto">
+            <div class="inner-core rounded-[calc(2.5rem-0.5rem)] bg-[#090d16] border border-white/10 overflow-hidden font-mono">
                 
-                <!-- Double Bezel Shell 1: CSIR NET JRF Highlight -->
-                <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl">
-                    <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 border border-emerald-500/20 relative overflow-hidden group">
-                        <div class="absolute -right-8 -top-8 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="badge-tag bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs px-3 py-1 rounded-full font-bold">AIR 180</span>
-                            <i class="fas fa-award text-2xl text-emerald-400"></i>
+                <!-- Terminal Top Bar -->
+                <div class="bg-[#111726] px-6 py-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="flex gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-1">CSIR-UGC NET JRF</h3>
-                        <p class="text-sm text-slate-400 m-0">Qualified for Junior Research Fellowship in Life Sciences (Percentile 97.50%).</p>
+                        <span class="text-xs text-slate-300 font-semibold tracking-wide ml-2">angsuman@bio-node-01:~ (AD-BIO-CLI v2.4)</span>
+                    </div>
+
+                    <!-- Quick Command Chips -->
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <button onclick="runTerminalCmd('blastn')" class="cmd-chip px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 cursor-pointer">blastn --query TLR4</button>
+                        <button onclick="runTerminalCmd('net-rank')" class="cmd-chip px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 cursor-pointer">fetch-rank --jrf-180</button>
+                        <button onclick="runTerminalCmd('adre-info')" class="cmd-chip px-3 py-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 cursor-pointer">adre-2025 --status</button>
+                        <button onclick="runTerminalCmd('papers')" class="cmd-chip px-3 py-1 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 hover:bg-indigo-500/20 cursor-pointer">list-publications</button>
                     </div>
                 </div>
 
-                <!-- Double Bezel Shell 2: ADRE Grade III Govt Selection -->
-                <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl">
-                    <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 border border-cyan-500/20 relative overflow-hidden group">
-                        <div class="absolute -right-8 -top-8 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="badge-tag bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs px-3 py-1 rounded-full font-bold">Selected 2025</span>
-                            <i class="fas fa-building-columns text-2xl text-cyan-400"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-1">ADRE Grade III Assistant</h3>
-                        <p class="text-sm text-slate-400 m-0">Government of Assam Direct Recruitment Examination selection for Junior Assistant.</p>
-                    </div>
+                <!-- Terminal Output Display -->
+                <div id="terminal-body" class="p-6 h-80 overflow-y-auto text-sm text-slate-300 space-y-3 leading-relaxed">
+                    <div><span class="text-cyan-400">angsuman@bio-node-01:~$</span> welcome to bio-terminal v2.4. Type a command or click a chip above.</div>
+                    <div class="text-slate-500">System Ready. Target pipelines: [TLR4 Homology, RNA-seq, CSIR-NET JRF, Ethnozoology]</div>
                 </div>
 
-                <!-- Micro Stats Bar -->
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="stat-card p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                        <div class="font-mono text-2xl font-bold text-cyan-400">8+</div>
-                        <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-1">Publications</div>
-                    </div>
-                    <div class="stat-card p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                        <div class="font-mono text-2xl font-bold text-indigo-400">7.0</div>
-                        <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-1">IELTS C1 Band</div>
-                    </div>
-                    <div class="stat-card p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                        <div class="font-mono text-2xl font-bold text-emerald-400">7.29</div>
-                        <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-1">M.Sc. CGPA</div>
-                    </div>
+                <!-- Terminal Input Bar -->
+                <div class="bg-[#0c1220] px-6 py-3 border-t border-white/10 flex items-center gap-3">
+                    <span class="text-cyan-400 font-bold">$</span>
+                    <input type="text" id="terminal-input" placeholder="Type 'help', 'blastn', 'rank', 'clear' and press Enter..." class="w-full bg-transparent text-white focus:outline-none font-mono text-sm" onkeydown="handleTerminalEnter(event)">
                 </div>
 
             </div>
-
         </div>
+
     </section>
 
-    <!-- About & Education Section -->
-    <section id="about" class="py-24 px-6 max-w-7xl mx-auto">
+    <!-- Credentials & Interactive Data Metrics -->
+    <section id="credentials" class="py-24 px-6 max-w-7xl mx-auto z-10 relative border-t border-white/5">
         <div class="section-header mb-16 text-center max-w-3xl mx-auto">
-            <span class="section-tag font-mono text-xs text-accent uppercase tracking-widest px-3 py-1 rounded-full bg-accent/10 border border-accent/20">01 &bull; Academic Background</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4">Education & Degrees</h2>
-            <p class="text-slate-400 text-base sm:text-lg mt-3">Combining rigorous biological training from Rajiv Gandhi University and Gauhati University with specialized data science certifications.</p>
+            <span class="section-tag font-mono text-xs text-emerald-400 uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">Verified Metrics</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4">Credentials & Exam Benchmarks</h2>
+            <p class="text-slate-400 text-base sm:text-lg mt-3">Interactive breakdown of national competitive exam percentile, international language scores, and degree achievements.</p>
         </div>
 
-        <!-- Academic Cards Bento Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <!-- Degree Card 1: MSc -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-all">
-                <div class="inner-core p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/80 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">M.Sc. Zoology</span>
-                            <span class="font-mono text-sm text-slate-400">CGPA: 7.29</span>
+            <!-- Metric 1: CSIR NET JRF Rank -->
+            <div class="outer-shell p-2 rounded-[2.5rem] bg-white/[0.03] border border-emerald-500/30">
+                <div class="inner-core p-8 rounded-[calc(2.5rem-0.5rem)] bg-dark-card/90">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 uppercase">National JRF Award</span>
+                            <h3 class="text-2xl font-bold text-white mt-2">CSIR-UGC NET JRF</h3>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Rajiv Gandhi University</h3>
-                        <p class="text-sm text-slate-400 mb-6">Specialization in Biochemistry. Completed capstone research project on Bioprospecting of Lepidopteran silkworm species.</p>
+                        <div class="text-right">
+                            <div class="font-mono text-3xl font-extrabold text-emerald-400">AIR 180</div>
+                            <div class="text-xs text-slate-400 font-mono">Percentile: 97.50%</div>
+                        </div>
                     </div>
-                    <div class="flex flex-wrap gap-3 pt-4 border-t border-white/10">
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/ACADEMIC/MSc_Master/msc_sem4_marksheet_rajiv_gandhi_university.jpg" target="_blank" class="doc-btn-pill">
-                            <i class="fas fa-file-invoice text-cyan-400"></i> Marksheet PDF
+
+                    <!-- Progress Visualizer Bar -->
+                    <div class="space-y-2 mb-6">
+                        <div class="flex justify-between text-xs font-mono text-slate-400">
+                            <span>National Percentile Rank</span>
+                            <span class="text-emerald-400 font-bold">97.50%</span>
+                        </div>
+                        <div class="w-full h-3 rounded-full bg-white/5 overflow-hidden p-0.5 border border-white/10">
+                            <div class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-cyan-400 w-[97.5%] transition-all duration-1000 shadow-glow"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Exam_Certificates_and_Marksheets/csir_net_jrf_award_letter.jpg" target="_blank" class="doc-btn-pill">
+                            <i class="fas fa-award text-emerald-400"></i> View JRF Award Letter
                         </a>
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/ACADEMIC/MSc_Master/msc_zoology_degree_certificate.jpg" target="_blank" class="doc-btn-pill">
-                            <i class="fas fa-certificate text-indigo-400"></i> Degree Certificate
+                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Exam_Certificates_and_Marksheets/net_jrf_scorecard.jpg" target="_blank" class="doc-btn-pill">
+                            <i class="fas fa-file-invoice text-cyan-400"></i> NTA Scorecard
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Degree Card 2: BSc -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-indigo-500/30 transition-all">
-                <div class="inner-core p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/80 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">B.Sc. Zoology (Honours)</span>
-                            <span class="font-mono text-sm text-slate-400">CGPA: 7.9</span>
+            <!-- Metric 2: IELTS Academic Score -->
+            <div class="outer-shell p-2 rounded-[2.5rem] bg-white/[0.03] border border-indigo-500/30">
+                <div class="inner-core p-8 rounded-[calc(2.5rem-0.5rem)] bg-dark-card/90">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 uppercase">CEFR C1 Benchmark</span>
+                            <h3 class="text-2xl font-bold text-white mt-2">IELTS Academic</h3>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Gauhati University (Darrang College)</h3>
-                        <p class="text-sm text-slate-400 mb-6">Major in Zoology. Conducted environmental dissertation assessing physico-chemical parameters and ecology of Boimora River.</p>
+                        <div class="text-right">
+                            <div class="font-mono text-3xl font-extrabold text-indigo-400">Band 7.0</div>
+                            <div class="text-xs text-slate-400 font-mono">Good User (C1)</div>
+                        </div>
                     </div>
-                    <div class="flex flex-wrap gap-3 pt-4 border-t border-white/10">
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/ACADEMIC/BSc_Bachelor/bsc_grade_sheet_gauhati_university.jpg" target="_blank" class="doc-btn-pill">
-                            <i class="fas fa-file-invoice text-cyan-400"></i> Marksheet PDF
-                        </a>
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/ACADEMIC/BSc_Bachelor/bsc_degree_certificate.jpg" target="_blank" class="doc-btn-pill">
-                            <i class="fas fa-certificate text-indigo-400"></i> Degree Certificate
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Degree Card 3: 12th HS -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-emerald-500/30 transition-all">
-                <div class="inner-core p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/80 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">AHSEC (12th Science)</span>
-                            <span class="font-mono text-sm text-slate-400">414 / 500 (82.8%)</span>
+                    <!-- Skills Radial / Bar Breakdown -->
+                    <div class="grid grid-cols-4 gap-3 text-center mb-6 font-mono">
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                            <div class="text-xs text-slate-400">READ</div>
+                            <div class="text-lg font-bold text-indigo-400">7.5</div>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Higher Secondary Science</h3>
-                        <p class="text-sm text-slate-400 mb-6">Physics, Chemistry, Biology, Mathematics. Distinction performance in Science stream.</p>
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                            <div class="text-xs text-slate-400">LISTEN</div>
+                            <div class="text-lg font-bold text-cyan-400">7.0</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                            <div class="text-xs text-slate-400">WRITE</div>
+                            <div class="text-lg font-bold text-emerald-400">7.0</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                            <div class="text-xs text-slate-400">SPEAK</div>
+                            <div class="text-lg font-bold text-amber-400">6.5</div>
+                        </div>
                     </div>
-                    <div class="flex flex-wrap gap-3 pt-4 border-t border-white/10">
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/ACADEMIC/12th_HS/hs_marksheet.jpg" target="_blank" class="doc-btn-pill">
-                            <i class="fas fa-file-invoice text-cyan-400"></i> Marksheet
-                        </a>
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/ACADEMIC/12th_HS/hs_certificate_ahsec_duplicate.jpg" target="_blank" class="doc-btn-pill">
-                            <i class="fas fa-certificate text-emerald-400"></i> Certificate
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Degree Card 4: 10th HSLC -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-violet-500/30 transition-all">
-                <div class="inner-core p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/80 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-violet-500/10 text-violet-400 border border-violet-500/20">SEBA (10th HSLC)</span>
-                            <span class="font-mono text-sm text-slate-400">449 / 600 (74.8%)</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">High School Leaving Certificate</h3>
-                        <p class="text-sm text-slate-400 mb-6">Matriculation examination with First Division marks under Board of Secondary Education, Assam.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-3 pt-4 border-t border-white/10">
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/ACADEMIC/10th_Matric/hslc_marksheet_seba.jpg" target="_blank" class="doc-btn-pill">
-                            <i class="fas fa-file-invoice text-cyan-400"></i> Marksheet
-                        </a>
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/ACADEMIC/10th_Matric/hslc_matric_certificate.jpg" target="_blank" class="doc-btn-pill">
-                            <i class="fas fa-certificate text-violet-400"></i> Certificate
-                        </a>
-                    </div>
+                    <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Exam_Certificates_and_Marksheets/ielts_test_report_academic.jpg" target="_blank" class="doc-btn-pill">
+                        <i class="fas fa-file-alt text-indigo-400"></i> IELTS Official Test Report
+                    </a>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Credentials & Certifications Section -->
-    <section id="credentials" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+    <!-- Professional Timeline -->
+    <section id="experience" class="py-24 px-6 max-w-7xl mx-auto z-10 relative border-t border-white/5">
         <div class="section-header mb-16 text-center max-w-3xl mx-auto">
-            <span class="section-tag font-mono text-xs text-cyan-400 uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">02 &bull; Validated Excellence</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4">Exams & Certifications</h2>
-            <p class="text-slate-400 text-base sm:text-lg mt-3">Verified competitive exams, international language benchmarks, and technical specialization diplomas.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <!-- CSIR NET JRF -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10">
-                <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl mb-5">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">National Level</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">CSIR-UGC NET JRF</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed mb-4">Rank 180 (Percentile 97.50%) in Life Sciences. Qualified for Junior Research Fellowship & Lectureship.</p>
-                    </div>
-                    <div class="flex flex-col gap-2 pt-4 border-t border-white/10">
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Exam_Certificates_and_Marksheets/csir_net_jrf_award_letter.jpg" target="_blank" class="doc-btn-pill text-xs">
-                            <i class="fas fa-award text-emerald-400"></i> Award Letter PDF
-                        </a>
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Exam_Certificates_and_Marksheets/net_jrf_scorecard.jpg" target="_blank" class="doc-btn-pill text-xs">
-                            <i class="fas fa-file-invoice text-cyan-400"></i> Scorecard
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Johns Hopkins Genomic Data Science -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10">
-                <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-xl mb-5">
-                            <i class="fas fa-dna"></i>
-                        </div>
-                        <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">Johns Hopkins Univ</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Genomic Data Science</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed mb-4">8-Course Specialization covering Python, R, Bioconductor, Galaxy, DNA Alignment Algorithms & Command Line.</p>
-                    </div>
-                    <div class="pt-4 border-t border-white/10">
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Certificates_and_Diplomas/coursera_genomic_data_science_specialization.jpg" target="_blank" class="doc-btn-pill text-xs w-full justify-center">
-                            <i class="fas fa-certificate text-cyan-400"></i> Specialization Certificate
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- IELTS Academic -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10">
-                <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 flex items-center justify-center text-xl mb-5">
-                            <i class="fas fa-language"></i>
-                        </div>
-                        <span class="text-xs font-mono text-indigo-400 font-bold uppercase tracking-wider">CEFR Level C1</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">IELTS Academic (7.0)</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed mb-4">Reading 7.5, Listening 7.0, Writing 7.0, Speaking 6.5. Proficient English command for global academia.</p>
-                    </div>
-                    <div class="pt-4 border-t border-white/10">
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Exam_Certificates_and_Marksheets/ielts_test_report_academic.jpg" target="_blank" class="doc-btn-pill text-xs w-full justify-center">
-                            <i class="fas fa-file-alt text-indigo-400"></i> Test Report Form
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PGDCA Diploma -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10">
-                <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl mb-5">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">1-Year Diploma</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">PGDCA Computer Application</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed mb-4">Grade A in C/C++, DBMS SQL, Web Design, System Software & Graphic Applications.</p>
-                    </div>
-                    <div class="pt-4 border-t border-white/10">
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Certificates_and_Diplomas/pgdca_diploma_certificate.jpg" target="_blank" class="doc-btn-pill text-xs w-full justify-center">
-                            <i class="fas fa-certificate text-amber-400"></i> Diploma Certificate
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLET Eligibility -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10">
-                <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center text-xl mb-5">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <span class="text-xs font-mono text-sky-400 font-bold uppercase tracking-wider">Lectureship</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">SLET Life Sciences</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed mb-4">State Eligibility Test qualified for Assistant Professorship in Life Sciences.</p>
-                    </div>
-                    <div class="flex flex-col gap-2 pt-4 border-t border-white/10">
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Exam_Certificates_and_Marksheets/slet_result_sheet_2023.pdf" target="_blank" class="doc-btn-pill text-xs">
-                            <i class="fas fa-file-invoice text-sky-400"></i> Result Sheet PDF
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fine Arts Diploma -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10">
-                <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center text-xl mb-5">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <span class="text-xs font-mono text-rose-400 font-bold uppercase tracking-wider">Cultural Diploma</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Fine Arts Junior Diploma</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed mb-4">First Division in Fine Arts issued by Sarbabharatiya Sangeet-O-Sanskriti Parishad, Kolkata.</p>
-                    </div>
-                    <div class="pt-4 border-t border-white/10">
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Certificates_and_Diplomas/drawing_junior_diploma_certificate.jpg" target="_blank" class="doc-btn-pill text-xs w-full justify-center">
-                            <i class="fas fa-certificate text-rose-400"></i> Diploma Certificate
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Tech Stack & Domain Expertise -->
-    <section id="skills" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
-        <div class="section-header mb-16 text-center max-w-3xl mx-auto">
-            <span class="section-tag font-mono text-xs text-indigo-400 uppercase tracking-widest px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">03 &bull; Technical Toolkit</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4">Skills & Domain Expertise</h2>
-            <p class="text-slate-400 text-base sm:text-lg mt-3">Synthesizing wet-lab biological methodologies with modern computational algorithms.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <!-- Category 1 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.02] border border-white/10">
-                <div class="inner-core p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/80 h-full">
-                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-code text-cyan-400"></i> Programming & CLI
-                    </h3>
-                    <div class="flex flex-wrap gap-2.5">
-                        <span class="tech-pill">Python</span>
-                        <span class="tech-pill">R Language</span>
-                        <span class="tech-pill">Bash & Shell</span>
-                        <span class="tech-pill">Pandas</span>
-                        <span class="tech-pill">NumPy</span>
-                        <span class="tech-pill">Git / GitHub</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Category 2 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.02] border border-white/10">
-                <div class="inner-core p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/80 h-full">
-                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-dna text-indigo-400"></i> Computational Biology
-                    </h3>
-                    <div class="flex flex-wrap gap-2.5">
-                        <span class="tech-pill">Genomic Data Science</span>
-                        <span class="tech-pill">RNA-seq Transcriptomics</span>
-                        <span class="tech-pill">Homology Modelling</span>
-                        <span class="tech-pill">Bioconductor</span>
-                        <span class="tech-pill">Galaxy Tools</span>
-                        <span class="tech-pill">TLR Receptor Modelling</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Category 3 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.02] border border-white/10">
-                <div class="inner-core p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/80 h-full">
-                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-flask text-emerald-400"></i> Biological Sciences
-                    </h3>
-                    <div class="flex flex-wrap gap-2.5">
-                        <span class="tech-pill">Biochemistry</span>
-                        <span class="tech-pill">Ethnozoology</span>
-                        <span class="tech-pill">Ecological Indices</span>
-                        <span class="tech-pill">Silkworm Bioprospecting</span>
-                        <span class="tech-pill">Mass Spectrometry</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Professional Experience Timeline -->
-    <section id="experience" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
-        <div class="section-header mb-16 text-center max-w-3xl mx-auto">
-            <span class="section-tag font-mono text-xs text-emerald-400 uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">04 &bull; Career Path</span>
+            <span class="section-tag font-mono text-xs text-cyan-400 uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">Timeline & Appointments</span>
             <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4">Professional Experience</h2>
-            <p class="text-slate-400 text-base sm:text-lg mt-3">Teaching, research traineeships, and government appointment history.</p>
+            <p class="text-slate-400 text-base sm:text-lg mt-3">Academic teaching, structural research traineeship, and government assistantship history.</p>
         </div>
 
-        <div class="relative pl-6 sm:pl-10 border-l border-white/10 max-w-4xl mx-auto flex flex-col gap-12">
+        <div class="relative pl-6 sm:pl-10 border-l border-white/10 max-w-4xl mx-auto flex flex-col gap-10">
             
-            <!-- Item 1: ADRE -->
+            <!-- 1. ADRE -->
             <div class="timeline-node relative">
                 <div class="absolute -left-[31px] sm:-left-[47px] top-1 w-5 h-5 rounded-full bg-cyan-400 border-4 border-dark shadow-glow"></div>
                 <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-cyan-500/30">
                     <div class="inner-core p-6 sm:p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/90">
                         <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
                             <div>
-                                <span class="text-xs font-mono text-cyan-400 font-bold uppercase">Government Appointment</span>
+                                <span class="text-xs font-mono text-cyan-400 font-bold uppercase">Assam Government Direct Recruitment</span>
                                 <h3 class="text-2xl font-bold text-white">Junior Assistant (ADRE Grade III)</h3>
-                                <h4 class="text-sm font-semibold text-slate-300">Government of Assam — Assam Direct Recruitment Examination (2025)</h4>
+                                <h4 class="text-sm font-semibold text-slate-300">Government of Assam</h4>
                             </div>
                             <span class="font-mono text-xs px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">2025 - Selected</span>
                         </div>
-                        <p class="text-sm text-slate-400 leading-relaxed mb-4">Selected through ADRE 2025 Grade III (Graduate Level) for the post of Junior Assistant under the Government of Assam.</p>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-4">Selected through ADRE 2025 (Grade III Graduate Level) for Junior Assistant position under the Government of Assam.</p>
                         <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Work_and_Experience/ADRE.pdf" target="_blank" class="doc-btn-pill">
                             <i class="fas fa-file-pdf text-cyan-400"></i> Appointment Letter PDF
                         </a>
@@ -525,20 +361,20 @@
                 </div>
             </div>
 
-            <!-- Item 2: Assistant Professor -->
+            <!-- 2. Assistant Professor -->
             <div class="timeline-node relative">
                 <div class="absolute -left-[31px] sm:-left-[47px] top-1 w-5 h-5 rounded-full bg-indigo-400 border-4 border-dark shadow-glow"></div>
                 <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10">
                     <div class="inner-core p-6 sm:p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/90">
                         <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
                             <div>
-                                <span class="text-xs font-mono text-indigo-400 font-bold uppercase">Academia & Teaching</span>
+                                <span class="text-xs font-mono text-indigo-400 font-bold uppercase">Teaching & Academia</span>
                                 <h3 class="text-2xl font-bold text-white">Assistant Professor (Tutor)</h3>
-                                <h4 class="text-sm font-semibold text-slate-300">Tyagbir Hem Baruah (THB) College, Jamugurihat</h4>
+                                <h4 class="text-sm font-semibold text-slate-300">THB College, Jamugurihat</h4>
                             </div>
                             <span class="font-mono text-xs px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">May 2022 - Present</span>
                         </div>
-                        <p class="text-sm text-slate-400 leading-relaxed mb-4">Department of Zoology. Teaching undergraduate students, mentoring laboratory practicals, and guiding academic coursework.</p>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-4">Department of Zoology. Conducting lectures, laboratory practicals, and guiding undergraduate research projects.</p>
                         <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Work_and_Experience/THB%20College%20Experience.pdf" target="_blank" class="doc-btn-pill">
                             <i class="fas fa-file-pdf text-indigo-400"></i> Experience Certificate PDF
                         </a>
@@ -546,43 +382,22 @@
                 </div>
             </div>
 
-            <!-- Item 3: RASA Life Science Informatics -->
+            <!-- 3. RASA Life Science -->
             <div class="timeline-node relative">
                 <div class="absolute -left-[31px] sm:-left-[47px] top-1 w-5 h-5 rounded-full bg-emerald-400 border-4 border-dark shadow-glow"></div>
                 <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10">
                     <div class="inner-core p-6 sm:p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/90">
                         <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
                             <div>
-                                <span class="text-xs font-mono text-emerald-400 font-bold uppercase">Research Traineeship</span>
+                                <span class="text-xs font-mono text-emerald-400 font-bold uppercase">Bioinformatics Traineeship</span>
                                 <h3 class="text-2xl font-bold text-white">Research Trainee</h3>
                                 <h4 class="text-sm font-semibold text-slate-300">RASA Life Science Informatics, Pune</h4>
                             </div>
                             <span class="font-mono text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Mar 2021 - Oct 2021</span>
                         </div>
-                        <p class="text-sm text-slate-400 leading-relaxed mb-4">Focused on Homology Modelling and Structural Analysis of Human Toll-Like Receptors (TLR) for drug discovery insights.</p>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-4">Homology modelling and structural validation of Toll-Like Receptor (TLR4) proteins.</p>
                         <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Work_and_Experience/RASA_Experience.jpg" target="_blank" class="doc-btn-pill">
-                            <i class="fas fa-certificate text-emerald-400"></i> Experience Certificate
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 4: IIT Kharagpur -->
-            <div class="timeline-node relative">
-                <div class="absolute -left-[31px] sm:-left-[47px] top-1 w-5 h-5 rounded-full bg-amber-400 border-4 border-dark shadow-glow"></div>
-                <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10">
-                    <div class="inner-core p-6 sm:p-8 rounded-[calc(2rem-0.5rem)] bg-dark-card/90">
-                        <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
-                            <div>
-                                <span class="text-xs font-mono text-amber-400 font-bold uppercase">Virtual Internship</span>
-                                <h3 class="text-2xl font-bold text-white">Virtual Research Intern</h3>
-                                <h4 class="text-sm font-semibold text-slate-300">IIT Kharagpur</h4>
-                            </div>
-                            <span class="font-mono text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">Sep 2020 - Oct 2020</span>
-                        </div>
-                        <p class="text-sm text-slate-400 leading-relaxed mb-4">Learned specialized Bioinformatics workflows and authored a comprehensive review paper on computational biology.</p>
-                        <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Work_and_Experience/training_internship_bioinformatics_certificate.jpg" target="_blank" class="doc-btn-pill">
-                            <i class="fas fa-certificate text-amber-400"></i> Internship Certificate
+                            <i class="fas fa-certificate text-emerald-400"></i> Certificate
                         </a>
                     </div>
                 </div>
@@ -591,18 +406,26 @@
         </div>
     </section>
 
-    <!-- Publications Library -->
-    <section id="publications" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
-        <div class="section-header mb-16 text-center max-w-3xl mx-auto">
-            <span class="section-tag font-mono text-xs text-cyan-400 uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">05 &bull; Scientific Research</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4">Publications & Papers</h2>
-            <p class="text-slate-400 text-base sm:text-lg mt-3">Peer-reviewed manuscripts, ethnozoology reviews, and AI applications in biological taxonomy.</p>
+    <!-- Publications Section with Interactive Category Filter -->
+    <section id="publications" class="py-24 px-6 max-w-7xl mx-auto z-10 relative border-t border-white/5">
+        <div class="section-header mb-12 text-center max-w-3xl mx-auto">
+            <span class="section-tag font-mono text-xs text-cyan-400 uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">Research Library</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4">Publications &amp; Papers</h2>
+            <p class="text-slate-400 text-base sm:text-lg mt-3">Filter by domain topic to explore full paper PDFs.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Filter Tab Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-10 font-mono text-xs">
+            <button onclick="filterPapers('all', this)" class="paper-tab-btn active px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 cursor-pointer">All Papers (8)</button>
+            <button onclick="filterPapers('bioinformatics', this)" class="paper-tab-btn px-4 py-2 rounded-full bg-white/5 text-slate-400 border border-white/10 hover:text-white cursor-pointer">AI &amp; Bioinformatics</button>
+            <button onclick="filterPapers('ecology', this)" class="paper-tab-btn px-4 py-2 rounded-full bg-white/5 text-slate-400 border border-white/10 hover:text-white cursor-pointer">Ecology &amp; Environment</button>
+            <button onclick="filterPapers('ethnozoology', this)" class="paper-tab-btn px-4 py-2 rounded-full bg-white/5 text-slate-400 border border-white/10 hover:text-white cursor-pointer">Ethnozoology</button>
+        </div>
+
+        <!-- Papers Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="papers-container">
             
-            <!-- Paper 1 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-cyan-400/40 transition-all">
+            <div class="paper-card outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10" data-category="ecology">
                 <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
                     <div>
                         <span class="text-xs font-mono text-cyan-400 font-bold uppercase">Environmental Biotechnology</span>
@@ -614,8 +437,7 @@
                 </div>
             </div>
 
-            <!-- Paper 2 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-indigo-400/40 transition-all">
+            <div class="paper-card outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10" data-category="ecology">
                 <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
                     <div>
                         <span class="text-xs font-mono text-indigo-400 font-bold uppercase">Aquatic Ecology</span>
@@ -627,8 +449,7 @@
                 </div>
             </div>
 
-            <!-- Paper 3 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-emerald-400/40 transition-all">
+            <div class="paper-card outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10" data-category="ethnozoology">
                 <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
                     <div>
                         <span class="text-xs font-mono text-emerald-400 font-bold uppercase">Ethnopharmacology</span>
@@ -640,11 +461,10 @@
                 </div>
             </div>
 
-            <!-- Paper 4 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-amber-400/40 transition-all">
+            <div class="paper-card outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10" data-category="bioinformatics">
                 <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
                     <div>
-                        <span class="text-xs font-mono text-amber-400 font-bold uppercase">Toxicology & Analytics</span>
+                        <span class="text-xs font-mono text-amber-400 font-bold uppercase">Toxicology &amp; Analytics</span>
                         <h3 class="text-lg font-bold text-white mt-1 mb-3">Clinical Applications of Mass Spectrometry in Toxicological Analysis</h3>
                     </div>
                     <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Published_Papers/Clinical%20Applications%20of%20Mass%20Spectrometry%20in%20Toxicological.pdf" target="_blank" class="doc-btn-pill text-xs w-max mt-4">
@@ -653,11 +473,10 @@
                 </div>
             </div>
 
-            <!-- Paper 5 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-violet-400/40 transition-all">
+            <div class="paper-card outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10" data-category="bioinformatics">
                 <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
                     <div>
-                        <span class="text-xs font-mono text-violet-400 font-bold uppercase">AI & Bioinformatics</span>
+                        <span class="text-xs font-mono text-violet-400 font-bold uppercase">AI &amp; Bioinformatics</span>
                         <h3 class="text-lg font-bold text-white mt-1 mb-3">Conversational Interfaces in Bioinformatics: Bridging Computational Biology</h3>
                     </div>
                     <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Published_Papers/Conversational%20Interfaces%20in%20Bioinformatics%20Bridging%20Computational.pdf" target="_blank" class="doc-btn-pill text-xs w-max mt-4">
@@ -666,8 +485,7 @@
                 </div>
             </div>
 
-            <!-- Paper 6 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-rose-400/40 transition-all">
+            <div class="paper-card outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10" data-category="ethnozoology">
                 <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
                     <div>
                         <span class="text-xs font-mono text-rose-400 font-bold uppercase">Ethnozoology</span>
@@ -679,11 +497,10 @@
                 </div>
             </div>
 
-            <!-- Paper 7 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-sky-400/40 transition-all">
+            <div class="paper-card outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10" data-category="bioinformatics">
                 <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
                     <div>
-                        <span class="text-xs font-mono text-sky-400 font-bold uppercase">GPT Vision & Taxonomy</span>
+                        <span class="text-xs font-mono text-sky-400 font-bold uppercase">GPT Vision &amp; Taxonomy</span>
                         <h3 class="text-lg font-bold text-white mt-1 mb-3">GPT Vision Meets Taxonomy: AI Applications in Biological Classification</h3>
                     </div>
                     <a href="https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/Published_Papers/GPT%20Vision%20Meets%20Taxonomy.pdf" target="_blank" class="doc-btn-pill text-xs w-max mt-4">
@@ -692,8 +509,7 @@
                 </div>
             </div>
 
-            <!-- Paper 8 -->
-            <div class="outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-emerald-400/40 transition-all">
+            <div class="paper-card outer-shell p-2 rounded-[2rem] bg-white/[0.03] border border-white/10" data-category="ethnozoology">
                 <div class="inner-core p-6 rounded-[calc(2rem-0.5rem)] bg-dark-card/90 flex flex-col justify-between h-full">
                     <div>
                         <span class="text-xs font-mono text-emerald-400 font-bold uppercase">Meta-Analysis</span>
@@ -708,10 +524,8 @@
         </div>
     </section>
 
-    <!-- Footer with Signature -->
-    <footer class="py-16 px-6 max-w-7xl mx-auto border-t border-white/10 text-center flex flex-col items-center gap-6">
-        
-        <!-- Footer Signature -->
+    <!-- Footer -->
+    <footer class="py-16 px-6 max-w-7xl mx-auto border-t border-white/10 text-center flex flex-col items-center gap-6 z-10 relative">
         <svg class="w-48 h-12 opacity-80" viewBox="0 0 320 80" fill="none">
             <path d="M20 50 C 35 15, 45 10, 50 45 C 55 70, 40 75, 65 35 C 75 20, 85 45, 95 40 C 105 35, 110 50, 120 38 C 130 25, 140 45, 155 35 M160 55 C 175 20, 185 15, 195 48 C 200 60, 215 30, 230 40 C 240 45, 250 35, 270 42 C 285 48, 295 40, 310 45" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
@@ -732,7 +546,7 @@
         </div>
 
         <p class="text-xs text-slate-500 font-mono m-0">
-            Designed & Engineered for <span class="text-slate-300">Angsuman Das</span> &bull; CSIR-UGC NET JRF AIR 180
+            Engineered for <span class="text-slate-300">Angsuman Das</span> &bull; CSIR-UGC NET JRF AIR 180
         </p>
     </footer>
 
@@ -746,18 +560,16 @@
                 </button>
 
                 <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 text-accent flex items-center justify-center text-lg">
+                    <div class="w-10 h-10 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 flex items-center justify-center text-lg">
                         <i class="fas fa-paper-plane"></i>
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold text-white m-0">Get In Touch</h3>
-                        <p class="text-xs text-slate-400 m-0">Direct Research & Collaboration Inquiry</p>
+                        <p class="text-xs text-slate-400 m-0">Direct Research Inquiry</p>
                     </div>
                 </div>
 
                 <div class="flex flex-col gap-4">
-                    
-                    <!-- Email Option 1 -->
                     <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
                             <i class="fas fa-envelope text-cyan-400 text-lg"></i>
@@ -771,7 +583,6 @@
                         </button>
                     </div>
 
-                    <!-- Email Option 2 -->
                     <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
                             <i class="fas fa-university text-indigo-400 text-lg"></i>
@@ -785,7 +596,6 @@
                         </button>
                     </div>
 
-                    <!-- Phone / WhatsApp -->
                     <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
                             <i class="fab fa-whatsapp text-emerald-400 text-xl"></i>
@@ -798,7 +608,6 @@
                             Chat
                         </a>
                     </div>
-
                 </div>
 
             </div>

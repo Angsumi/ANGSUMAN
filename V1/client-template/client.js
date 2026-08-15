@@ -1,4 +1,4 @@
-// Standalone Client Document-Portfolio Web Engine v3 - Enhanced Custom Format & Size Downloads
+// Standalone Client Document-Portfolio Web Engine v4 - Full Custom Format & Size Download Studio
 
 document.addEventListener('DOMContentLoaded', () => {
     const data = window.CLIENT_DATA || {};
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filter, Lightbox, PDF Binder & Custom Download Handlers
     setupFilters(docs);
-    setupLightbox();
+    setupLightbox(docs);
     setupPdfBinder(docs);
     setupCustomDownloadModal(docs);
 });
@@ -165,7 +165,7 @@ function renderDocuments(docsToRender) {
                     </div>
                 </div>
                 <div class="card-action-bar" style="flex-wrap: wrap; gap: 0.4rem;">
-                    <button class="btn-card preview-btn" data-url="${thumbUrl}" data-title="${escapeHtml(doc.title)}" data-type="${isPdf ? 'pdf' : 'img'}">
+                    <button class="btn-card preview-btn" data-url="${thumbUrl}" data-title="${escapeHtml(doc.title)}" data-type="${isPdf ? 'pdf' : 'img'}" data-id="${doc.id}">
                         <i class="fas fa-eye"></i> Preview
                     </button>
                     <button class="btn-card custom-dl-btn" data-id="${doc.id}">
@@ -181,7 +181,7 @@ function renderDocuments(docsToRender) {
 
     document.querySelectorAll('.preview-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            openLightbox(btn.dataset.url, btn.dataset.title, btn.dataset.type);
+            openLightbox(btn.dataset.url, btn.dataset.title, btn.dataset.type, btn.dataset.id, docsToRender);
         });
     });
 
@@ -216,7 +216,7 @@ function setupFilters(allDocs) {
     }
 }
 
-function setupLightbox() {
+function setupLightbox(docs) {
     const modal = document.getElementById('lightboxModal');
     const closeBtn = document.getElementById('closeLightbox');
     if (!modal) return;
@@ -229,13 +229,21 @@ function setupLightbox() {
     });
 }
 
-function openLightbox(url, title, type) {
+function openLightbox(url, title, type, docId, docs) {
     const modal = document.getElementById('lightboxModal');
     const titleEl = document.getElementById('lightboxTitle');
     const bodyEl = document.getElementById('lightboxBody');
     if (!modal) return;
 
-    if (titleEl) titleEl.textContent = title;
+    if (titleEl) {
+        titleEl.innerHTML = `
+            <span>${escapeHtml(title)}</span>
+            <button class="btn-card custom-dl-btn" data-id="${docId}" style="margin-left: 1rem; font-size: 0.78rem;">
+                <i class="fas fa-sliders-h text-emerald-500"></i> Custom Download Options
+            </button>
+        `;
+    }
+
     if (bodyEl) {
         if (type === 'pdf') {
             bodyEl.innerHTML = `<iframe src="${url}" style="width: 100%; height: 75vh; border: none; border-radius: 8px;"></iframe>`;
@@ -243,7 +251,17 @@ function openLightbox(url, title, type) {
             bodyEl.innerHTML = `<img src="${url}" style="max-width: 100%; max-height: 75vh; object-fit: contain; border-radius: 8px;">`;
         }
     }
+
     modal.classList.add('active');
+
+    // Wire up the internal custom download button inside lightbox
+    const innerCustomBtn = titleEl ? titleEl.querySelector('.custom-dl-btn') : null;
+    if (innerCustomBtn && docs) {
+        innerCustomBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            openCustomDownloadModalForDoc(docId, docs);
+        });
+    }
 }
 
 function setupPdfBinder(docs) {
@@ -316,23 +334,105 @@ function setupPdfBinder(docs) {
     }
 }
 
+function openCustomDownloadModalForDoc(docId, docs) {
+    const modal = document.getElementById('customDownloadModal');
+    const docSelect = document.getElementById('clientModalDocSelect');
+    if (!modal) return;
+
+    if (docSelect && docs) {
+        docSelect.innerHTML = docs.map(d => `<option value="${d.id}" ${d.id === docId ? 'selected' : ''}>${escapeHtml(d.title)} (${d.category})</option>`).join('');
+        docSelect.dispatchEvent(new Event('change'));
+    }
+    modal.classList.add('active');
+}
+
 function setupCustomDownloadModal(docs) {
     const modal = document.getElementById('customDownloadModal');
     const closeBtn = document.getElementById('closeCustomDownload');
-    const docNameEl = document.getElementById('customModalDocName');
+    const globalOpenBtn = document.getElementById('openGlobalCustomDownloadBtn');
+    const docSelect = document.getElementById('clientModalDocSelect');
     const formatSelect = document.getElementById('clientModalFormat');
+    const presetSelect = document.getElementById('clientModalPreset');
     const widthInput = document.getElementById('clientModalWidth');
     const heightInput = document.getElementById('clientModalHeight');
+    const lockAspectCb = document.getElementById('clientModalLockAspect');
     const qualitySlider = document.getElementById('clientModalQuality');
     const qualityValEl = document.getElementById('clientModalQualityVal');
     const triggerBtn = document.getElementById('triggerClientCustomDownload');
+    const scaleBtns = document.querySelectorAll('.modal-scale-btn');
 
     let activeDoc = null;
+    let origW = 800;
+    let origH = 600;
 
     if (!modal) return;
 
     if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+
+    // Global Header Button Listener
+    if (globalOpenBtn) {
+        globalOpenBtn.addEventListener('click', () => {
+            if (docs && docs.length > 0) {
+                openCustomDownloadModalForDoc(docs[0].id, docs);
+            }
+        });
+    }
+
+    // Document Selector listener
+    if (docSelect) {
+        docSelect.addEventListener('change', () => {
+            activeDoc = docs.find(d => d.id === docSelect.value);
+            if (activeDoc && activeDoc.dataUrl) {
+                const img = new Image();
+                img.onload = () => {
+                    origW = img.width;
+                    origH = img.height;
+                    if (widthInput) widthInput.value = img.width;
+                    if (heightInput) heightInput.value = img.height;
+                };
+                img.src = activeDoc.dataUrl;
+            }
+        });
+    }
+
+    // Size Preset selection listener
+    if (presetSelect) {
+        presetSelect.addEventListener('change', () => {
+            const p = presetSelect.value;
+            if (p === 'passport') { if (widthInput) widthInput.value = 413; if (heightInput) heightInput.value = 531; }
+            else if (p === 'a4') { if (widthInput) widthInput.value = 595; if (heightInput) heightInput.value = 842; }
+            else if (p === 'idcard') { if (widthInput) widthInput.value = 504; if (heightInput) heightInput.value = 318; }
+            else if (p === 'square') { if (widthInput) widthInput.value = 500; if (heightInput) heightInput.value = 500; }
+            else if (p === 'original') { if (widthInput) widthInput.value = origW; if (heightInput) heightInput.value = origH; }
+        });
+    }
+
+    // Aspect Ratio Lock handler
+    if (widthInput && heightInput) {
+        widthInput.addEventListener('input', () => {
+            if (lockAspectCb && lockAspectCb.checked && origW > 0) {
+                const ratio = origH / origW;
+                heightInput.value = Math.round((parseInt(widthInput.value) || 0) * ratio);
+            }
+        });
+
+        heightInput.addEventListener('input', () => {
+            if (lockAspectCb && lockAspectCb.checked && origH > 0) {
+                const ratio = origW / origH;
+                widthInput.value = Math.round((parseInt(heightInput.value) || 0) * ratio);
+            }
+        });
+    }
+
+    // Quick scale buttons
+    scaleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const scale = parseFloat(btn.dataset.scale);
+            if (widthInput) widthInput.value = Math.round(origW * scale);
+            if (heightInput) heightInput.value = Math.round(origH * scale);
+        });
+    });
 
     if (qualitySlider && qualityValEl) {
         qualitySlider.addEventListener('input', () => {
@@ -342,27 +442,14 @@ function setupCustomDownloadModal(docs) {
 
     document.querySelectorAll('.custom-dl-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            const docId = btn.dataset.id;
-            activeDoc = docs.find(d => d.id === docId);
-            if (!activeDoc) return;
-
-            if (docNameEl) docNameEl.textContent = `Customizing: ${activeDoc.title}`;
-            if (activeDoc.dataUrl) {
-                const img = new Image();
-                img.onload = () => {
-                    if (widthInput) widthInput.value = img.width;
-                    if (heightInput) heightInput.value = img.height;
-                };
-                img.src = activeDoc.dataUrl;
-            }
-            modal.classList.add('active');
+            openCustomDownloadModalForDoc(btn.dataset.id, docs);
         });
     });
 
     if (triggerBtn) {
         triggerBtn.addEventListener('click', () => {
             if (!activeDoc || !activeDoc.dataUrl) {
-                alert('Document data unavailable.');
+                alert('Selected document data unavailable.');
                 return;
             }
 

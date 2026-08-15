@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="warm">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{CLIENT_NAME}} | Official Document Vault Portfolio</title>
+    <meta name="description" content="Verified Document Vault and Personal Credentials Portfolio for {{CLIENT_NAME}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="client.css">
+</head>
+<body>
+
+    <!-- Passcode Protection Lock Screen (Optional) -->
+    <div id="lockScreen" class="lock-screen" style="display: none;">
+        <div class="lock-card">
+            <div class="lock-icon"><i class="fas fa-user-lock"></i></div>
+            <h2 style="font-size: 1.35rem; font-weight: 700;">Protected Document Vault</h2>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">This document portfolio is passcode protected. Enter client access PIN to view.</p>
+            <input type="password" id="pinInput" class="search-input" placeholder="Enter 4-Digit PIN" style="text-align: center; font-size: 1.2rem; letter-spacing: 0.2em;">
+            <p id="pinError" style="color: #f43f5e; font-size: 0.8rem; display: none;">Invalid PIN code. Please try again.</p>
+            <button class="btn-card" id="unlockBtn" style="background: var(--accent-primary); color: #fff; justify-content: center; padding: 0.65rem;">
+                Unlock Vault <i class="fas fa-key"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container header-flex">
+            <div class="brand-wrap">
+                <div class="brand-avatar-placeholder" id="brandAvatar">
+                    <i class="fas fa-folder-open"></i>
+                </div>
+                <div>
+                    <div class="brand-name" id="clientName">{{CLIENT_NAME}}</div>
+                    <div class="brand-sub">Verified Digital Document Vault</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+                <button class="btn-card" id="openBinderBtn">
+                    <i class="fas fa-file-pdf text-amber-500"></i> Combined PDF Binder
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div>
+                <h1 class="hero-title" id="clientNameHero">{{CLIENT_NAME}}</h1>
+                <div class="hero-subtitle" id="clientTitle">{{CLIENT_TITLE}}</div>
+                <p class="hero-bio" id="clientBio">{{CLIENT_BIO}}</p>
+                <div class="badge-row" id="badgeContainer">
+                    <!-- Badges -->
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">
+                    <i class="fas fa-shield-alt text-emerald-500"></i> Vault Verification Card
+                </h3>
+                <div class="hero-card-item" id="clientEmail">
+                    <i class="fas fa-envelope"></i> Verified Email Available
+                </div>
+                <div class="hero-card-item" id="clientPhone">
+                    <i class="fas fa-phone"></i> Official Contact On File
+                </div>
+                <div class="hero-card-item" id="clientLocation">
+                    <i class="fas fa-map-marker-alt"></i> Location Verified
+                </div>
+                <div style="padding-top: 0.5rem; border-top: 1px solid var(--border-subtle); font-size: 0.78rem; color: var(--text-muted);">
+                    🔒 Encryption: Obfuscated Asset Hashing Active
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Document Library Section -->
+    <main class="container">
+        <div class="filter-bar">
+            <div class="filter-pills" id="categoryBar">
+                <!-- Category Pills -->
+            </div>
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search document library...">
+        </div>
+
+        <section class="doc-grid-section">
+            <div class="doc-grid" id="documentGrid">
+                <!-- Document Cards -->
+            </div>
+        </section>
+    </main>
+
+    <!-- In-Page Document Lightbox Modal -->
+    <div class="lightbox-overlay" id="lightboxModal">
+        <div class="lightbox-modal">
+            <div class="lightbox-header">
+                <h3 id="lightboxTitle" style="font-size: 1.1rem; font-weight: 700;">Document Preview</h3>
+                <button class="btn-card" id="closeLightbox">&times;</button>
+            </div>
+            <div class="lightbox-body" id="lightboxBody">
+                <!-- Content iframe or img -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Combined PDF Binder Modal -->
+    <div class="lightbox-overlay" id="binderModal">
+        <div class="lightbox-modal" style="max-width: 600px;">
+            <div class="lightbox-header">
+                <h3>Generate Combined PDF Dossier</h3>
+                <button class="btn-card" id="closeBinder">&times;</button>
+            </div>
+            <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                <p style="font-size: 0.88rem; color: var(--text-muted);">Select client documents to include in a single compiled PDF file:</p>
+                <div id="binderDocList" style="display: flex; flex-direction: column; gap: 0.65rem; max-height: 300px; overflow-y: auto;">
+                    <!-- Checkboxes -->
+                </div>
+                <button class="btn-card" id="compilePdfBtn" style="background: var(--accent-primary); color: #fff; justify-content: center; padding: 0.75rem; font-size: 0.95rem;">
+                    <i class="fas fa-file-download"></i> Download Combined PDF Dossier
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="border-top: 1px solid var(--border-color); padding: 2rem 0; text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 3rem;">
+        <div class="container">
+            <p>Official Digital Document Vault &copy; 2026 {{CLIENT_NAME}}. All Rights Reserved.</p>
+            <p style="margin-top: 0.4rem; opacity: 0.75;">Powered by Local-First Client Document-Portfolio Generator Engine.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Injected Client Site Data State
+        window.CLIENT_DATA = {{CLIENT_DATA_JSON}};
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>

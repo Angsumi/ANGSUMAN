@@ -6,7 +6,7 @@ const { exec } = require('child_process');
 
 const PORT = 8080;
 const ROOT_DIR = __dirname;
-const REPO_OWNER_SITE = "https://angsumi.github.io/ANGSUMAN/";
+const REPO_OWNER_SITE = "https://angsumi.github.io/ANGSUMAN/V1/";
 
 // MIME Types Map
 const MIME_TYPES = {
@@ -76,9 +76,10 @@ const server = http.createServer((req, res) => {
                 const localUrl = `http://localhost:${PORT}/clients/${safeSlug}/`;
 
                 if (autoGitPush) {
-                    // Execute Git commit & push to origin main
-                    const gitCmd = `git add clients/${safeSlug} && git commit -m "Publish client site: ${clientName || safeSlug}" && git push origin main`;
-                    exec(gitCmd, { cwd: ROOT_DIR }, (error, stdout, stderr) => {
+                    // Execute Git commit & push to origin main from repository root
+                    const repoRoot = path.join(ROOT_DIR, '..');
+                    const gitCmd = `git add V1/clients/${safeSlug} && git commit -m "Publish V1 client site: ${clientName || safeSlug}" && git push origin main`;
+                    exec(gitCmd, { cwd: repoRoot }, (error, stdout, stderr) => {
                         let gitSuccess = !error;
                         let gitMessage = gitSuccess ? 'Successfully pushed to GitHub repository!' : stderr || error.message;
 
@@ -100,7 +101,7 @@ const server = http.createServer((req, res) => {
                         liveUrl: liveUrl,
                         localUrl: localUrl,
                         gitPushed: false,
-                        message: 'Saved files locally to clients folder.'
+                        message: 'Saved files locally to V1/clients folder.'
                     }));
                 }
 

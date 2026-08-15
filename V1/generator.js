@@ -1247,7 +1247,7 @@ function escapeHtml(str) {
                 publishBtn.innerHTML = '<i class="fab fa-github"></i> Publish & Push to GitHub Pages';
             }
             console.error('Publish API Exception:', err);
-            const liveUrl = `https://angsumi.github.io/ANGSUMAN/clients/${clientSlug}/`;
+            const liveUrl = `https://angsumi.github.io/ANGSUMAN/V1/clients/${clientSlug}/`;
             const banner = document.getElementById('githubDeployBanner');
             const liveLink = document.getElementById('githubLiveUrlLink');
             const openBtn = document.getElementById('openLiveUrlBtn');

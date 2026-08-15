@@ -106,8 +106,8 @@
         </div>
     </header>
 
-    <!-- Main Hero Section (Text & Typography Focus - Zero Front End Images) -->
-    <section id="hero" class="relative pt-32 pb-16 px-6 max-w-[1450px] mx-auto min-h-[82vh] flex flex-col justify-center">
+    <!-- Main Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 px-6 max-w-[1450px] mx-auto min-h-[80vh] flex flex-col justify-center">
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -160,7 +160,7 @@
 
             </div>
 
-            <!-- Right: 5 Stat Cards Grid (Text & Iconography Only) -->
+            <!-- Right: Stat Cards Grid -->
             <div class="lg:col-span-5 grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-3">
                 
                 <!-- Stat Card 1 -->
@@ -228,332 +228,358 @@
         </div>
     </section>
 
-    <!-- Middle 4-Column Section -->
-    <section id="about" class="py-16 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <!-- Column 1: 01 ACADEMIC BACKGROUND -->
-            <div class="col-section flex flex-col gap-4">
-                <div class="col-header border-b border-[#e5e3dc] dark:border-white/10 pb-3">
-                    <span class="font-mono text-[10px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">01 &bull; ACADEMIC BACKGROUND</span>
-                    <h2 class="font-serif text-xl font-bold text-[#1a1d20] dark:text-white mt-1 m-0">Education &amp; Degrees</h2>
-                </div>
+    <!-- SECTION 01: ACADEMIC BACKGROUND -->
+    <section id="about" class="py-20 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
+        <!-- Section Header -->
+        <div class="mb-10 border-b border-[#e5e3dc] dark:border-white/10 pb-4">
+            <span class="font-mono text-[11px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">01 &bull; ACADEMIC BACKGROUND</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-[#1a1d20] dark:text-white mt-1 m-0">Education &amp; Academic Qualifications</h2>
+        </div>
 
-                <!-- Degree Card 1: MSc -->
-                <div class="soothing-card p-4 flex justify-between items-start">
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">
-                            <i class="fas fa-university"></i>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white m-0">M.Sc. Zoology</h3>
-                                <span class="font-mono text-[10px] text-amber-700 dark:text-amber-400 font-bold">CGPA: 7.29</span>
-                            </div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Rajiv Gandhi University</div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 leading-tight m-0">Specialization in Biochemistry. Capstone research on Bioprospecting of silkworm species.</p>
-                        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Degree Card 1: MSc -->
+            <div class="soothing-card p-6 flex justify-between items-start">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0 text-xl">
+                        <i class="fas fa-university"></i>
                     </div>
-                    <div class="flex flex-col gap-1.5 shrink-0 ml-2">
-                        <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/MSc_Master/msc_sem4_marksheet_rajiv_gandhi_university.jpg', 'M.Sc. Marksheet', 'image')" class="icon-btn-teal" title="Preview Marksheet"><i class="far fa-eye"></i> View</button>
-                        <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/MSc_Master/msc_zoology_degree_certificate.jpg', 'M.Sc. Degree Certificate', 'image')" class="icon-btn-teal" title="Preview Degree"><i class="fas fa-award"></i> Cert</button>
+                    <div>
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-lg font-bold text-[#1a1d20] dark:text-white m-0">M.Sc. Zoology</h3>
+                            <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 font-bold border border-amber-500/20">CGPA: 7.29</span>
+                        </div>
+                        <div class="text-sm text-slate-600 dark:text-slate-300 font-semibold mt-1">Rajiv Gandhi University</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Specialization in Biochemistry. Conducted capstone research on Bioprospecting of silkworm species and biochemical assay analysis.</p>
                     </div>
                 </div>
-
-                <!-- Degree Card 2: BSc -->
-                <div class="soothing-card p-4 flex justify-between items-start">
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white m-0">B.Sc. Zoology (Honours)</h3>
-                                <span class="font-mono text-[10px] text-sky-700 dark:text-sky-400 font-bold">CGPA: 7.9</span>
-                            </div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Gauhati University (Darrang College)</div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 leading-tight m-0">Major in Zoology. Dissertation assessing physico-chemical parameters of Boimora River.</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-1.5 shrink-0 ml-2">
-                        <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/BSc_Bachelor/bsc_grade_sheet_gauhati_university.jpg', 'B.Sc. Grade Sheet', 'image')" class="icon-btn-teal"><i class="far fa-eye"></i> View</button>
-                        <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/BSc_Bachelor/bsc_degree_certificate.jpg', 'B.Sc. Degree Certificate', 'image')" class="icon-btn-teal"><i class="fas fa-award"></i> Cert</button>
-                    </div>
+                <div class="flex flex-col gap-2 shrink-0 ml-4">
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/MSc_Master/msc_sem4_marksheet_rajiv_gandhi_university.jpg', 'M.Sc. Marksheet', 'image')" class="icon-btn-teal"><i class="far fa-eye"></i> Marksheet</button>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/MSc_Master/msc_zoology_degree_certificate.jpg', 'M.Sc. Degree Certificate', 'image')" class="icon-btn-teal"><i class="fas fa-award"></i> Degree Cert</button>
                 </div>
-
-                <!-- Degree Card 3: 12th -->
-                <div class="soothing-card p-4 flex justify-between items-start">
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
-                            <i class="fas fa-microscope"></i>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white m-0">AHSEC (12th Science)</h3>
-                                <span class="font-mono text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">414/500 (82.8%)</span>
-                            </div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Higher Secondary Science</div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 leading-tight m-0">Physics, Chemistry, Biology, Mathematics. Distinction performance.</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-1.5 shrink-0 ml-2">
-                        <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/12th_HS/hs_marksheet.jpg', 'AHSEC 12th Marksheet', 'image')" class="icon-btn-teal"><i class="far fa-eye"></i> View</button>
-                        <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/12th_HS/hs_certificate_ahsec_duplicate.jpg', 'AHSEC 12th Certificate', 'image')" class="icon-btn-teal"><i class="fas fa-award"></i> Cert</button>
-                    </div>
-                </div>
-
-                <!-- Degree Card 4: 10th -->
-                <div class="soothing-card p-4 flex justify-between items-start">
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
-                            <i class="fas fa-school"></i>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white m-0">SEBA (10th HSLC)</h3>
-                                <span class="font-mono text-[10px] text-indigo-700 dark:text-indigo-400 font-bold">449/600 (74.8%)</span>
-                            </div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">High School Leaving Certificate</div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 leading-tight m-0">Matriculation examination with First Division marks under SEBA Assam.</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-1.5 shrink-0 ml-2">
-                        <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/10th_Matric/hslc_marksheet_seba.jpg', 'HSLC 10th Marksheet', 'image')" class="icon-btn-teal"><i class="far fa-eye"></i> View</button>
-                        <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/10th_Matric/hslc_matric_certificate.jpg', 'HSLC 10th Certificate', 'image')" class="icon-btn-teal"><i class="fas fa-award"></i> Cert</button>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Column 2: 02 VALIDATED EXCELLENCE -->
-            <div id="credentials" class="col-section flex flex-col gap-4">
-                <div class="col-header border-b border-[#e5e3dc] dark:border-white/10 pb-3">
-                    <span class="font-mono text-[10px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">02 &bull; VALIDATED EXCELLENCE</span>
-                    <h2 class="font-serif text-xl font-bold text-[#1a1d20] dark:text-white mt-1 m-0">Exams &amp; Certifications</h2>
-                </div>
-
-                <!-- Exam 1 -->
-                <div class="soothing-card p-4 flex justify-between items-start">
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white m-0">CSIR-UGC NET JRF</h3>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Rank 180 (Percentile 97.50%) in Life Sciences</div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight m-0">Qualified for Junior Research Fellowship &amp; Lectureship.</p>
-                        </div>
+            <!-- Degree Card 2: BSc -->
+            <div class="soothing-card p-6 flex justify-between items-start">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0 text-xl">
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/competitive_exams/csir_net_jrf_award_letter.jpg', 'CSIR NET JRF Award Letter', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="far fa-eye"></i> View</button>
-                </div>
-
-                <!-- Exam 2 -->
-                <div class="soothing-card p-4 flex justify-between items-start">
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-600 dark:text-teal-300 shrink-0">
-                            <i class="fas fa-dna"></i>
+                    <div>
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-lg font-bold text-[#1a1d20] dark:text-white m-0">B.Sc. Zoology (Honours)</h3>
+                            <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-700 dark:text-sky-400 font-bold border border-sky-500/20">CGPA: 7.9</span>
                         </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white m-0">Genomic Data Science</h3>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Johns Hopkins University</div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight m-0">8-Course Specialization covering Python, R, Bioconductor, Galaxy, DNA Alignment Algorithms &amp; Command Line.</p>
-                        </div>
+                        <div class="text-sm text-slate-600 dark:text-slate-300 font-semibold mt-1">Gauhati University (Darrang College)</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Major in Zoology. Dissertation assessing physico-chemical parameters and bio-indicators of Boimora River ecosystem.</p>
                     </div>
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/certificates/coursera_genomic_data_science_specialization.jpg', 'Johns Hopkins Genomic Data Science Certificate', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="fas fa-award"></i> Cert</button>
                 </div>
-
-                <!-- Exam 3 -->
-                <div class="soothing-card p-4 flex justify-between items-start">
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
-                            <i class="fas fa-language"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white m-0">IELTS Academic (7.0)</h3>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">CEFR Level C1</div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight m-0">Reading 7.5, Listening 7.0, Writing 7.0, Speaking 6.5. Proficient English command.</p>
-                        </div>
-                    </div>
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/competitive_exams/ielts_test_report_academic.jpg', 'IELTS Academic Test Report', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="far fa-eye"></i> View</button>
+                <div class="flex flex-col gap-2 shrink-0 ml-4">
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/BSc_Bachelor/bsc_grade_sheet_gauhati_university.jpg', 'B.Sc. Grade Sheet', 'image')" class="icon-btn-teal"><i class="far fa-eye"></i> Grade Sheet</button>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/BSc_Bachelor/bsc_degree_certificate.jpg', 'B.Sc. Degree Certificate', 'image')" class="icon-btn-teal"><i class="fas fa-award"></i> Degree Cert</button>
                 </div>
-
-                <!-- Exam 4 -->
-                <div class="soothing-card p-4 flex justify-between items-start">
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white m-0">PGDCA Computer Application</h3>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Grade A in C/C++, DBMS, Web Design</div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight m-0">1-Year Post Graduate Diploma in Computer Applications.</p>
-                        </div>
-                    </div>
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/certificates/pgdca_diploma_certificate.jpg', 'PGDCA Certificate', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="fas fa-award"></i> Cert</button>
-                </div>
-
-                <!-- Exam 5 -->
-                <div class="soothing-card p-4 flex justify-between items-start">
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white m-0">SLET Life Sciences</h3>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">State Eligibility Test Qualified</div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight m-0">Qualified for Lectureship in Life Sciences.</p>
-                        </div>
-                    </div>
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/competitive_exams/slet_result_sheet_2023.pdf', 'SLET Result Sheet', 'pdf')" class="icon-btn-teal shrink-0 ml-2"><i class="far fa-file-pdf"></i> PDF</button>
-                </div>
-
-                <!-- Exam 6 -->
-                <div class="soothing-card p-4 flex justify-between items-start">
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-600 dark:text-rose-400 shrink-0">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white m-0">Fine Arts Junior Diploma</h3>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">First Division in Fine Arts</div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight m-0">Issued by Sarbabharatiya Sangeet-O-Sanskriti Parishad, Kolkata.</p>
-                        </div>
-                    </div>
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/certificates/drawing_junior_diploma_certificate.jpg', 'Fine Arts Diploma', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="fas fa-award"></i> Cert</button>
-                </div>
-
             </div>
 
-            <!-- Column 3: 03 TECHNICAL TOOLKIT -->
-            <div id="skills" class="col-section flex flex-col gap-4">
-                <div class="col-header border-b border-[#e5e3dc] dark:border-white/10 pb-3 flex justify-between items-center">
+            <!-- Degree Card 3: 12th Science -->
+            <div class="soothing-card p-6 flex justify-between items-start">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 text-xl">
+                        <i class="fas fa-microscope"></i>
+                    </div>
                     <div>
-                        <span class="font-mono text-[10px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">03 &bull; TECHNICAL TOOLKIT</span>
-                        <h2 class="font-serif text-xl font-bold text-[#1a1d20] dark:text-white mt-1 m-0">Skills &amp; Domain Expertise</h2>
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-lg font-bold text-[#1a1d20] dark:text-white m-0">AHSEC (12th Higher Secondary)</h3>
+                            <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold border border-emerald-500/20">414/500 (82.8%)</span>
+                        </div>
+                        <div class="text-sm text-slate-600 dark:text-slate-300 font-semibold mt-1">Higher Secondary Science Stream</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Physics, Chemistry, Biology, Mathematics. Distinction academic performance under AHSEC Assam.</p>
                     </div>
                 </div>
-
-                <!-- Interactive Skill Search Input -->
-                <div class="relative">
-                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400"></i>
-                    <input type="text" id="skillSearchInput" onkeyup="filterSkills()" placeholder="Search skills (e.g. Python, RNA-seq, R)..." class="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 text-[#1a1d20] dark:text-white outline-none focus:border-sky-500 transition-colors">
+                <div class="flex flex-col gap-2 shrink-0 ml-4">
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/12th_HS/hs_marksheet.jpg', 'AHSEC 12th Marksheet', 'image')" class="icon-btn-teal"><i class="far fa-eye"></i> Marksheet</button>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/12th_HS/hs_certificate_ahsec_duplicate.jpg', 'AHSEC 12th Certificate', 'image')" class="icon-btn-teal"><i class="fas fa-award"></i> Cert</button>
                 </div>
-
-                <!-- Group 1: Programming & CLI -->
-                <div class="p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 shadow-sm">
-                    <div class="text-xs font-bold text-[#1a1d20] dark:text-white mb-3">Programming &amp; CLI</div>
-                    <div class="grid grid-cols-6 gap-2 text-center">
-                        <div class="skill-icon-box" title="Python"><i class="devicon-python-plain colored text-2xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Python</span></div>
-                        <div class="skill-icon-box" title="R Language"><i class="devicon-r-plain colored text-2xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">R</span></div>
-                        <div class="skill-icon-box" title="Bash"><i class="devicon-bash-plain text-2xl text-slate-600 dark:text-slate-300"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Bash</span></div>
-                        <div class="skill-icon-box" title="Pandas"><i class="devicon-pandas-plain text-2xl text-sky-600 dark:text-sky-400"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Pandas</span></div>
-                        <div class="skill-icon-box" title="NumPy"><i class="devicon-numpy-original colored text-2xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">NumPy</span></div>
-                        <div class="skill-icon-box" title="Git"><i class="devicon-git-plain colored text-2xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Git</span></div>
-                    </div>
-                </div>
-
-                <!-- Group 2: Computational Biology -->
-                <div class="p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 shadow-sm">
-                    <div class="text-xs font-bold text-[#1a1d20] dark:text-white mb-3">Computational Biology</div>
-                    <div class="grid grid-cols-5 gap-2 text-center">
-                        <div class="skill-icon-box" title="RNA-seq"><i class="fas fa-dna text-sky-600 dark:text-sky-400 text-xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">RNA-seq</span></div>
-                        <div class="skill-icon-box" title="Homology"><i class="fas fa-cubes text-indigo-600 dark:text-indigo-400 text-xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Homology</span></div>
-                        <div class="skill-icon-box" title="Bioconductor"><i class="fas fa-project-diagram text-teal-600 dark:text-teal-300 text-xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Bioconductor</span></div>
-                        <div class="skill-icon-box" title="Galaxy"><i class="fas fa-atom text-amber-600 dark:text-amber-400 text-xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Galaxy</span></div>
-                        <div class="skill-icon-box" title="TLR Modelling"><i class="fas fa-shield-virus text-emerald-600 dark:text-emerald-400 text-xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">TLR Modelling</span></div>
-                    </div>
-                </div>
-
-                <!-- Group 3: Biological Sciences -->
-                <div class="p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 shadow-sm">
-                    <div class="text-xs font-bold text-[#1a1d20] dark:text-white mb-3">Biological Sciences</div>
-                    <div class="grid grid-cols-5 gap-2 text-center">
-                        <div class="skill-icon-box" title="Biochemistry"><i class="fas fa-flask text-emerald-600 dark:text-emerald-400 text-xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Biochemistry</span></div>
-                        <div class="skill-icon-box" title="Ethnozoology"><i class="fas fa-leaf text-lime-600 dark:text-lime-400 text-xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Ethnozoology</span></div>
-                        <div class="skill-icon-box" title="Ecology"><i class="fas fa-chart-line text-sky-600 dark:text-sky-400 text-xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Ecology</span></div>
-                        <div class="skill-icon-box" title="Silkworm"><i class="fas fa-bug text-amber-600 dark:text-amber-400 text-xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Silkworm</span></div>
-                        <div class="skill-icon-box" title="Mass Spec"><i class="fas fa-wave-square text-rose-600 dark:text-rose-400 text-xl"></i><span class="text-[9px] text-slate-500 dark:text-slate-400 mt-1 block">Mass Spec</span></div>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Column 4: 04 CAREER PATH -->
-            <div id="experience" class="col-section flex flex-col gap-4">
-                <div class="col-header border-b border-[#e5e3dc] dark:border-white/10 pb-3">
-                    <span class="font-mono text-[10px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">04 &bull; CAREER PATH</span>
-                    <h2 class="font-serif text-xl font-bold text-[#1a1d20] dark:text-white mt-1 m-0">Professional Experience</h2>
-                </div>
-
-                <!-- Timeline Item 1 -->
-                <div class="soothing-card p-4 flex justify-between items-start relative pl-6">
-                    <div class="absolute left-2.5 top-5 w-2 h-2 rounded-full bg-sky-600 dark:bg-sky-400 shadow-sm"></div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span class="font-mono text-[10px] text-sky-700 dark:text-sky-400 font-bold">2025 Selected</span>
-                        </div>
-                        <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white mt-0.5 m-0">Junior Assistant (ADRE Grade III)</h3>
-                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Government of Assam</div>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight m-0">Selected through ADRE 2025 Grade III (Graduate Level) for Junior Assistant post.</p>
+            <!-- Degree Card 4: 10th HSLC -->
+            <div class="soothing-card p-6 flex justify-between items-start">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0 text-xl">
+                        <i class="fas fa-school"></i>
                     </div>
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/work_and_experience/ADRE.pdf', 'ADRE Grade III Selection', 'pdf')" class="icon-btn-teal shrink-0 ml-2"><i class="far fa-file-pdf"></i> PDF</button>
-                </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="soothing-card p-4 flex justify-between items-start relative pl-6">
-                    <div class="absolute left-2.5 top-5 w-2 h-2 rounded-full bg-teal-500"></div>
                     <div>
-                        <div class="flex items-center gap-2">
-                            <span class="font-mono text-[10px] text-teal-700 dark:text-teal-300 font-bold">May 2022 - Present</span>
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-lg font-bold text-[#1a1d20] dark:text-white m-0">SEBA (10th HSLC)</h3>
+                            <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-bold border border-indigo-500/20">449/600 (74.8%)</span>
                         </div>
-                        <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white mt-0.5 m-0">Assistant Professor (Tutor)</h3>
-                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Tyagbir Hem Baruah (THB) College</div>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight m-0">Department of Zoology. Teaching undergraduate students &amp; guiding lab coursework.</p>
+                        <div class="text-sm text-slate-600 dark:text-slate-300 font-semibold mt-1">High School Leaving Certificate</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Matriculation examination with First Division honors under SEBA Assam.</p>
                     </div>
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/work_and_experience/THB%20College%20Experience.pdf', 'THB College Experience Certificate', 'pdf')" class="icon-btn-teal shrink-0 ml-2"><i class="far fa-file-pdf"></i> PDF</button>
                 </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="soothing-card p-4 flex justify-between items-start relative pl-6">
-                    <div class="absolute left-2.5 top-5 w-2 h-2 rounded-full bg-emerald-500"></div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span class="font-mono text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">Mar 2021 - Oct 2021</span>
-                        </div>
-                        <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white mt-0.5 m-0">Research Trainee</h3>
-                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">RASA Life Science Informatics, Pune</div>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight m-0">Homology Modelling &amp; Structural Analysis of Human Toll-Like Receptors (TLR).</p>
-                    </div>
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/work_and_experience/RASA_Experience.jpg', 'RASA Life Science Experience', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="far fa-eye"></i> View</button>
+                <div class="flex flex-col gap-2 shrink-0 ml-4">
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/10th_Matric/hslc_marksheet_seba.jpg', 'HSLC 10th Marksheet', 'image')" class="icon-btn-teal"><i class="far fa-eye"></i> Marksheet</button>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/10th_Matric/hslc_matric_certificate.jpg', 'HSLC 10th Certificate', 'image')" class="icon-btn-teal"><i class="fas fa-award"></i> Cert</button>
                 </div>
-
-                <!-- Timeline Item 4 -->
-                <div class="soothing-card p-4 flex justify-between items-start relative pl-6">
-                    <div class="absolute left-2.5 top-5 w-2 h-2 rounded-full bg-amber-500"></div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span class="font-mono text-[10px] text-amber-700 dark:text-amber-400 font-bold">Sep 2020 - Oct 2020</span>
-                        </div>
-                        <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white mt-0.5 m-0">Virtual Research Intern</h3>
-                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">IIT Kharagpur</div>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight m-0">Learned specialized Bioinformatics workflows and authored review paper.</p>
-                    </div>
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/work_and_experience/training_internship_bioinformatics_certificate.jpg', 'Bioinformatics Internship Certificate', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="far fa-eye"></i> View</button>
-                </div>
-
             </div>
-
         </div>
     </section>
 
-    <!-- Section 05: SCIENTIFIC RESEARCH — Typography & Document Focus (Zero Images) -->
-    <section id="publications" class="py-16 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
-        
-        <!-- Header & Category Filter Tabs -->
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8 border-b border-[#e5e3dc] dark:border-white/10 pb-4">
+    <!-- SECTION 02: VALIDATED EXCELLENCE -->
+    <section id="credentials" class="py-20 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
+        <!-- Section Header -->
+        <div class="mb-10 border-b border-[#e5e3dc] dark:border-white/10 pb-4">
+            <span class="font-mono text-[11px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">02 &bull; VALIDATED EXCELLENCE</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-[#1a1d20] dark:text-white mt-1 m-0">Competitive Exams &amp; Professional Certifications</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Exam 1 -->
+            <div class="soothing-card p-6 flex justify-between items-start">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0 text-xl">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-[#1a1d20] dark:text-white m-0">CSIR-UGC NET JRF</h3>
+                        <div class="text-xs text-sky-700 dark:text-sky-400 font-mono font-bold mt-1">AIR 180 &bull; Percentile 97.50%</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Qualified for Junior Research Fellowship &amp; Assistant Professorship in Life Sciences.</p>
+                    </div>
+                </div>
+                <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/competitive_exams/csir_net_jrf_award_letter.jpg', 'CSIR NET JRF Award Letter', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="far fa-eye"></i> Award Letter</button>
+            </div>
+
+            <!-- Exam 2 -->
+            <div class="soothing-card p-6 flex justify-between items-start">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-600 dark:text-teal-300 shrink-0 text-xl">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-[#1a1d20] dark:text-white m-0">Genomic Data Science</h3>
+                        <div class="text-xs text-teal-700 dark:text-teal-300 font-mono font-bold mt-1">Johns Hopkins University</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">8-Course Specialization covering Python, R, Bioconductor, Galaxy, DNA Alignment Algorithms &amp; Command Line.</p>
+                    </div>
+                </div>
+                <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/certificates/coursera_genomic_data_science_specialization.jpg', 'Johns Hopkins Genomic Data Science Certificate', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="fas fa-award"></i> Cert</button>
+            </div>
+
+            <!-- Exam 3 -->
+            <div class="soothing-card p-6 flex justify-between items-start">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0 text-xl">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-[#1a1d20] dark:text-white m-0">IELTS Academic (7.0)</h3>
+                        <div class="text-xs text-indigo-700 dark:text-indigo-400 font-mono font-bold mt-1">CEFR Level C1 Proficient</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Reading 7.5, Listening 7.0, Writing 7.0, Speaking 6.5. Official English proficiency score.</p>
+                    </div>
+                </div>
+                <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/competitive_exams/ielts_test_report_academic.jpg', 'IELTS Academic Test Report', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="far fa-eye"></i> Test Report</button>
+            </div>
+
+            <!-- Exam 4 -->
+            <div class="soothing-card p-6 flex justify-between items-start">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0 text-xl">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-[#1a1d20] dark:text-white m-0">PGDCA Computer Application</h3>
+                        <div class="text-xs text-purple-700 dark:text-purple-400 font-mono font-bold mt-1">Grade A &bull; 1-Year Diploma</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Post Graduate Diploma covering C/C++, DBMS, Database Administration, and Web Design.</p>
+                    </div>
+                </div>
+                <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/certificates/pgdca_diploma_certificate.jpg', 'PGDCA Certificate', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="fas fa-award"></i> Cert</button>
+            </div>
+
+            <!-- Exam 5 -->
+            <div class="soothing-card p-6 flex justify-between items-start">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 text-xl">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-[#1a1d20] dark:text-white m-0">SLET Life Sciences</h3>
+                        <div class="text-xs text-emerald-700 dark:text-emerald-400 font-mono font-bold mt-1">State Eligibility Qualified</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Qualified State Eligibility Test for Assistant Professorship in Life Sciences.</p>
+                    </div>
+                </div>
+                <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/competitive_exams/slet_result_sheet_2023.pdf', 'SLET Result Sheet', 'pdf')" class="icon-btn-teal shrink-0 ml-2"><i class="far fa-file-pdf"></i> Result Sheet</button>
+            </div>
+
+            <!-- Exam 6 -->
+            <div class="soothing-card p-6 flex justify-between items-start">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-600 dark:text-rose-400 shrink-0 text-xl">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-[#1a1d20] dark:text-white m-0">Fine Arts Junior Diploma</h3>
+                        <div class="text-xs text-rose-700 dark:text-rose-400 font-mono font-bold mt-1">First Division</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Issued by Sarbabharatiya Sangeet-O-Sanskriti Parishad, Kolkata.</p>
+                    </div>
+                </div>
+                <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/certificates/drawing_junior_diploma_certificate.jpg', 'Fine Arts Diploma', 'image')" class="icon-btn-teal shrink-0 ml-2"><i class="fas fa-award"></i> Cert</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 03: TECHNICAL TOOLKIT -->
+    <section id="skills" class="py-20 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-10 border-b border-[#e5e3dc] dark:border-white/10 pb-4">
             <div>
-                <span class="font-mono text-[10px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">05 &bull; SCIENTIFIC RESEARCH</span>
-                <h2 class="font-serif text-2xl sm:text-3xl font-extrabold text-[#1a1d20] dark:text-white mt-1 m-0">Publications &amp; Research Manuscripts</h2>
+                <span class="font-mono text-[11px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">03 &bull; TECHNICAL TOOLKIT</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-[#1a1d20] dark:text-white mt-1 m-0">Skills &amp; Computational Expertise</h2>
+            </div>
+            
+            <!-- Interactive Skill Search Bar -->
+            <div class="relative w-full md:w-72">
+                <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-xs text-slate-400"></i>
+                <input type="text" id="skillSearchInput" onkeyup="filterSkills()" placeholder="Search skills (e.g. Python, RNA-seq, R)..." class="w-full pl-9 pr-4 py-2 text-xs rounded-xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 text-[#1a1d20] dark:text-white outline-none focus:border-sky-500 transition-colors shadow-sm">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Group 1: Programming & CLI -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-code text-sky-600 dark:text-sky-400"></i>
+                        <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white uppercase tracking-wider font-mono m-0">Programming &amp; CLI</h3>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3 text-center">
+                        <div class="skill-icon-box" title="Python"><i class="devicon-python-plain colored text-3xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Python</span></div>
+                        <div class="skill-icon-box" title="R Language"><i class="devicon-r-plain colored text-3xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">R</span></div>
+                        <div class="skill-icon-box" title="Bash"><i class="devicon-bash-plain text-3xl text-slate-700 dark:text-slate-300"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Bash</span></div>
+                        <div class="skill-icon-box" title="Pandas"><i class="devicon-pandas-plain text-3xl text-sky-600 dark:text-sky-400"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Pandas</span></div>
+                        <div class="skill-icon-box" title="NumPy"><i class="devicon-numpy-original colored text-3xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">NumPy</span></div>
+                        <div class="skill-icon-box" title="Git"><i class="devicon-git-plain colored text-3xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Git</span></div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 text-[11px] text-slate-500 dark:text-slate-400 font-mono">
+                    Scripting, Data Wrangling &amp; Version Control
+                </div>
+            </div>
+
+            <!-- Group 2: Computational Biology -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-dna text-teal-600 dark:text-teal-300"></i>
+                        <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white uppercase tracking-wider font-mono m-0">Computational Biology</h3>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3 text-center">
+                        <div class="skill-icon-box" title="RNA-seq"><i class="fas fa-dna text-sky-600 dark:text-sky-400 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">RNA-seq</span></div>
+                        <div class="skill-icon-box" title="Homology"><i class="fas fa-cubes text-indigo-600 dark:text-indigo-400 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Homology</span></div>
+                        <div class="skill-icon-box" title="Bioconductor"><i class="fas fa-project-diagram text-teal-600 dark:text-teal-300 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Bioconductor</span></div>
+                        <div class="skill-icon-box" title="Galaxy"><i class="fas fa-atom text-amber-600 dark:text-amber-400 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Galaxy</span></div>
+                        <div class="skill-icon-box" title="TLR Modelling"><i class="fas fa-shield-virus text-emerald-600 dark:text-emerald-400 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">TLR Modelling</span></div>
+                        <div class="skill-icon-box" title="Alignment"><i class="fas fa-align-left text-sky-500 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Alignment</span></div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 text-[11px] text-slate-500 dark:text-slate-400 font-mono">
+                    Genomic Pipelines &amp; Structural Bioinformatics
+                </div>
+            </div>
+
+            <!-- Group 3: Biological Sciences -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-flask text-emerald-600 dark:text-emerald-400"></i>
+                        <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white uppercase tracking-wider font-mono m-0">Biological Sciences</h3>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3 text-center">
+                        <div class="skill-icon-box" title="Biochemistry"><i class="fas fa-flask text-emerald-600 dark:text-emerald-400 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Biochemistry</span></div>
+                        <div class="skill-icon-box" title="Ethnozoology"><i class="fas fa-leaf text-lime-600 dark:text-lime-400 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Ethnozoology</span></div>
+                        <div class="skill-icon-box" title="Ecology"><i class="fas fa-chart-line text-sky-600 dark:text-sky-400 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Ecology</span></div>
+                        <div class="skill-icon-box" title="Silkworm"><i class="fas fa-bug text-amber-600 dark:text-amber-400 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Silkworm</span></div>
+                        <div class="skill-icon-box" title="Mass Spec"><i class="fas fa-wave-square text-rose-600 dark:text-rose-400 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Mass Spec</span></div>
+                        <div class="skill-icon-box" title="Taxonomy"><i class="fas fa-sitemap text-indigo-500 text-2xl"></i><span class="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1.5 block">Taxonomy</span></div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 text-[11px] text-slate-500 dark:text-slate-400 font-mono">
+                    Lab Assays, Ethnozoology &amp; Eco-Toxicology
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04: CAREER PATH -->
+    <section id="experience" class="py-20 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
+        <!-- Section Header -->
+        <div class="mb-10 border-b border-[#e5e3dc] dark:border-white/10 pb-4">
+            <span class="font-mono text-[11px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">04 &bull; CAREER PATH</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-[#1a1d20] dark:text-white mt-1 m-0">Professional Experience &amp; Positions</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Timeline Item 1 -->
+            <div class="soothing-card p-6 flex justify-between items-start relative pl-8">
+                <div class="absolute left-3 top-7 w-2.5 h-2.5 rounded-full bg-sky-600 dark:bg-sky-400 shadow-sm"></div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-700 dark:text-sky-400 font-bold border border-sky-500/20">2025 Selected</span>
+                    </div>
+                    <h3 class="text-base font-bold text-[#1a1d20] dark:text-white mt-2 m-0">Junior Assistant (ADRE Grade III)</h3>
+                    <div class="text-xs text-slate-600 dark:text-slate-300 font-semibold mt-0.5">Government of Assam</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Selected through Assam Direct Recruitment Examination (ADRE 2025 Grade III Graduate Level) for Junior Assistant appointment.</p>
+                </div>
+                <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/work_and_experience/ADRE.pdf', 'ADRE Grade III Selection', 'pdf')" class="icon-btn-teal shrink-0 ml-4"><i class="far fa-file-pdf"></i> Selection PDF</button>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="soothing-card p-6 flex justify-between items-start relative pl-8">
+                <div class="absolute left-3 top-7 w-2.5 h-2.5 rounded-full bg-teal-500"></div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-teal-500/10 text-teal-700 dark:text-teal-300 font-bold border border-teal-500/20">May 2022 - Present</span>
+                    </div>
+                    <h3 class="text-base font-bold text-[#1a1d20] dark:text-white mt-2 m-0">Assistant Professor (Tutor)</h3>
+                    <div class="text-xs text-slate-600 dark:text-slate-300 font-semibold mt-0.5">Tyagbir Hem Baruah (THB) College</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Department of Zoology. Teaching undergraduate B.Sc. students, designing practical coursework, and mentoring research dissertations.</p>
+                </div>
+                <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/work_and_experience/THB%20College%20Experience.pdf', 'THB College Experience Certificate', 'pdf')" class="icon-btn-teal shrink-0 ml-4"><i class="far fa-file-pdf"></i> Experience PDF</button>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="soothing-card p-6 flex justify-between items-start relative pl-8">
+                <div class="absolute left-3 top-7 w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold border border-emerald-500/20">Mar 2021 - Oct 2021</span>
+                    </div>
+                    <h3 class="text-base font-bold text-[#1a1d20] dark:text-white mt-2 m-0">Research Trainee</h3>
+                    <div class="text-xs text-slate-600 dark:text-slate-300 font-semibold mt-0.5">RASA Life Science Informatics, Pune</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Specialized training in Homology Modelling, Molecular Docking, and Structural Analysis of Human Toll-Like Receptors (TLR).</p>
+                </div>
+                <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/work_and_experience/RASA_Experience.jpg', 'RASA Life Science Experience', 'image')" class="icon-btn-teal shrink-0 ml-4"><i class="far fa-eye"></i> Certificate</button>
+            </div>
+
+            <!-- Timeline Item 4 -->
+            <div class="soothing-card p-6 flex justify-between items-start relative pl-8">
+                <div class="absolute left-3 top-7 w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 font-bold border border-amber-500/20">Sep 2020 - Oct 2020</span>
+                    </div>
+                    <h3 class="text-base font-bold text-[#1a1d20] dark:text-white mt-2 m-0">Virtual Research Intern</h3>
+                    <div class="text-xs text-slate-600 dark:text-slate-300 font-semibold mt-0.5">IIT Kharagpur</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed m-0">Learned advanced computational biology workflows, sequence retrieval pipelines, and authored literature reviews.</p>
+                </div>
+                <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/work_and_experience/training_internship_bioinformatics_certificate.jpg', 'Bioinformatics Internship Certificate', 'image')" class="icon-btn-teal shrink-0 ml-4"><i class="far fa-eye"></i> Certificate</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 05: SCIENTIFIC RESEARCH -->
+    <section id="publications" class="py-20 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
+        <!-- Section Header & Category Filter Tabs -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-10 border-b border-[#e5e3dc] dark:border-white/10 pb-4">
+            <div>
+                <span class="font-mono text-[11px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">05 &bull; SCIENTIFIC RESEARCH</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-[#1a1d20] dark:text-white mt-1 m-0">Publications &amp; Research Manuscripts</h2>
             </div>
             
             <!-- Filter Tabs -->
@@ -566,11 +592,11 @@
             </div>
         </div>
 
-        <!-- Clean Typographic List Cards Grid (Zero Images) -->
+        <!-- Clean Typographic List Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="publicationsGrid">
             
             <!-- Paper 1 -->
-            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="environmental">
+            <div class="paper-box p-5 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="environmental">
                 <div>
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-mono text-sky-700 dark:text-sky-400 font-bold uppercase px-2 py-0.5 rounded bg-sky-500/10">Environmental Biotech</span>
@@ -588,7 +614,7 @@
             </div>
 
             <!-- Paper 2 -->
-            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="aquatic">
+            <div class="paper-box p-5 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="aquatic">
                 <div>
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-mono text-teal-700 dark:text-teal-300 font-bold uppercase px-2 py-0.5 rounded bg-teal-500/10">Aquatic Ecology</span>
@@ -606,7 +632,7 @@
             </div>
 
             <!-- Paper 3 -->
-            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ethno">
+            <div class="paper-box p-5 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ethno">
                 <div>
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase px-2 py-0.5 rounded bg-emerald-500/10">Ethnopharmacology</span>
@@ -624,7 +650,7 @@
             </div>
 
             <!-- Paper 4 -->
-            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="environmental">
+            <div class="paper-box p-5 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="environmental">
                 <div>
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-mono text-amber-700 dark:text-amber-400 font-bold uppercase px-2 py-0.5 rounded bg-amber-500/10">Toxicology</span>
@@ -642,7 +668,7 @@
             </div>
 
             <!-- Paper 5 -->
-            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ai">
+            <div class="paper-box p-5 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ai">
                 <div>
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-mono text-indigo-700 dark:text-indigo-400 font-bold uppercase px-2 py-0.5 rounded bg-indigo-500/10">AI &amp; Bio</span>
@@ -660,7 +686,7 @@
             </div>
 
             <!-- Paper 6 -->
-            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ethno">
+            <div class="paper-box p-5 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ethno">
                 <div>
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-mono text-rose-700 dark:text-rose-400 font-bold uppercase px-2 py-0.5 rounded bg-rose-500/10">Ethnozoology</span>
@@ -678,7 +704,7 @@
             </div>
 
             <!-- Paper 7 -->
-            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ai">
+            <div class="paper-box p-5 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ai">
                 <div>
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-mono text-sky-700 dark:text-sky-400 font-bold uppercase px-2 py-0.5 rounded bg-sky-500/10">GPT Vision &amp; AI</span>
@@ -696,7 +722,7 @@
             </div>
 
             <!-- Paper 8 -->
-            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ethno">
+            <div class="paper-box p-5 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ethno">
                 <div>
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase px-2 py-0.5 rounded bg-emerald-500/10">Meta-Analysis</span>
@@ -717,14 +743,20 @@
 
     </section>
 
-    <!-- Footer Bar -->
-    <footer id="contact" class="py-12 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10 text-slate-600 dark:text-slate-300">
+    <!-- SECTION 06: DIRECT CONTACT & FOOTER -->
+    <footer id="contact" class="py-20 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10 text-slate-600 dark:text-slate-300">
+        <!-- Section Header -->
+        <div class="mb-10 border-b border-[#e5e3dc] dark:border-white/10 pb-4">
+            <span class="font-mono text-[11px] text-sky-700 dark:text-sky-400 uppercase tracking-widest">06 &bull; DIRECT CONTACT</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-[#1a1d20] dark:text-white mt-1 m-0">Get In Touch &amp; Connect</h2>
+        </div>
+
         <div class="flex flex-wrap items-center justify-between gap-6">
             
             <!-- Left Info -->
-            <div>
-                <div class="font-serif text-xl font-bold text-[#1a1d20] dark:text-white">Let's Connect</div>
-                <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Open for research collaborations, projects, and academic opportunities.</div>
+            <div class="max-w-md">
+                <div class="font-serif text-2xl font-bold text-[#1a1d20] dark:text-white">Research Collaboration</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">Open for research inquiries, computational biology projects, genomic data science consulting, and academic opportunities.</div>
             </div>
 
             <!-- Center Direct Contact Pills -->
@@ -764,7 +796,7 @@
 
         </div>
 
-        <div class="mt-10 pt-6 border-t border-[#e5e3dc] dark:border-white/5 flex justify-between items-center text-[11px] text-slate-500 font-mono">
+        <div class="mt-12 pt-6 border-t border-[#e5e3dc] dark:border-white/5 flex justify-between items-center text-[11px] text-slate-500 font-mono">
             <div>&copy; 2025 Angsuman Das. All Rights Reserved.</div>
             <div>Designed &amp; Engineered for Excellence ⚜️</div>
         </div>

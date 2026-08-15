@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupLightbox(docs);
     setupPdfBinder(docs);
     setupCustomDownloadModal(docs);
+    setupGlobalClickDelegation();
 });
 
 function checkSecurityLock(correctPin) {
@@ -164,8 +165,6 @@ function renderDocuments(docsToRender) {
     document.querySelectorAll('.preview-btn').forEach(btn => {
         btn.addEventListener('click', () => openLightbox(btn.dataset.url, btn.dataset.title, btn.dataset.type, btn.dataset.id, docsToRender));
     });
-
-    setupCustomDownloadModal(docsToRender);
 }
 
 function setupFilters(allDocs) {
@@ -219,14 +218,6 @@ function openLightbox(url, title, type, docId, docs) {
         }
     }
     modal.classList.add('active');
-
-    const innerCustomBtn = titleEl ? titleEl.querySelector('.custom-dl-btn') : null;
-    if (innerCustomBtn && docs) {
-        innerCustomBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-            openCustomDownloadModalForDoc(docId, docs);
-        });
-    }
 }
 
 function setupPdfBinder(docs) {
@@ -302,11 +293,25 @@ function openCustomDownloadModalForDoc(docId, docs) {
     const docSelect = document.getElementById('clientModalDocSelect');
     if (!modal) return;
 
-    if (docSelect && docs) {
+    if (docSelect && docs && docs.length > 0) {
         docSelect.innerHTML = docs.map(d => `<option value="${d.id}" ${d.id === docId ? 'selected' : ''}>${escapeHtml(d.title)} (${d.category})</option>`).join('');
+        docSelect.value = docId || docs[0].id;
         docSelect.dispatchEvent(new Event('change'));
     }
     modal.classList.add('active');
+}
+
+function setupGlobalClickDelegation() {
+    document.addEventListener('click', (e) => {
+        const customBtn = e.target.closest('.custom-dl-btn');
+        if (customBtn) {
+            const docId = customBtn.dataset.id;
+            const docs = (window.CLIENT_DATA && window.CLIENT_DATA.documents) ? window.CLIENT_DATA.documents : [];
+            const lightbox = document.getElementById('lightboxModal');
+            if (lightbox) lightbox.classList.remove('active');
+            openCustomDownloadModalForDoc(docId, docs);
+        }
+    });
 }
 
 function setupCustomDownloadModal(docs) {
@@ -335,24 +340,34 @@ function setupCustomDownloadModal(docs) {
 
     if (globalOpenBtn) {
         globalOpenBtn.addEventListener('click', () => {
-            if (docs && docs.length > 0) {
-                openCustomDownloadModalForDoc(docs[0].id, docs);
+            const allDocs = (window.CLIENT_DATA && window.CLIENT_DATA.documents) ? window.CLIENT_DATA.documents : docs;
+            if (allDocs && allDocs.length > 0) {
+                openCustomDownloadModalForDoc(allDocs[0].id, allDocs);
             }
         });
     }
 
     if (docSelect) {
         docSelect.addEventListener('change', () => {
-            activeDoc = docs.find(d => d.id === docSelect.value);
-            if (activeDoc && activeDoc.dataUrl) {
+            const allDocs = (window.CLIENT_DATA && window.CLIENT_DATA.documents) ? window.CLIENT_DATA.documents : docs;
+            activeDoc = allDocs.find(d => d.id === docSelect.value);
+            const imgSrc = activeDoc ? (activeDoc.dataUrl || activeDoc.filePath) : null;
+            if (imgSrc) {
                 const img = new Image();
+                img.crossOrigin = 'Anonymous';
                 img.onload = () => {
-                    origW = img.width;
-                    origH = img.height;
-                    if (widthInput) widthInput.value = img.width;
-                    if (heightInput) heightInput.value = img.height;
+                    origW = img.width || 800;
+                    origH = img.height || 600;
+                    if (widthInput) widthInput.value = origW;
+                    if (heightInput) heightInput.value = origH;
                 };
-                img.src = activeDoc.dataUrl;
+                img.onerror = () => {
+                    origW = 800;
+                    origH = 600;
+                    if (widthInput) widthInput.value = 800;
+                    if (heightInput) heightInput.value = 600;
+                };
+                img.src = imgSrc;
             }
         });
     }
@@ -398,23 +413,29 @@ function setupCustomDownloadModal(docs) {
         });
     }
 
-    document.querySelectorAll('.custom-dl-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            openCustomDownloadModalForDoc(btn.dataset.id, docs);
-        });
-    });
-
     if (triggerBtn) {
         triggerBtn.addEventListener('click', () => {
-            if (!activeDoc || !activeDoc.dataUrl) {
+            const imgSrc = activeDoc ? (activeDoc.dataUrl || activeDoc.filePath) : null;
+            if (!activeDoc || !imgSrc) {
                 alert('Selected document data unavailable.');
                 return;
             }
 
-            const targetWidth = parseInt(widthInput.value) || 800;
-            const targetHeight = parseInt(heightInput.value) || 600;
+            const targetWidth = parseInt(widthInput.value) || origW || 800;
+            const targetHeight = parseInt(heightInput.value) || origH || 600;
             const targetFormat = formatSelect.value;
             const quality = parseFloat(qualitySlider.value);
+
+            if (targetFormat === 'pdf' && activeDoc.fileType === 'pdf' && activeDoc.filePath) {
+                const link = document.createElement('a');
+                link.href = activeDoc.filePath;
+                link.download = `${activeDoc.title}.pdf`;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                modal.classList.remove('active');
+                return;
+            }
 
             const canvas = document.createElement('canvas');
             canvas.width = targetWidth;
@@ -422,6 +443,7 @@ function setupCustomDownloadModal(docs) {
             const ctx = canvas.getContext('2d');
 
             const img = new Image();
+            img.crossOrigin = 'Anonymous';
             img.onload = () => {
                 ctx.fillStyle = '#FFFFFF';
                 ctx.fillRect(0, 0, targetWidth, targetHeight);
@@ -453,7 +475,16 @@ function setupCustomDownloadModal(docs) {
                 }
                 modal.classList.remove('active');
             };
-            img.src = activeDoc.dataUrl;
+            img.onerror = () => {
+                const link = document.createElement('a');
+                link.href = imgSrc;
+                link.download = `${activeDoc.title}.${activeDoc.fileType || 'jpg'}`;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                modal.classList.remove('active');
+            };
+            img.src = imgSrc;
         });
     }
 }

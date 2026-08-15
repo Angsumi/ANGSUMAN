@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angsuman Das | Unified Multi-Document PDF Binder</title>
+    <meta name="description" content="Search, select, stack, and compile multiple documents into a single united PDF file with custom page sizes and layout controls.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- jsPDF Library CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: ['selector', '[data-theme="dark"]'],
+        theme: {
+          extend: {
+            colors: {
+              slateCanvas: 'var(--bg-canvas)',
+              slateCard: 'var(--bg-card)',
+              slateCardHover: 'var(--bg-card-hover)',
+              slateBorder: 'var(--border-subtle)',
+              accentTeal: 'var(--accent-teal)',
+            },
+            fontFamily: {
+              serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+              sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-[#faf9f5] dark:bg-[#0d1117] text-[#1a1d20] dark:text-[#f0f6fc] font-sans antialiased overflow-x-hidden transition-colors duration-300">
+
+    <!-- Top Navigation Bar -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-[#faf9f5]/90 dark:bg-[#0d1117]/85 backdrop-blur-xl border-b border-[#e5e3dc] dark:border-white/10 transition-all">
+        <div class="max-w-[1450px] mx-auto px-6 py-4 flex items-center justify-between">
+            
+            <!-- Left: Logo & Title -->
+            <a href="index.html" class="brand-container flex items-center gap-3 text-decoration-none group">
+                <div class="w-10 h-10 rounded-full border border-sky-600/30 dark:border-sky-400/40 bg-sky-500/10 flex items-center justify-center font-serif text-sky-600 dark:text-sky-400 font-bold text-lg group-hover:scale-105 transition-transform">
+                    AD
+                </div>
+                <div>
+                    <div class="font-serif text-xl font-bold text-[#1a1d20] dark:text-white tracking-wide group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                        Angsuman Das
+                    </div>
+                    <div class="text-[11px] font-mono text-sky-700 dark:text-sky-400/80 tracking-wider">
+                        Unified PDF Binder &amp; Document Builder
+                    </div>
+                </div>
+            </a>
+
+            <!-- Center Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="nav-item">Portfolio Home</a>
+                <a href="download.html" class="nav-item">Download Center</a>
+                <a href="pdf-binder.html" class="nav-item active">PDF Binder Tool</a>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-3">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Switch Theme">
+                    <i class="fas fa-moon text-sky-600"></i>
+                </button>
+                <a href="index.html#contact" class="btn-teal-outline hidden sm:inline-flex">
+                    <i class="far fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Tool Container -->
+    <main class="pt-32 pb-24 px-6 max-w-[1450px] mx-auto min-h-[90vh]">
+        
+        <!-- Header Banner -->
+        <div class="mb-8 border-b border-[#e5e3dc] dark:border-white/10 pb-6 text-center max-w-3xl mx-auto">
+            <span class="eyebrow-tag mb-2">INTELLIGENT DOCUMENT COMPILER</span>
+            <h1 class="font-serif text-3xl sm:text-5xl font-extrabold text-[#1a1d20] dark:text-white tracking-tight m-0">
+                Unified Multi-Document PDF Binder
+            </h1>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed m-0">
+                Search &amp; select multiple documents (e.g., Aadhaar, PAN, Passport, Degrees, Certificates), arrange your page order, select custom PDF sizes, and download one unified PDF file.
+            </p>
+        </div>
+
+        <!-- 2-Column Application Workspace -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT COLUMN: Search & Catalog Selection (Col-7) -->
+            <div class="lg:col-span-7 flex flex-col gap-4">
+                
+                <div class="flex items-center justify-between border-b border-[#e5e3dc] dark:border-white/10 pb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-folder-open text-sky-600 dark:text-sky-400"></i>
+                        <h2 class="font-serif text-xl font-bold text-[#1a1d20] dark:text-white m-0">1. Select Documents to Combine</h2>
+                    </div>
+                    <span id="catalogCount" class="font-mono text-xs text-slate-500">Showing all documents</span>
+                </div>
+
+                <!-- Search & Quick Filters -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-1">
+                        <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-xs text-slate-400"></i>
+                        <input type="text" id="binderSearch" onkeyup="filterBinderCatalog()" placeholder="Search Aadhaar, PAN, Passport, M.Sc., NET..." class="w-full pl-9 pr-4 py-2.5 text-xs rounded-xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 text-[#1a1d20] dark:text-white outline-none focus:border-sky-500 shadow-sm transition-colors">
+                    </div>
+                    
+                    <div class="flex gap-1.5 flex-wrap">
+                        <button onclick="filterCategory('all', this)" class="binder-cat-btn active">All</button>
+                        <button onclick="filterCategory('id', this)" class="binder-cat-btn">ID Cards</button>
+                        <button onclick="filterCategory('passport', this)" class="binder-cat-btn">Passport</button>
+                        <button onclick="filterCategory('academic', this)" class="binder-cat-btn">Academic</button>
+                        <button onclick="filterCategory('cert', this)" class="binder-cat-btn">Certs &amp; NET</button>
+                    </div>
+                </div>
+
+                <!-- Document Selection Catalog List -->
+                <div id="catalogList" class="flex flex-col gap-2.5 max-h-[600px] overflow-y-auto pr-1">
+                    <!-- Dynamic catalog items populated by script -->
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Selected Basket & PDF Settings (Col-5) -->
+            <div class="lg:col-span-5 flex flex-col gap-6 sticky top-28">
+                
+                <!-- Selected Items Queue Basket -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 shadow-sm flex flex-col gap-4">
+                    
+                    <div class="flex items-center justify-between border-b border-[#e5e3dc] dark:border-white/10 pb-3">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-layer-group text-sky-600 dark:text-sky-400"></i>
+                            <h2 class="font-serif text-xl font-bold text-[#1a1d20] dark:text-white m-0">2. Page Order Queue</h2>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="selectedCountBadge" class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-700 dark:text-sky-400 font-bold border border-sky-500/20">0 Selected</span>
+                            <button onclick="clearBasket()" class="text-xs text-rose-500 hover:underline bg-transparent border-0 cursor-pointer font-mono">Clear</button>
+                        </div>
+                    </div>
+
+                    <!-- Selected Items List -->
+                    <div id="basketList" class="flex flex-col gap-2 min-h-[140px] max-h-[280px] overflow-y-auto pr-1">
+                        <div id="emptyBasketMsg" class="py-10 text-center text-xs text-slate-400 font-mono">
+                            <i class="fas fa-hand-pointer text-2xl mb-2 block opacity-40"></i>
+                            No documents selected yet.<br>Click checkboxes on the left to add items to your United PDF.
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- PDF Output Configuration Settings -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 shadow-sm flex flex-col gap-4">
+                    
+                    <div class="flex items-center gap-2 border-b border-[#e5e3dc] dark:border-white/10 pb-3">
+                        <i class="fas fa-sliders-h text-sky-600 dark:text-sky-400"></i>
+                        <h2 class="font-serif text-xl font-bold text-[#1a1d20] dark:text-white m-0">3. United PDF Size &amp; Format</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                        
+                        <!-- Target Page Format -->
+                        <div>
+                            <label class="text-xs font-bold text-[#1a1d20] dark:text-white block mb-1">Page Format Size:</label>
+                            <select id="pdfPageSize" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-[#e5e3dc] dark:border-white/10 text-xs text-[#1a1d20] dark:text-white outline-none focus:border-sky-500 font-mono">
+                                <option value="a4">A4 Standard (210 x 297 mm)</option>
+                                <option value="letter">US Letter (8.5 x 11 in)</option>
+                                <option value="original">Original Image Dimensions</option>
+                            </select>
+                        </div>
+
+                        <!-- Page Scaling & Layout -->
+                        <div>
+                            <label class="text-xs font-bold text-[#1a1d20] dark:text-white block mb-1">Layout Scaling:</label>
+                            <select id="pdfScaleMode" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-[#e5e3dc] dark:border-white/10 text-xs text-[#1a1d20] dark:text-white outline-none focus:border-sky-500 font-mono">
+                                <option value="fit">Fit to Page (With Margins)</option>
+                                <option value="fill">Fill Page (Full Bleed)</option>
+                                <option value="maintain">Maintain Aspect Ratio</option>
+                            </select>
+                        </div>
+
+                        <!-- Page Orientation -->
+                        <div class="sm:col-span-2">
+                            <label class="text-xs font-bold text-[#1a1d20] dark:text-white block mb-1">Page Orientation:</label>
+                            <select id="pdfOrientation" class="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-[#e5e3dc] dark:border-white/10 text-xs text-[#1a1d20] dark:text-white outline-none focus:border-sky-500 font-mono">
+                                <option value="auto">Auto-Detect per Document (Landscape/Portrait)</option>
+                                <option value="portrait">Forced Portrait Mode</option>
+                                <option value="landscape">Forced Landscape Mode</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <!-- Generate & Download Button -->
+                    <button onclick="generateUnitedPDF()" class="btn-teal-solid w-full justify-center py-3 text-sm font-bold mt-2 shadow-md">
+                        <i class="fas fa-file-pdf text-base"></i>
+                        <span>Generate &amp; Download United PDF</span>
+                    </button>
+                    
+                    <div id="binderStatus" class="text-xs text-center font-mono text-sky-600 dark:text-sky-400 min-h-[18px]"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 px-6 border-t border-[#e5e3dc] dark:border-white/10 text-center text-xs text-slate-500 font-mono">
+        <div>&copy; 2025 Angsuman Das. Intelligent Document Builder Engine.</div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        // Document Master Catalog Data
+        const MASTER_DOCS = [
+            { id: 'aadhaar_front', cat: 'id', title: 'Aadhaar Card (Front Side)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/ID_Cards/AADHAR%20(FRONT).jpeg', badge: 'ID Card' },
+            { id: 'aadhaar_back', cat: 'id', title: 'Aadhaar Card (Back Side)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/ID_Cards/AADHAR(BACK).jpeg', badge: 'ID Card' },
+            { id: 'pan_card', cat: 'id', title: 'PAN Card Official', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/ID_Cards/PAN.jpeg', badge: 'ID Card' },
+            { id: 'driving_license', cat: 'id', title: 'Driving License', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/ID_Cards/LICENSE.jpeg', badge: 'ID Card' },
+            { id: 'voter_front', cat: 'id', title: 'Voter ID (Front Side)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/ID_Cards/VOTER_ID(FRONT).jpeg', badge: 'ID Card' },
+            { id: 'voter_back', cat: 'id', title: 'Voter ID (Back Side)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/ID_Cards/VOTER_ID(BACK).jpeg', badge: 'ID Card' },
+            { id: 'passport_front', cat: 'passport', title: 'Passport (Front Page)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/Passport/passport_front_page.jpg', badge: 'Passport' },
+            { id: 'passport_back', cat: 'passport', title: 'Passport (Back Page)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/Passport/passport_back_page.jpg', badge: 'Passport' },
+            { id: 'birth_cert', cat: 'cert', title: 'Birth Certificate Official', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/Certificates/birth_certificate.jpg', badge: 'Personal' },
+            { id: 'prc_cert', cat: 'cert', title: 'Permanent Residence Certificate (PRC)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/Certificates/permanent_residence_certificate.jpg', badge: 'Personal' },
+            { id: 'obc_caste', cat: 'cert', title: 'OBC Caste Certificate', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/Certificates/obc_caste_certificate_digital.jpg', badge: 'Personal' },
+            { id: 'passport_photo', cat: 'id', title: 'Passport Size Photo', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/Photos_and_Signatures/passport_photo.jpg', badge: 'Photo' },
+            { id: 'official_sig', cat: 'id', title: 'Official Signature Specimen', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/Photos_and_Signatures/signature.jpg', badge: 'Signature' },
+            { id: 'thumb_impression', cat: 'id', title: 'Thumb Impression Specimen', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/identity_and_personal/Photos_and_Signatures/thumb_impression.jpg', badge: 'Biometric' },
+            { id: 'msc_degree', cat: 'academic', title: 'M.Sc. Zoology Degree Certificate', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/MSc_Master/msc_zoology_degree_certificate.jpg', badge: 'Academic' },
+            { id: 'msc_marksheet', cat: 'academic', title: 'M.Sc. Sem 4 Marksheet (RGU)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/MSc_Master/msc_sem4_marksheet_rajiv_gandhi_university.jpg', badge: 'Academic' },
+            { id: 'bsc_degree', cat: 'academic', title: 'B.Sc. Zoology Degree Certificate', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/BSc_Bachelor/bsc_degree_certificate.jpg', badge: 'Academic' },
+            { id: 'bsc_grades', cat: 'academic', title: 'B.Sc. Grade Sheet (Gauhati Univ)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/BSc_Bachelor/bsc_grade_sheet_gauhati_university.jpg', badge: 'Academic' },
+            { id: 'hs_marksheet', cat: 'academic', title: '12th HS Marksheet (AHSEC)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/12th_HS/hs_marksheet.jpg', badge: 'Academic' },
+            { id: 'hs_cert', cat: 'academic', title: '12th HS Certificate (AHSEC)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/12th_HS/hs_certificate_ahsec_duplicate.jpg', badge: 'Academic' },
+            { id: 'hslc_marksheet', cat: 'academic', title: '10th HSLC Marksheet (SEBA)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/10th_Matric/hslc_marksheet_seba.jpg', badge: 'Academic' },
+            { id: 'hslc_cert', cat: 'academic', title: '10th HSLC Pass Certificate (SEBA)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/academic/10th_Matric/hslc_matric_certificate.jpg', badge: 'Academic' },
+            { id: 'net_jrf_award', cat: 'cert', title: 'CSIR-UGC NET JRF Award Letter', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/competitive_exams/csir_net_jrf_award_letter.jpg', badge: 'NET JRF' },
+            { id: 'net_scorecard', cat: 'cert', title: 'CSIR-UGC NET JRF Scorecard', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/competitive_exams/net_jrf_scorecard.jpg', badge: 'NET JRF' },
+            { id: 'ielts_report', cat: 'cert', title: 'IELTS Academic Test Report (7.0)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/competitive_exams/ielts_test_report_academic.jpg', badge: 'IELTS' },
+            { id: 'jhu_cert', cat: 'cert', title: 'Johns Hopkins Genomic Data Science', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/certificates/coursera_genomic_data_science_specialization.jpg', badge: 'Certificate' },
+            { id: 'pgdca_cert', cat: 'cert', title: 'PGDCA Diploma Certificate', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/certificates/pgdca_diploma_certificate.jpg', badge: 'Diploma' },
+            { id: 'lor_phd', cat: 'cert', title: 'Recommendation Letter - Abhijit Das (PhD)', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/recommendations/recommendation_letter_abhijit_das_phd.jpg', badge: 'LOR' },
+            { id: 'lor_pankaj', cat: 'cert', title: 'Recommendation Letter - Pankaj Kumar', url: 'https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/recommendations/recommendation_letter_pankaj_kumar.jpg', badge: 'LOR' }
+        ];
+
+        // State Queue
+        let selectedBasket = [];
+        let activeCategory = 'all';
+
+        // Render Catalog List
+        function renderCatalog() {
+            const list = document.getElementById('catalogList');
+            const query = document.getElementById('binderSearch').value.toLowerCase().trim();
+            list.innerHTML = '';
+
+            let count = 0;
+            MASTER_DOCS.forEach(doc => {
+                const matchesCat = activeCategory === 'all' || doc.cat === activeCategory;
+                const matchesQuery = doc.title.toLowerCase().includes(query) || doc.badge.toLowerCase().includes(query);
+                
+                if (matchesCat && matchesQuery) {
+                    count++;
+                    const isSelected = selectedBasket.some(item => item.id === doc.id);
+                    
+                    const el = document.createElement('div');
+                    el.className = `p-3 rounded-xl border transition-all flex items-center justify-between cursor-pointer ${isSelected ? 'bg-sky-500/10 border-sky-500 dark:bg-sky-500/20' : 'bg-white dark:bg-[#161b22] border-[#e5e3dc] dark:border-white/10 hover:border-sky-400'}`;
+                    el.onclick = (e) => {
+                        if (e.target.tagName !== 'INPUT') toggleSelectDoc(doc.id);
+                    };
+
+                    el.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleSelectDoc('${doc.id}')" class="w-4 h-4 rounded text-sky-600 cursor-pointer">
+                            <div>
+                                <div class="text-xs font-bold text-[#1a1d20] dark:text-white m-0">${doc.title}</div>
+                                <span class="text-[10px] font-mono text-slate-400">${doc.badge}</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-mono font-bold ${isSelected ? 'text-sky-600 dark:text-sky-400' : 'text-slate-400'}">${isSelected ? '✓ Added' : '+ Add'}</span>
+                    `;
+                    list.appendChild(el);
+                }
+            });
+
+            document.getElementById('catalogCount').innerText = `Showing ${count} of ${MASTER_DOCS.length} documents`;
+        }
+
+        function filterBinderCatalog() {
+            renderCatalog();
+        }
+
+        function filterCategory(cat, btn) {
+            activeCategory = cat;
+            document.querySelectorAll('.binder-cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderCatalog();
+        }
+
+        function toggleSelectDoc(id) {
+            const index = selectedBasket.findIndex(item => item.id === id);
+            if (index > -1) {
+                selectedBasket.splice(index, 1);
+            } else {
+                const doc = MASTER_DOCS.find(d => d.id === id);
+                if (doc) selectedBasket.push(doc);
+            }
+            renderCatalog();
+            renderBasket();
+        }
+
+        function moveItem(index, dir) {
+            const newIndex = index + dir;
+            if (newIndex >= 0 && newIndex < selectedBasket.length) {
+                const temp = selectedBasket[index];
+                selectedBasket[index] = selectedBasket[newIndex];
+                selectedBasket[newIndex] = temp;
+                renderBasket();
+            }
+        }
+
+        function removeItem(id) {
+            toggleSelectDoc(id);
+        }
+
+        function clearBasket() {
+            selectedBasket = [];
+            renderCatalog();
+            renderBasket();
+        }
+
+        function renderBasket() {
+            const list = document.getElementById('basketList');
+            const badge = document.getElementById('selectedCountBadge');
+            badge.innerText = `${selectedBasket.length} Selected`;
+
+            if (selectedBasket.length === 0) {
+                list.innerHTML = `
+                    <div id="emptyBasketMsg" class="py-10 text-center text-xs text-slate-400 font-mono">
+                        <i class="fas fa-hand-pointer text-2xl mb-2 block opacity-40"></i>
+                        No documents selected yet.<br>Click checkboxes on the left to add items to your United PDF.
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = '';
+            selectedBasket.forEach((doc, idx) => {
+                const el = document.createElement('div');
+                el.className = 'p-2.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-[#e5e3dc] dark:border-white/10 flex items-center justify-between text-xs';
+                el.innerHTML = `
+                    <div class="flex items-center gap-2 truncate">
+                        <span class="font-mono text-[10px] text-sky-600 dark:text-sky-400 font-bold bg-sky-500/10 px-1.5 py-0.5 rounded">P${idx+1}</span>
+                        <span class="font-bold text-[#1a1d20] dark:text-white truncate max-w-[200px]">${doc.title}</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <button onclick="moveItem(${idx}, -1)" ${idx === 0 ? 'disabled' : ''} class="w-6 h-6 rounded bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 flex items-center justify-center text-[10px] disabled:opacity-30 cursor-pointer">&uarr;</button>
+                        <button onclick="moveItem(${idx}, 1)" ${idx === selectedBasket.length-1 ? 'disabled' : ''} class="w-6 h-6 rounded bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 flex items-center justify-center text-[10px] disabled:opacity-30 cursor-pointer">&darr;</button>
+                        <button onclick="removeItem('${doc.id}')" class="w-6 h-6 rounded bg-rose-500/10 text-rose-500 flex items-center justify-center text-[10px] cursor-pointer">&times;</button>
+                    </div>
+                `;
+                list.appendChild(el);
+            });
+        }
+
+        // United PDF Generation Engine
+        async function generateUnitedPDF() {
+            const status = document.getElementById('binderStatus');
+            
+            if (selectedBasket.length === 0) {
+                status.innerText = '⚠️ Please select at least one document from the left catalog.';
+                return;
+            }
+
+            status.innerText = `⏳ Combining ${selectedBasket.length} documents into United PDF...`;
+
+            const pageSize = document.getElementById('pdfPageSize').value;
+            const scaleMode = document.getElementById('pdfScaleMode').value;
+            const orientationMode = document.getElementById('pdfOrientation').value;
+
+            try {
+                const { jsPDF } = window.jspdf;
+                let pdf = null;
+
+                for (let i = 0; i < selectedBasket.length; i++) {
+                    const docItem = selectedBasket[i];
+                    status.innerText = `⏳ Processing page ${i+1} of ${selectedBasket.length}: ${docItem.title}...`;
+
+                    // Fetch Blob
+                    const resp = await fetch(docItem.url);
+                    if (!resp.ok) throw new Error(`Failed to load ${docItem.title}`);
+                    const blob = await resp.blob();
+                    const blobUrl = URL.createObjectURL(blob);
+
+                    // Load Image
+                    const img = await new Promise((resolve, reject) => {
+                        const image = new Image();
+                        image.onload = () => resolve(image);
+                        image.onerror = reject;
+                        image.src = blobUrl;
+                    });
+
+                    const imgW = img.width;
+                    const imgH = img.height;
+                    const isLandscape = imgW > imgH;
+
+                    // Determine PDF Orientation
+                    let finalOrientation = 'portrait';
+                    if (orientationMode === 'auto') {
+                        finalOrientation = isLandscape ? 'landscape' : 'portrait';
+                    } else {
+                        finalOrientation = orientationMode;
+                    }
+
+                    // Create or Add Page to PDF
+                    if (i === 0) {
+                        if (pageSize === 'original') {
+                            pdf = new jsPDF({ orientation: finalOrientation, unit: 'px', format: [imgW, imgH] });
+                        } else {
+                            pdf = new jsPDF({ orientation: finalOrientation, format: pageSize });
+                        }
+                    } else {
+                        if (pageSize === 'original') {
+                            pdf.addPage([imgW, imgH], finalOrientation);
+                        } else {
+                            pdf.addPage(pageSize, finalOrientation);
+                        }
+                    }
+
+                    // Calculate Dimensions
+                    const pdfW = pdf.internal.pageSize.getWidth();
+                    const pdfH = pdf.internal.pageSize.getHeight();
+
+                    // Render Canvas Frame
+                    const canvas = document.createElement('canvas');
+                    canvas.width = imgW;
+                    canvas.height = imgH;
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.fillRect(0, 0, imgW, imgH);
+                    ctx.drawImage(img, 0, 0, imgW, imgH);
+                    const imgData = canvas.toDataURL('image/jpeg', 0.95);
+                    URL.revokeObjectURL(blobUrl);
+
+                    if (pageSize === 'original' || scaleMode === 'fill') {
+                        pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, pdfH);
+                    } else {
+                        // Fit to Page with Margins
+                        const margin = 15;
+                        const availW = pdfW - (margin * 2);
+                        const availH = pdfH - (margin * 2);
+                        const ratio = Math.min(availW / imgW, availH / imgH);
+                        const renderW = imgW * ratio;
+                        const renderH = imgH * ratio;
+                        const posX = (pdfW - renderW) / 2;
+                        const posY = (pdfH - renderH) / 2;
+                        pdf.addImage(imgData, 'JPEG', posX, posY, renderW, renderH);
+                    }
+                }
+
+                pdf.save(`United_Document_Binder_${selectedBasket.length}_Pages.pdf`);
+                status.innerText = `✅ Success! United PDF with ${selectedBasket.length} pages downloaded.`;
+
+            } catch (err) {
+                console.error(err);
+                status.innerText = '❌ Error generating PDF. Check network connection.';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCatalog();
+            renderBasket();
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

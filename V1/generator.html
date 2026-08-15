@@ -105,7 +105,15 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Professional Title / Designation</label>
-                        <input type="text" id="clientTitle" class="form-input" placeholder="e.g. Research Fellow & Genomic Data Analyst">
+                        <input type="text" id="clientTitle" class="form-input" placeholder="e.g. Senior Bioinformatician & Genomic Data Researcher">
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">Hero Tagline / Research Motto</label>
+                        <input type="text" id="clientTagline" class="form-input" placeholder="e.g. BRIDGING ZOOLOGY, GENOMIC DATA SCIENCE & BIOINFORMATICS">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Client Profile Photo URL / Data URL</label>
+                        <input type="text" id="clientAvatarUrl" class="form-input" placeholder="https://example.com/avatar.jpg or paste Base64 image URL">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email Address</label>
@@ -124,12 +132,78 @@
                         <input type="password" id="clientPin" class="form-input" placeholder="4-digit PIN for passcode lock screen">
                     </div>
                     <div class="form-group full-width">
-                        <label class="form-label">Summary Bio & Academic Headline</label>
+                        <label class="form-label">Summary Bio & Professional Narrative</label>
                         <textarea id="clientBio" class="form-textarea" placeholder="Enter brief client background, achievements, and research focus..."></textarea>
                     </div>
                     <div class="form-group full-width">
                         <label class="form-label">Key Status Badges (Comma Separated)</label>
                         <input type="text" id="clientBadges" class="form-input" placeholder="e.g. CSIR NET AIR 180, IELTS C1 7.0, M.Sc. Gold Medalist">
+                    </div>
+
+                    <!-- Social Links Sub-Section -->
+                    <div class="form-group full-width" style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 0.5rem;">
+                        <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;"><i class="fas fa-share-alt text-emerald-400"></i> Social Profiles & Academic Portfolios</h4>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fab fa-linkedin text-sky-400"></i> LinkedIn Profile URL</label>
+                        <input type="url" id="clientLinkedin" class="form-input" placeholder="https://linkedin.in/in/username">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fab fa-github"></i> GitHub Profile URL</label>
+                        <input type="url" id="clientGithub" class="form-input" placeholder="https://github.com/username">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-microscope text-teal-400"></i> ResearchGate / Google Scholar URL</label>
+                        <input type="url" id="clientResearchgate" class="form-input" placeholder="https://researchgate.net/profile/username">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-id-badge text-emerald-400"></i> ORCID ID URL</label>
+                        <input type="url" id="clientOrcid" class="form-input" placeholder="https://orcid.org/0000-0000-0000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-globe text-sky-400"></i> Personal Website / Blog URL</label>
+                        <input type="url" id="clientWebsite" class="form-input" placeholder="https://alexvance.bio">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fab fa-x-twitter"></i> X / Twitter URL</label>
+                        <input type="url" id="clientTwitter" class="form-input" placeholder="https://x.com/username">
+                    </div>
+
+                    <!-- 4-Box Highlight Counter Cards Sub-Section -->
+                    <div class="form-group full-width" style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 0.5rem;">
+                        <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;"><i class="fas fa-chart-bar text-amber-400"></i> Key Statistics Highlight Cards (4-Box Grid)</h4>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Stat 1 Value</label>
+                        <input type="text" id="stat1Val" class="form-input" placeholder="e.g. AIR 180">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Stat 1 Label</label>
+                        <input type="text" id="stat1Lbl" class="form-input" placeholder="e.g. CSIR NET JRF RANK">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Stat 2 Value</label>
+                        <input type="text" id="stat2Val" class="form-input" placeholder="e.g. 8+ PAPERS">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Stat 2 Label</label>
+                        <input type="text" id="stat2Lbl" class="form-input" placeholder="e.g. PEER-REVIEWED PUBLICATIONS">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Stat 3 Value</label>
+                        <input type="text" id="stat3Val" class="form-input" placeholder="e.g. BAND 7.0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Stat 3 Label</label>
+                        <input type="text" id="stat3Lbl" class="form-input" placeholder="e.g. IELTS ACADEMIC C1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Stat 4 Value</label>
+                        <input type="text" id="stat4Val" class="form-input" placeholder="e.g. CGPA 8.85">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Stat 4 Label</label>
+                        <input type="text" id="stat4Lbl" class="form-input" placeholder="e.g. M.SC. ZOOLOGY GOLD MEDAL">
                     </div>
                 </div>
             </section>

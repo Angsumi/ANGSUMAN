@@ -1,30 +1,30 @@
-// Operator Studio Dashboard Master Engine - Local-First Architecture
+// Operator Studio Dashboard Master Engine v2 - Enhanced Profile & Aesthetics
 
 (function () {
-    // Application Data State
     let clients = [];
     let activeClientId = null;
     let activeCategoryFilter = 'All';
 
-    // Standalone Embedded Client CSS & JS Strings for Iframe Preview & Single-File Bundles
+    // Standalone Embedded Client CSS String for Iframe Preview & ZIP Bundles
     const EMBEDDED_CLIENT_CSS = `
-/* Client Portfolio Website Design System */
+/* Ultra-Premium Client Portfolio Website Design System */
 :root {
     --bg-canvas: #FAF9F5;
     --bg-card: #FFFFFF;
-    --bg-card-hover: #F3F4F1;
-    --border-color: #E2E8F0;
-    --border-subtle: #EDF2F7;
+    --bg-card-hover: #F4F3EE;
+    --border-color: #E2E0D8;
+    --border-subtle: #ECE9DF;
     --text-main: #1A2E26;
     --text-muted: #64748B;
     --accent-primary: #10B981;
     --accent-secondary: #0284C7;
     --accent-warm: #D97706;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-    --shadow-lg: 0 12px 24px -4px rgba(0,0,0,0.12);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.03);
+    --shadow-md: 0 6px 16px rgba(0,0,0,0.06);
+    --shadow-lg: 0 16px 32px -4px rgba(0,0,0,0.1);
     --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
 [data-theme="slate"] {
@@ -54,49 +54,61 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background-color: var(--bg-canvas); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; min-height: 100vh; }
-.container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
-.site-header { background: rgba(250, 249, 245, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; padding: 1rem 0; }
-[data-theme="slate"] .site-header { background: rgba(13, 17, 23, 0.9); }
-[data-theme="corporate"] .site-header { background: rgba(255, 255, 255, 0.95); }
+body { background-color: var(--bg-canvas); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; min-height: 100vh; overflow-x: hidden; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+.site-header { background: rgba(250, 249, 245, 0.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; padding: 0.9rem 0; }
+[data-theme="slate"] .site-header { background: rgba(13, 17, 23, 0.88); }
+[data-theme="corporate"] .site-header { background: rgba(255, 255, 255, 0.92); }
 .header-flex { display: flex; align-items: center; justify-content: space-between; }
-.brand-wrap { display: flex; align-items: center; gap: 0.85rem; }
-.brand-avatar-placeholder { width: 44px; height: 44px; border-radius: 50%; background: var(--accent-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
+.brand-wrap { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; }
+.brand-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-primary); }
+.brand-avatar-placeholder { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
 .brand-name { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--text-main); }
-.brand-sub { font-size: 0.78rem; color: var(--text-muted); }
-.hero-section { padding: 3rem 0 2.5rem; border-bottom: 1px solid var(--border-subtle); }
-.hero-grid { display: grid; grid-template-columns: 1fr 340px; gap: 2.5rem; align-items: center; }
-@media (max-width: 850px) { .hero-grid { grid-template-columns: 1fr; } }
-.hero-title { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--text-main); }
-.hero-subtitle { font-size: 1.1rem; color: var(--accent-secondary); font-weight: 600; margin-top: 0.4rem; }
-.hero-bio { font-size: 1rem; color: var(--text-muted); margin-top: 1rem; max-width: 620px; }
+.brand-sub { font-size: 0.76rem; color: var(--text-muted); font-family: var(--font-mono); }
+.hero-section { padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--border-subtle); }
+.hero-grid { display: grid; grid-template-columns: 1fr 360px; gap: 2.5rem; align-items: start; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+.hero-profile-row { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.25rem; }
+.hero-avatar-large { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-primary); box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3); }
+.hero-title { font-family: var(--font-heading); font-size: 2.6rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-main); }
+.hero-tagline { font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700; color: var(--accent-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.4rem; }
+.hero-bio { font-size: 1.02rem; color: var(--text-muted); margin-top: 1rem; max-width: 660px; line-height: 1.65; }
+.social-pill-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.25rem; }
+.social-icon-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; border-radius: 999px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-main); font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; }
+.social-icon-btn:hover { background: var(--accent-primary); color: #fff; border-color: var(--accent-primary); transform: translateY(-2px); }
 .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem; }
 .status-pill { font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; background: rgba(16, 185, 129, 0.1); color: var(--accent-primary); border: 1px solid rgba(16, 185, 129, 0.25); }
-.hero-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: 0.85rem; }
+.hero-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 18px; padding: 1.5rem; box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: 1rem; }
+.hero-card-title { font-size: 1rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; }
 .hero-card-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.88rem; color: var(--text-muted); }
-.hero-card-item i { width: 24px; color: var(--accent-primary); font-size: 1rem; }
-.filter-bar { padding: 1.5rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.hero-card-item i { width: 22px; color: var(--accent-primary); font-size: 1rem; text-align: center; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; padding: 2rem 0; border-bottom: 1px solid var(--border-subtle); }
+.stat-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.25rem; text-align: center; transition: all 0.2s ease; }
+.stat-box:hover { transform: translateY(-3px); border-color: var(--accent-primary); box-shadow: var(--shadow-md); }
+.stat-val { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--text-main); }
+.stat-lbl { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--accent-secondary); text-transform: uppercase; margin-top: 0.2rem; }
+.filter-bar { padding: 1.75rem 0 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .filter-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.filter-pill-btn { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-muted); padding: 0.4rem 0.85rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.filter-pill-btn { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-muted); padding: 0.45rem 0.95rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
 .filter-pill-btn:hover, .filter-pill-btn.active { background: var(--accent-primary); color: #fff; border-color: var(--accent-primary); }
-.search-input { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.5rem 0.85rem; border-radius: 8px; font-size: 0.88rem; outline: none; min-width: 240px; }
+.search-input { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.55rem 1rem; border-radius: 8px; font-size: 0.88rem; outline: none; min-width: 260px; }
 .doc-grid-section { padding: 1rem 0 4rem; }
-.doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-.client-doc-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-sm); transition: all 0.25s ease; }
-.client-doc-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--accent-primary); }
-.card-header-box { height: 160px; background: rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.5rem; }
+.client-doc-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-sm); transition: all 0.25s ease; }
+.client-doc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent-primary); }
+.card-header-box { height: 165px; background: rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
 .card-img-preview { width: 100%; height: 100%; object-fit: cover; }
-.card-icon-big { font-size: 3.5rem; color: var(--text-muted); opacity: 0.4; }
-.card-cat-tag { position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; }
+.card-icon-big { font-size: 3.8rem; color: var(--text-muted); opacity: 0.45; }
+.card-cat-tag { position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 4px; text-transform: uppercase; }
 .card-body-box { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
-.card-doc-title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+.card-doc-title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); line-height: 1.35; }
 .card-doc-meta { font-size: 0.8rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.2rem; }
 .card-action-bar { padding: 0.85rem 1.25rem; border-top: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
-.btn-card { padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-color); background: var(--bg-canvas); color: var(--text-main); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; transition: all 0.2s; }
+.btn-card { padding: 0.45rem 0.95rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-color); background: var(--bg-canvas); color: var(--text-main); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; transition: all 0.2s; }
 .btn-card:hover { background: var(--accent-primary); color: #fff; border-color: var(--accent-primary); }
 .lightbox-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; padding: 1.5rem; }
 .lightbox-overlay.active { opacity: 1; pointer-events: auto; }
-.lightbox-modal { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; width: 100%; max-width: 900px; max-height: 92vh; display: flex; flex-direction: column; overflow: hidden; }
+.lightbox-modal { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 18px; width: 100%; max-width: 900px; max-height: 92vh; display: flex; flex-direction: column; overflow: hidden; }
 .lightbox-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
 .lightbox-body { flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.03); }
 .lock-screen { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-canvas); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
@@ -119,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     populateProfile(profile);
+    renderKeyStats(profile.stats);
     renderCategories(docs);
     renderDocuments(docs);
     setupFilters(docs);
@@ -150,30 +163,70 @@ function checkSecurityLock(correctPin) {
 
 function populateProfile(profile) {
     const nameEl = document.getElementById('clientName');
+    const nameHeroEl = document.getElementById('clientNameHero');
     const titleEl = document.getElementById('clientTitle');
+    const taglineEl = document.getElementById('clientTagline');
     const bioEl = document.getElementById('clientBio');
     const locationEl = document.getElementById('clientLocation');
     const emailEl = document.getElementById('clientEmail');
     const phoneEl = document.getElementById('clientPhone');
+    const avatarHeaderEl = document.getElementById('brandAvatarWrap');
+    const avatarHeroEl = document.getElementById('heroAvatarWrap');
     const badgeContainer = document.getElementById('badgeContainer');
+    const socialRowEl = document.getElementById('socialPillRow');
 
-    if (nameEl) nameEl.textContent = profile.fullName || 'Client Vault';
+    const fullName = profile.fullName || 'Client Vault';
+    if (nameEl) nameEl.textContent = fullName;
+    if (nameHeroEl) nameHeroEl.textContent = fullName;
     if (titleEl) titleEl.textContent = profile.title || 'Personal Document Portfolio';
+    if (taglineEl) taglineEl.textContent = profile.tagline || '';
     if (bioEl) bioEl.textContent = profile.bio || '';
     if (locationEl && profile.location) locationEl.innerHTML = '<i class="fas fa-map-marker-alt"></i> ' + escapeHtml(profile.location);
     if (emailEl && profile.email) emailEl.innerHTML = '<i class="fas fa-envelope"></i> ' + escapeHtml(profile.email);
     if (phoneEl && profile.phone) phoneEl.innerHTML = '<i class="fas fa-phone"></i> ' + escapeHtml(profile.phone);
 
+    if (profile.avatarUrl) {
+        if (avatarHeaderEl) avatarHeaderEl.innerHTML = '<img src="' + profile.avatarUrl + '" class="brand-avatar" alt="' + escapeHtml(fullName) + '">';
+        if (avatarHeroEl) avatarHeroEl.innerHTML = '<img src="' + profile.avatarUrl + '" class="hero-avatar-large" alt="' + escapeHtml(fullName) + '">';
+    } else {
+        const initials = fullName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        if (avatarHeaderEl) avatarHeaderEl.innerHTML = '<div class="brand-avatar-placeholder">' + initials + '</div>';
+        if (avatarHeroEl) avatarHeroEl.innerHTML = '<div class="brand-avatar-placeholder" style="width: 80px; height: 80px; font-size: 2rem;">' + initials + '</div>';
+    }
+
     if (badgeContainer && profile.badges) {
         const badges = profile.badges.split(',').map(b => b.trim()).filter(Boolean);
         badgeContainer.innerHTML = badges.map(b => '<span class="status-pill"><i class="fas fa-award"></i> ' + escapeHtml(b) + '</span>').join('');
     }
+
+    if (socialRowEl) {
+        const socials = [];
+        if (profile.linkedin) socials.push('<a href="' + profile.linkedin + '" target="_blank" class="social-icon-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>');
+        if (profile.github) socials.push('<a href="' + profile.github + '" target="_blank" class="social-icon-btn"><i class="fab fa-github"></i> GitHub</a>');
+        if (profile.researchgate) socials.push('<a href="' + profile.researchgate + '" target="_blank" class="social-icon-btn"><i class="fas fa-microscope"></i> ResearchGate</a>');
+        if (profile.orcid) socials.push('<a href="' + profile.orcid + '" target="_blank" class="social-icon-btn"><i class="fas fa-id-badge"></i> ORCID</a>');
+        if (profile.website) socials.push('<a href="' + profile.website + '" target="_blank" class="social-icon-btn"><i class="fas fa-globe"></i> Website</a>');
+        if (profile.twitter) socials.push('<a href="' + profile.twitter + '" target="_blank" class="social-icon-btn"><i class="fab fa-x-twitter"></i> X/Twitter</a>');
+        socialRowEl.innerHTML = socials.join('');
+    }
+}
+
+function renderKeyStats(stats) {
+    const gridEl = document.getElementById('keyStatsGrid');
+    if (!gridEl) return;
+    if (!stats || stats.length === 0) { gridEl.style.display = 'none'; return; }
+    gridEl.style.display = 'grid';
+    gridEl.innerHTML = stats.map(stat => \`
+        <div class="stat-box">
+            <div class="stat-val">\${escapeHtml(stat.value)}</div>
+            <div class="stat-lbl">\${escapeHtml(stat.label)}</div>
+        </div>
+    \`).join('');
 }
 
 function renderCategories(docs) {
     const categoryBar = document.getElementById('categoryBar');
     if (!categoryBar) return;
-
     const categories = ['All', ...new Set(docs.map(d => d.category))];
     categoryBar.innerHTML = categories.map((cat, i) => \`
         <button class="filter-pill-btn \${i === 0 ? 'active' : ''}" data-cat="\${escapeHtml(cat)}">
@@ -185,16 +238,13 @@ function renderCategories(docs) {
 function renderDocuments(docsToRender) {
     const grid = document.getElementById('documentGrid');
     if (!grid) return;
-
     if (!docsToRender || docsToRender.length === 0) {
         grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">No documents available in this category.</div>';
         return;
     }
-
     grid.innerHTML = docsToRender.map(doc => {
         const isPdf = doc.fileType === 'pdf' || (doc.fileName && doc.fileName.endsWith('.pdf'));
         const thumbUrl = doc.dataUrl || doc.filePath || 'assets/doc-placeholder.png';
-
         return \`
             <div class="client-doc-card">
                 <div class="card-header-box">
@@ -226,16 +276,13 @@ function renderDocuments(docsToRender) {
     }).join('');
 
     document.querySelectorAll('.preview-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            openLightbox(btn.dataset.url, btn.dataset.title, btn.dataset.type);
-        });
+        btn.addEventListener('click', () => openLightbox(btn.dataset.url, btn.dataset.title, btn.dataset.type));
     });
 }
 
 function setupFilters(allDocs) {
     const searchInput = document.getElementById('searchInput');
     let currentCategory = 'All';
-
     document.querySelectorAll('#categoryBar .filter-pill-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             document.querySelectorAll('#categoryBar .filter-pill-btn').forEach(b => b.classList.remove('active'));
@@ -245,9 +292,7 @@ function setupFilters(allDocs) {
         });
     });
 
-    if (searchInput) {
-        searchInput.addEventListener('input', () => filterDocs());
-    }
+    if (searchInput) searchInput.addEventListener('input', () => filterDocs());
 
     function filterDocs() {
         const query = searchInput ? searchInput.value.toLowerCase() : '';
@@ -264,13 +309,8 @@ function setupLightbox() {
     const modal = document.getElementById('lightboxModal');
     const closeBtn = document.getElementById('closeLightbox');
     if (!modal) return;
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-    }
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.remove('active');
-    });
+    if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 }
 
 function openLightbox(url, title, type) {
@@ -278,7 +318,6 @@ function openLightbox(url, title, type) {
     const titleEl = document.getElementById('lightboxTitle');
     const bodyEl = document.getElementById('lightboxBody');
     if (!modal) return;
-
     if (titleEl) titleEl.textContent = title;
     if (bodyEl) {
         if (type === 'pdf') {
@@ -314,9 +353,7 @@ function setupPdfBinder(docs) {
         binderModal.classList.add('active');
     });
 
-    if (closeBinderBtn) {
-        closeBinderBtn.addEventListener('click', () => binderModal.classList.remove('active'));
-    }
+    if (closeBinderBtn) closeBinderBtn.addEventListener('click', () => binderModal.classList.remove('active'));
 
     if (compileBtn) {
         compileBtn.addEventListener('click', () => {
@@ -366,18 +403,32 @@ function escapeHtml(str) {
 }
 `;
 
-    // Sample Demo Client Data
+    // Demo Client Initial Data
     const DEMO_CLIENT = {
         id: 'client_demo_alex_vance',
         slug: 'dr-alex-vance',
         fullName: 'Dr. Alex Vance',
         title: 'Senior Bioinformatician & Genomic Data Researcher',
+        tagline: 'BRIDGING ZOOLOGY, GENOMIC DATA SCIENCE & BIOINFORMATICS',
+        avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80',
         email: 'alex.vance@genomics-lab.org',
         phone: '+91 98765 12345',
         location: 'Guwahati, Assam, India',
         pin: '1234',
-        bio: 'CSIR NET JRF Awardee (AIR 180) specializing in computational genomics, structural biology, and ethnopharmacology data analysis across Northeast India.',
-        badges: 'CSIR NET AIR 180, IELTS C1 Band, M.Sc. Gold Medalist, 8+ Publications',
+        bio: 'CSIR NET JRF Awardee (AIR 180) specializing in computational genomics, structural biology of Toll-Like Receptors, and ethnopharmacology data analysis across Northeast India.',
+        badges: 'CSIR NET AIR 180, IELTS C1 Band 7.0, M.Sc. Gold Medalist, 8+ Publications',
+        linkedin: 'https://linkedin.com/in/alex-vance',
+        github: 'https://github.com/alex-vance-bio',
+        researchgate: 'https://researchgate.net/profile/Alex-Vance',
+        orcid: 'https://orcid.org/0000-0002-1825-0097',
+        website: 'https://alexvance.bio',
+        twitter: 'https://x.com/alexvance_bio',
+        stats: [
+            { value: 'AIR 180', label: 'CSIR NET JRF RANK' },
+            { value: '8+ PAPERS', label: 'PEER-REVIEWED PUBLICATIONS' },
+            { value: 'BAND 7.0', label: 'IELTS ACADEMIC C1' },
+            { value: 'CGPA 8.85', label: 'M.SC. ZOOLOGY GOLD MEDAL' }
+        ],
         template: 'warm',
         securityMode: 'public',
         filenameObfuscation: true,
@@ -449,7 +500,6 @@ function escapeHtml(str) {
         setupTemplateStudio();
         setupLivePreview();
 
-        // Load demo client by default if empty
         if (clients.length === 0) {
             clients.push(DEMO_CLIENT);
             activeClientId = DEMO_CLIENT.id;
@@ -462,7 +512,6 @@ function escapeHtml(str) {
         populateActiveClientForm();
     });
 
-    // 1. Data Storage Engine (LocalStorage + Fallback)
     function loadDataFromStorage() {
         try {
             const raw = localStorage.getItem('client_vault_studio_db');
@@ -491,7 +540,6 @@ function escapeHtml(str) {
         return clients.find(c => c.id === activeClientId) || null;
     }
 
-    // 2. Navigation Tabs
     function setupNavigation() {
         const menuBtns = document.querySelectorAll('.nav-menu-btn');
         menuBtns.forEach(btn => {
@@ -510,7 +558,6 @@ function escapeHtml(str) {
             });
         });
 
-        // Backup JSON Button
         const exportVaultBtn = document.getElementById('exportVaultBtn');
         if (exportVaultBtn) {
             exportVaultBtn.addEventListener('click', () => {
@@ -525,7 +572,6 @@ function escapeHtml(str) {
             });
         }
 
-        // Load Demo Button
         const loadDemoBtn = document.getElementById('loadDemoBtn');
         if (loadDemoBtn) {
             loadDemoBtn.addEventListener('click', () => {
@@ -542,7 +588,6 @@ function escapeHtml(str) {
         }
     }
 
-    // 3. Client Manager & Form
     function setupClientManager() {
         const clientSelect = document.getElementById('clientSelect');
         const createBtn = document.getElementById('createNewClientBtn');
@@ -591,12 +636,24 @@ function escapeHtml(str) {
                     slug: newSlugInput.value || 'client-' + Date.now(),
                     fullName: name,
                     title: 'Personal Document Portfolio',
+                    tagline: '',
+                    avatarUrl: '',
                     email: '',
                     phone: '',
                     location: '',
                     pin: document.getElementById('newClientPin').value || '',
                     bio: '',
                     badges: '',
+                    linkedin: '',
+                    github: '',
+                    researchgate: '',
+                    orcid: '',
+                    website: '',
+                    twitter: '',
+                    stats: [
+                        { value: 'VERIFIED', label: 'DOCUMENT VAULT' },
+                        { value: '100%', label: 'SECURITY ENCRYPTED' }
+                    ],
                     template: 'warm',
                     securityMode: 'public',
                     filenameObfuscation: true,
@@ -622,16 +679,31 @@ function escapeHtml(str) {
 
                 client.fullName = document.getElementById('clientFullName').value;
                 client.title = document.getElementById('clientTitle').value;
+                client.tagline = document.getElementById('clientTagline').value;
+                client.avatarUrl = document.getElementById('clientAvatarUrl').value;
                 client.email = document.getElementById('clientEmail').value;
                 client.phone = document.getElementById('clientPhone').value;
                 client.location = document.getElementById('clientLocation').value;
                 client.pin = document.getElementById('clientPin').value;
                 client.bio = document.getElementById('clientBio').value;
                 client.badges = document.getElementById('clientBadges').value;
+                client.linkedin = document.getElementById('clientLinkedin').value;
+                client.github = document.getElementById('clientGithub').value;
+                client.researchgate = document.getElementById('clientResearchgate').value;
+                client.orcid = document.getElementById('clientOrcid').value;
+                client.website = document.getElementById('clientWebsite').value;
+                client.twitter = document.getElementById('clientTwitter').value;
+
+                client.stats = [
+                    { value: document.getElementById('stat1Val').value, label: document.getElementById('stat1Lbl').value },
+                    { value: document.getElementById('stat2Val').value, label: document.getElementById('stat2Lbl').value },
+                    { value: document.getElementById('stat3Val').value, label: document.getElementById('stat3Lbl').value },
+                    { value: document.getElementById('stat4Val').value, label: document.getElementById('stat4Lbl').value }
+                ].filter(s => s.value || s.label);
 
                 saveDataToStorage();
                 renderClientSelector();
-                showToast('Client profile updated successfully!');
+                showToast('Client profile & social credentials saved!');
             });
         }
     }
@@ -648,19 +720,36 @@ function escapeHtml(str) {
 
         if (document.getElementById('clientFullName')) document.getElementById('clientFullName').value = client.fullName || '';
         if (document.getElementById('clientTitle')) document.getElementById('clientTitle').value = client.title || '';
+        if (document.getElementById('clientTagline')) document.getElementById('clientTagline').value = client.tagline || '';
+        if (document.getElementById('clientAvatarUrl')) document.getElementById('clientAvatarUrl').value = client.avatarUrl || '';
         if (document.getElementById('clientEmail')) document.getElementById('clientEmail').value = client.email || '';
         if (document.getElementById('clientPhone')) document.getElementById('clientPhone').value = client.phone || '';
         if (document.getElementById('clientLocation')) document.getElementById('clientLocation').value = client.location || '';
         if (document.getElementById('clientPin')) document.getElementById('clientPin').value = client.pin || '';
         if (document.getElementById('clientBio')) document.getElementById('clientBio').value = client.bio || '';
         if (document.getElementById('clientBadges')) document.getElementById('clientBadges').value = client.badges || '';
+        if (document.getElementById('clientLinkedin')) document.getElementById('clientLinkedin').value = client.linkedin || '';
+        if (document.getElementById('clientGithub')) document.getElementById('clientGithub').value = client.github || '';
+        if (document.getElementById('clientResearchgate')) document.getElementById('clientResearchgate').value = client.researchgate || '';
+        if (document.getElementById('clientOrcid')) document.getElementById('clientOrcid').value = client.orcid || '';
+        if (document.getElementById('clientWebsite')) document.getElementById('clientWebsite').value = client.website || '';
+        if (document.getElementById('clientTwitter')) document.getElementById('clientTwitter').value = client.twitter || '';
+
+        const stats = client.stats || [];
+        if (document.getElementById('stat1Val')) document.getElementById('stat1Val').value = stats[0] ? stats[0].value : '';
+        if (document.getElementById('stat1Lbl')) document.getElementById('stat1Lbl').value = stats[0] ? stats[0].label : '';
+        if (document.getElementById('stat2Val')) document.getElementById('stat2Val').value = stats[1] ? stats[1].value : '';
+        if (document.getElementById('stat2Lbl')) document.getElementById('stat2Lbl').value = stats[1] ? stats[1].label : '';
+        if (document.getElementById('stat3Val')) document.getElementById('stat3Val').value = stats[2] ? stats[2].value : '';
+        if (document.getElementById('stat3Lbl')) document.getElementById('stat3Lbl').value = stats[2] ? stats[2].label : '';
+        if (document.getElementById('stat4Val')) document.getElementById('stat4Val').value = stats[3] ? stats[3].value : '';
+        if (document.getElementById('stat4Lbl')) document.getElementById('stat4Lbl').value = stats[3] ? stats[3].label : '';
 
         renderDocumentGrid();
         populateProcessingDropdown();
         populateBinderLists();
     }
 
-    // 4. Document Ingestion Hub
     function setupDocumentIngestion() {
         const dropzone = document.getElementById('fileDropzone');
         const fileInput = document.getElementById('fileInput');
@@ -827,7 +916,6 @@ function escapeHtml(str) {
         });
     }
 
-    // 5. Metadata Drawer
     function setupMetadataModal() {
         const modal = document.getElementById('docMetadataModal');
         const closeBtn = document.getElementById('closeMetadataModal');
@@ -895,7 +983,6 @@ function escapeHtml(str) {
         }
     }
 
-    // 6. Processing & Resizing Studio
     function setupProcessingStudio() {
         const applyBtn = document.getElementById('applyProcessingBtn');
         if (!applyBtn) return;
@@ -986,7 +1073,6 @@ function escapeHtml(str) {
             (client.documents || []).map(d => `<option value="${d.id}">${escapeHtml(d.title)} (${d.category})</option>`).join('');
     }
 
-    // 7. PDF Binder Studio
     let binderQueue = [];
 
     function setupBinderStudio() {
@@ -1097,7 +1183,6 @@ function escapeHtml(str) {
         });
     }
 
-    // 8. Template & Security Studio
     function setupTemplateStudio() {
         const templateCards = document.querySelectorAll('.template-card');
         templateCards.forEach(card => {
@@ -1126,7 +1211,6 @@ function escapeHtml(str) {
         }
     }
 
-    // 9. Live Preview & ZIP Export Engine
     function setupLivePreview() {
         const iframe = document.getElementById('previewIframe');
         const refreshBtn = document.getElementById('refreshPreviewBtn');
@@ -1153,7 +1237,7 @@ function escapeHtml(str) {
         }
 
         if (exportZipBtn) exportZipBtn.addEventListener('click', () => exportClientZipPackage());
-        
+
         const publishGithubBtn = document.getElementById('publishGithubBtn');
         if (publishGithubBtn) publishGithubBtn.addEventListener('click', () => publishClientToGithub());
     }
@@ -1169,11 +1253,20 @@ function escapeHtml(str) {
             profile: {
                 fullName: client.fullName,
                 title: client.title,
+                tagline: client.tagline,
+                avatarUrl: client.avatarUrl,
                 bio: client.bio,
                 location: client.location,
                 email: client.email,
                 phone: client.phone,
                 badges: client.badges,
+                linkedin: client.linkedin,
+                github: client.github,
+                researchgate: client.researchgate,
+                orcid: client.orcid,
+                website: client.website,
+                twitter: client.twitter,
+                stats: client.stats,
                 pin: client.pin
             },
             settings: {
@@ -1271,11 +1364,20 @@ function escapeHtml(str) {
             profile: {
                 fullName: client.fullName,
                 title: client.title,
+                tagline: client.tagline,
+                avatarUrl: client.avatarUrl,
                 bio: client.bio,
                 location: client.location,
                 email: client.email,
                 phone: client.phone,
                 badges: client.badges,
+                linkedin: client.linkedin,
+                github: client.github,
+                researchgate: client.researchgate,
+                orcid: client.orcid,
+                website: client.website,
+                twitter: client.twitter,
+                stats: client.stats,
                 pin: client.pin
             },
             settings: {
@@ -1314,7 +1416,9 @@ function escapeHtml(str) {
     <header class="site-header">
         <div class="container header-flex">
             <div class="brand-wrap">
-                <div class="brand-avatar-placeholder"><i class="fas fa-folder-open"></i></div>
+                <div id="brandAvatarWrap">
+                    ${client.avatarUrl ? `<img src="${client.avatarUrl}" class="brand-avatar" alt="${escapeHtml(client.fullName)}">` : `<div class="brand-avatar-placeholder"><i class="fas fa-user"></i></div>`}
+                </div>
                 <div>
                     <div class="brand-name">${escapeHtml(client.fullName)}</div>
                     <div class="brand-sub">Verified Digital Document Vault</div>
@@ -1329,21 +1433,36 @@ function escapeHtml(str) {
     <section class="hero-section">
         <div class="container hero-grid">
             <div>
-                <h1 class="hero-title">${escapeHtml(client.fullName)}</h1>
-                <div class="hero-subtitle">${escapeHtml(client.title)}</div>
+                <div class="hero-profile-row">
+                    <div id="heroAvatarWrap">
+                        ${client.avatarUrl ? `<img src="${client.avatarUrl}" class="hero-avatar-large" alt="${escapeHtml(client.fullName)}">` : ''}
+                    </div>
+                    <div>
+                        <h1 class="hero-title">${escapeHtml(client.fullName)}</h1>
+                        <div class="hero-subtitle">${escapeHtml(client.title)}</div>
+                        ${client.tagline ? `<div class="hero-tagline">${escapeHtml(client.tagline)}</div>` : ''}
+                    </div>
+                </div>
                 <p class="hero-bio">${escapeHtml(client.bio)}</p>
+
+                <div class="social-pill-row" id="socialPillRow"></div>
                 <div class="badge-row" id="badgeContainer">
                     ${(client.badges || '').split(',').map(b => b.trim()).filter(Boolean).map(b => `<span class="status-pill"><i class="fas fa-award"></i> ${escapeHtml(b)}</span>`).join('')}
                 </div>
             </div>
+
             <div class="hero-card">
-                <h3 style="font-size: 1rem; font-weight: 700;"><i class="fas fa-shield-alt text-emerald-500"></i> Vault Verification Card</h3>
+                <h3 class="hero-card-title"><i class="fas fa-shield-alt text-emerald-500"></i> Vault Verification Card</h3>
                 <div class="hero-card-item"><i class="fas fa-envelope"></i> ${escapeHtml(client.email || 'Email Verified')}</div>
                 <div class="hero-card-item"><i class="fas fa-phone"></i> ${escapeHtml(client.phone || 'Phone On File')}</div>
                 <div class="hero-card-item"><i class="fas fa-map-marker-alt"></i> ${escapeHtml(client.location || 'Guwahati, India')}</div>
             </div>
         </div>
     </section>
+
+    <div class="container">
+        <div class="stats-grid" id="keyStatsGrid"></div>
+    </div>
 
     <main class="container">
         <div class="filter-bar">
@@ -1403,7 +1522,7 @@ function escapeHtml(str) {
         const folderName = client.slug || 'client-vault-site';
 
         zip.file("site-data.json", JSON.stringify(client, null, 2));
-        zip.file("README.md", `# ${client.fullName} - Personal Document Vault Website\n\nDeployment Package generated via Client Vault Generator Studio.\n\n## Quick Start\n1. Upload all files to GitHub Pages, Netlify, or Vercel.\n2. Open \`index.html\` in any web browser.\n`);
+        zip.file("README.md", `# ${client.fullName} - Personal Document Vault Website\n\nDeployment Package generated via Client Vault Generator Studio V1.\n\n## Quick Start\n1. Upload all files to GitHub Pages, Netlify, or Vercel.\n2. Open \`index.html\` in any web browser.\n`);
 
         const indexHtml = document.getElementById('previewIframe').srcdoc || '<html><body>Vault Site</body></html>';
         zip.file("index.html", indexHtml);
@@ -1421,7 +1540,6 @@ function escapeHtml(str) {
         });
     }
 
-    // Helper Utilities
     function generateSampleDocCanvas(title, subtitle, colorHex) {
         const canvas = document.createElement('canvas');
         canvas.width = 600;

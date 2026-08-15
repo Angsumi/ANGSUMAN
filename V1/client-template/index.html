@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="client.css">
 </head>
 <body>
@@ -30,15 +30,15 @@
     <!-- Site Header -->
     <header class="site-header">
         <div class="container header-flex">
-            <div class="brand-wrap">
-                <div class="brand-avatar-placeholder" id="brandAvatar">
-                    <i class="fas fa-folder-open"></i>
+            <a href="#" class="brand-wrap">
+                <div id="brandAvatarWrap">
+                    <div class="brand-avatar-placeholder"><i class="fas fa-user"></i></div>
                 </div>
                 <div>
                     <div class="brand-name" id="clientName">{{CLIENT_NAME}}</div>
                     <div class="brand-sub">Verified Digital Document Vault</div>
                 </div>
-            </div>
+            </a>
             <div style="display: flex; gap: 0.75rem;">
                 <button class="btn-card" id="openBinderBtn">
                     <i class="fas fa-file-pdf text-amber-500"></i> Combined PDF Binder
@@ -51,47 +51,59 @@
     <section class="hero-section">
         <div class="container hero-grid">
             <div>
-                <h1 class="hero-title" id="clientNameHero">{{CLIENT_NAME}}</h1>
-                <div class="hero-subtitle" id="clientTitle">{{CLIENT_TITLE}}</div>
-                <p class="hero-bio" id="clientBio">{{CLIENT_BIO}}</p>
-                <div class="badge-row" id="badgeContainer">
-                    <!-- Badges -->
+                <div class="hero-profile-row">
+                    <div id="heroAvatarWrap"></div>
+                    <div>
+                        <h1 class="hero-title" id="clientNameHero">{{CLIENT_NAME}}</h1>
+                        <div class="hero-subtitle" id="clientTitle">{{CLIENT_TITLE}}</div>
+                        <div class="hero-tagline" id="clientTagline">{{CLIENT_TAGLINE}}</div>
+                    </div>
                 </div>
+
+                <p class="hero-bio" id="clientBio">{{CLIENT_BIO}}</p>
+
+                <!-- Social Links -->
+                <div class="social-pill-row" id="socialPillRow"></div>
+
+                <!-- Status Badges -->
+                <div class="badge-row" id="badgeContainer"></div>
             </div>
 
+            <!-- Side Verification Card -->
             <div class="hero-card">
-                <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">
+                <div class="hero-card-title">
                     <i class="fas fa-shield-alt text-emerald-500"></i> Vault Verification Card
-                </h3>
+                </div>
                 <div class="hero-card-item" id="clientEmail">
-                    <i class="fas fa-envelope"></i> Verified Email Available
+                    <i class="fas fa-envelope"></i> Verified Email On File
                 </div>
                 <div class="hero-card-item" id="clientPhone">
-                    <i class="fas fa-phone"></i> Official Contact On File
+                    <i class="fas fa-phone"></i> Official Contact Verified
                 </div>
                 <div class="hero-card-item" id="clientLocation">
                     <i class="fas fa-map-marker-alt"></i> Location Verified
                 </div>
-                <div style="padding-top: 0.5rem; border-top: 1px solid var(--border-subtle); font-size: 0.78rem; color: var(--text-muted);">
-                    🔒 Encryption: Obfuscated Asset Hashing Active
+                <div style="padding-top: 0.5rem; border-top: 1px solid var(--border-subtle); font-size: 0.76rem; color: var(--text-muted); font-family: var(--font-mono);">
+                    🔒 Obfuscated Asset Hashing Active
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 4-Box Key Statistics Grid -->
+    <div class="container">
+        <div class="stats-grid" id="keyStatsGrid"></div>
+    </div>
+
     <!-- Document Library Section -->
     <main class="container">
         <div class="filter-bar">
-            <div class="filter-pills" id="categoryBar">
-                <!-- Category Pills -->
-            </div>
+            <div class="filter-pills" id="categoryBar"></div>
             <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search document library...">
         </div>
 
         <section class="doc-grid-section">
-            <div class="doc-grid" id="documentGrid">
-                <!-- Document Cards -->
-            </div>
+            <div class="doc-grid" id="documentGrid"></div>
         </section>
     </main>
 
@@ -102,9 +114,7 @@
                 <h3 id="lightboxTitle" style="font-size: 1.1rem; font-weight: 700;">Document Preview</h3>
                 <button class="btn-card" id="closeLightbox">&times;</button>
             </div>
-            <div class="lightbox-body" id="lightboxBody">
-                <!-- Content iframe or img -->
-            </div>
+            <div class="lightbox-body" id="lightboxBody"></div>
         </div>
     </div>
 
@@ -117,9 +127,7 @@
             </div>
             <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
                 <p style="font-size: 0.88rem; color: var(--text-muted);">Select client documents to include in a single compiled PDF file:</p>
-                <div id="binderDocList" style="display: flex; flex-direction: column; gap: 0.65rem; max-height: 300px; overflow-y: auto;">
-                    <!-- Checkboxes -->
-                </div>
+                <div id="binderDocList" style="display: flex; flex-direction: column; gap: 0.65rem; max-height: 300px; overflow-y: auto;"></div>
                 <button class="btn-card" id="compilePdfBtn" style="background: var(--accent-primary); color: #fff; justify-content: center; padding: 0.75rem; font-size: 0.95rem;">
                     <i class="fas fa-file-download"></i> Download Combined PDF Dossier
                 </button>
@@ -136,7 +144,6 @@
     </footer>
 
     <script>
-        // Injected Client Site Data State
         window.CLIENT_DATA = {{CLIENT_DATA_JSON}};
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

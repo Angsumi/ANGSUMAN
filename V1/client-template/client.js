@@ -1,13 +1,12 @@
-// Standalone Client Document-Portfolio Web Engine
+// Standalone Client Document-Portfolio Web Engine v2
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Load Client Data
     const data = window.CLIENT_DATA || {};
     const profile = data.profile || {};
     const docs = data.documents || [];
     const settings = data.settings || {};
 
-    // Check Security PIN Lock
+    // Security Lock Screen Check
     if (settings.securityMode === 'pin' && profile.pin) {
         checkSecurityLock(profile.pin);
     } else {
@@ -15,17 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lockScreen) lockScreen.style.display = 'none';
     }
 
-    // Populate Client Profile Headers
+    // Render Full Profile Details
     populateProfile(profile);
 
-    // Render Categories & Documents
+    // Render Key Statistics Grid
+    renderKeyStats(profile.stats);
+
+    // Render Categories & Document Catalog
     renderCategories(docs);
     renderDocuments(docs);
 
-    // Setup Search & Filter Event Listeners
+    // Filter, Lightbox & PDF Binder Handlers
     setupFilters(docs);
-
-    // Setup Lightbox & PDF Binder
     setupLightbox();
     setupPdfBinder(docs);
 });
@@ -54,24 +54,73 @@ function checkSecurityLock(correctPin) {
 
 function populateProfile(profile) {
     const nameEl = document.getElementById('clientName');
+    const nameHeroEl = document.getElementById('clientNameHero');
     const titleEl = document.getElementById('clientTitle');
+    const taglineEl = document.getElementById('clientTagline');
     const bioEl = document.getElementById('clientBio');
     const locationEl = document.getElementById('clientLocation');
     const emailEl = document.getElementById('clientEmail');
     const phoneEl = document.getElementById('clientPhone');
+    const avatarHeaderEl = document.getElementById('brandAvatarWrap');
+    const avatarHeroEl = document.getElementById('heroAvatarWrap');
     const badgeContainer = document.getElementById('badgeContainer');
+    const socialRowEl = document.getElementById('socialPillRow');
 
-    if (nameEl) nameEl.textContent = profile.fullName || 'Client Vault';
+    const fullName = profile.fullName || 'Client Vault';
+    if (nameEl) nameEl.textContent = fullName;
+    if (nameHeroEl) nameHeroEl.textContent = fullName;
     if (titleEl) titleEl.textContent = profile.title || 'Personal Document Portfolio';
+    if (taglineEl) taglineEl.textContent = profile.tagline || '';
     if (bioEl) bioEl.textContent = profile.bio || '';
-    if (locationEl && profile.location) locationEl.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${profile.location}`;
-    if (emailEl && profile.email) emailEl.innerHTML = `<i class="fas fa-envelope"></i> ${profile.email}`;
-    if (phoneEl && profile.phone) phoneEl.innerHTML = `<i class="fas fa-phone"></i> ${profile.phone}`;
+    if (locationEl && profile.location) locationEl.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${escapeHtml(profile.location)}`;
+    if (emailEl && profile.email) emailEl.innerHTML = `<i class="fas fa-envelope"></i> ${escapeHtml(profile.email)}`;
+    if (phoneEl && profile.phone) phoneEl.innerHTML = `<i class="fas fa-phone"></i> ${escapeHtml(profile.phone)}`;
 
+    // Render Avatar / Photo
+    if (profile.avatarUrl) {
+        if (avatarHeaderEl) avatarHeaderEl.innerHTML = `<img src="${profile.avatarUrl}" class="brand-avatar" alt="${escapeHtml(fullName)}">`;
+        if (avatarHeroEl) avatarHeroEl.innerHTML = `<img src="${profile.avatarUrl}" class="hero-avatar-large" alt="${escapeHtml(fullName)}">`;
+    } else {
+        const initials = fullName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        if (avatarHeaderEl) avatarHeaderEl.innerHTML = `<div class="brand-avatar-placeholder">${initials}</div>`;
+        if (avatarHeroEl) avatarHeroEl.innerHTML = `<div class="brand-avatar-placeholder" style="width: 80px; height: 80px; font-size: 2rem;">${initials}</div>`;
+    }
+
+    // Render Badges
     if (badgeContainer && profile.badges) {
         const badges = profile.badges.split(',').map(b => b.trim()).filter(Boolean);
         badgeContainer.innerHTML = badges.map(b => `<span class="status-pill"><i class="fas fa-award"></i> ${escapeHtml(b)}</span>`).join('');
     }
+
+    // Render Social Icon Pills
+    if (socialRowEl) {
+        const socials = [];
+        if (profile.linkedin) socials.push(`<a href="${profile.linkedin}" target="_blank" class="social-icon-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>`);
+        if (profile.github) socials.push(`<a href="${profile.github}" target="_blank" class="social-icon-btn"><i class="fab fa-github"></i> GitHub</a>`);
+        if (profile.researchgate) socials.push(`<a href="${profile.researchgate}" target="_blank" class="social-icon-btn"><i class="fas fa-microscope"></i> ResearchGate</a>`);
+        if (profile.orcid) socials.push(`<a href="${profile.orcid}" target="_blank" class="social-icon-btn"><i class="fas fa-id-badge"></i> ORCID</a>`);
+        if (profile.website) socials.push(`<a href="${profile.website}" target="_blank" class="social-icon-btn"><i class="fas fa-globe"></i> Website</a>`);
+        if (profile.twitter) socials.push(`<a href="${profile.twitter}" target="_blank" class="social-icon-btn"><i class="fab fa-x-twitter"></i> X/Twitter</a>`);
+        socialRowEl.innerHTML = socials.join('');
+    }
+}
+
+function renderKeyStats(stats) {
+    const gridEl = document.getElementById('keyStatsGrid');
+    if (!gridEl) return;
+
+    if (!stats || stats.length === 0) {
+        gridEl.style.display = 'none';
+        return;
+    }
+
+    gridEl.style.display = 'grid';
+    gridEl.innerHTML = stats.map(stat => `
+        <div class="stat-box">
+            <div class="stat-val">${escapeHtml(stat.value)}</div>
+            <div class="stat-lbl">${escapeHtml(stat.label)}</div>
+        </div>
+    `).join('');
 }
 
 function renderCategories(docs) {
@@ -129,7 +178,6 @@ function renderDocuments(docsToRender) {
         `;
     }).join('');
 
-    // Attach Lightbox triggers
     document.querySelectorAll('.preview-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             openLightbox(btn.dataset.url, btn.dataset.title, btn.dataset.type);
@@ -237,7 +285,7 @@ function setupPdfBinder(docs) {
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
                 doc.setFontSize(18);
-                doc.text(window.CLIENT_DATA.profile.fullName + ' - Document Vault Dossier', 14, 20);
+                doc.text((window.CLIENT_DATA && window.CLIENT_DATA.profile ? window.CLIENT_DATA.profile.fullName : 'Client') + ' - Document Vault Dossier', 14, 20);
                 doc.setFontSize(11);
                 doc.text('Compiled Document Package', 14, 28);
                 doc.line(14, 32, 196, 32);
@@ -256,10 +304,10 @@ function setupPdfBinder(docs) {
                     }
                 });
 
-                doc.save(`${window.CLIENT_DATA.profile.fullName.replace(/\s+/g, '_')}_Document_Dossier.pdf`);
+                doc.save(`${(window.CLIENT_DATA && window.CLIENT_DATA.profile ? window.CLIENT_DATA.profile.fullName : 'Client').replace(/\s+/g, '_')}_Document_Dossier.pdf`);
                 binderModal.classList.remove('active');
             } else {
-                alert('PDF compilation library active. Downloading selected package list.');
+                alert('PDF compilation library ready.');
             }
         });
     }

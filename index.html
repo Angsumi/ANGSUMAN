@@ -49,7 +49,7 @@
 
     <!-- Top Navigation Bar -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-[#faf9f5]/90 dark:bg-[#0d1117]/85 backdrop-blur-xl border-b border-[#e5e3dc] dark:border-white/10 transition-all">
-        <div class="max-w-[1550px] mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="max-w-[1450px] mx-auto px-6 py-4 flex items-center justify-between">
             
             <!-- Left: Logo & Title -->
             <a href="#hero" class="brand-container flex items-center gap-3 text-decoration-none group">
@@ -106,26 +106,13 @@
         </div>
     </header>
 
-    <!-- Main Hero Section -->
-    <section id="hero" class="relative pt-32 pb-16 px-6 max-w-[1550px] mx-auto min-h-[88vh] flex flex-col justify-center">
+    <!-- Main Hero Section (Text & Typography Focus - Zero Front End Images) -->
+    <section id="hero" class="relative pt-32 pb-16 px-6 max-w-[1450px] mx-auto min-h-[82vh] flex flex-col justify-center">
         
-        <!-- Subtle DNA Vector Glow Background Layer -->
-        <div class="hero-bg-dna" aria-hidden="true"></div>
-
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            <!-- Left: User Photo (Angsuman.jpg) -->
-            <div class="lg:col-span-3 flex justify-center lg:justify-start">
-                <div class="relative group">
-                    <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-sky-500/20 via-emerald-500/20 to-indigo-500/20 blur-xl opacity-75 group-hover:opacity-100 transition duration-1000"></div>
-                    <div class="relative w-64 sm:w-72 lg:w-80 h-[380px] sm:h-[420px] rounded-3xl overflow-hidden border border-[#e5e3dc] dark:border-white/10 shadow-lg bg-white dark:bg-[#161b22]">
-                        <img src="Angsuman.jpg" alt="Angsuman Das" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Center: Bio & Primary CTAs -->
-            <div class="lg:col-span-5 flex flex-col items-start gap-4">
+            <!-- Left: Primary Bio & CTAs -->
+            <div class="lg:col-span-7 flex flex-col items-start gap-4">
                 
                 <!-- Status Badges -->
                 <div class="flex flex-wrap items-center gap-3">
@@ -149,8 +136,8 @@
                 </div>
 
                 <!-- Summary Paragraph -->
-                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl m-0">
-                    CSIR-NET JRF qualified researcher with expertise in Homology Modelling of Toll-Like Receptors, RNA-seq transcriptomics, and ecological analysis. Dedicated to advancing computational biology and structural bioinformatics.
+                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl m-0">
+                    CSIR-NET JRF qualified researcher with expertise in Homology Modelling of Toll-Like Receptors, RNA-seq transcriptomics, and ecological analysis. Dedicated to advancing computational biology, genomics, and structural bioinformatics.
                 </p>
 
                 <!-- Hero Action Buttons -->
@@ -173,8 +160,8 @@
 
             </div>
 
-            <!-- Right: 5 Vertical Highlight Stat Cards Grid -->
-            <div class="lg:col-span-4 grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-3">
+            <!-- Right: 5 Stat Cards Grid (Text & Iconography Only) -->
+            <div class="lg:col-span-5 grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-3">
                 
                 <!-- Stat Card 1 -->
                 <div class="stat-box">
@@ -242,7 +229,7 @@
     </section>
 
     <!-- Middle 4-Column Section -->
-    <section id="about" class="py-16 px-6 max-w-[1550px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
+    <section id="about" class="py-16 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <!-- Column 1: 01 ACADEMIC BACKGROUND -->
@@ -559,8 +546,8 @@
         </div>
     </section>
 
-    <!-- Section 05: SCIENTIFIC RESEARCH — Publications & Papers with Interactive Category Filter Tabs -->
-    <section id="publications" class="py-16 px-6 max-w-[1550px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
+    <!-- Section 05: SCIENTIFIC RESEARCH — Typography & Document Focus (Zero Images) -->
+    <section id="publications" class="py-16 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10">
         
         <!-- Header & Category Filter Tabs -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8 border-b border-[#e5e3dc] dark:border-white/10 pb-4">
@@ -579,149 +566,149 @@
             </div>
         </div>
 
-        <!-- Horizontal 8-Card Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-4" id="publicationsGrid">
+        <!-- Clean Typographic List Cards Grid (Zero Images) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="publicationsGrid">
             
             <!-- Paper 1 -->
-            <div class="paper-box rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group" data-category="environmental">
+            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="environmental">
                 <div>
-                    <div class="h-32 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=400&q=80" alt="Dye Pollution" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-mono text-sky-700 dark:text-sky-400 font-bold uppercase px-2 py-0.5 rounded bg-sky-500/10">Environmental Biotech</span>
+                        <i class="far fa-file-pdf text-xs text-sky-600 dark:text-sky-400"></i>
                     </div>
-                    <div class="p-3">
-                        <span class="text-[9px] font-mono text-sky-700 dark:text-sky-400 font-bold uppercase block mb-1">Environmental Biotech</span>
-                        <h3 class="text-xs font-bold text-[#1a1d20] dark:text-white line-clamp-3 leading-tight m-0">A Green Solution to Industrial Dye Pollution</h3>
-                    </div>
+                    <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white leading-snug m-0">A Green Solution to Industrial Dye Pollution: Exploring Eco-Friendly Treatments</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 m-0">Investigates biological &amp; sustainable enzymatic degradation methods for hazardous textile dye effluents.</p>
                 </div>
-                <div class="p-3 pt-0">
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/A%20green%20solution%20to%20industrial%20dye%20pollution%20Exploring%20the.pdf', 'Industrial Dye Pollution Paper', 'pdf')" class="text-[10px] font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0">
-                        <span>Preview PDF</span> <i class="fas fa-eye text-[8px]"></i>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 flex items-center justify-between">
+                    <span class="text-[10px] font-mono text-slate-400">Peer-Reviewed Paper</span>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/A%20green%20solution%20to%20industrial%20dye%20pollution%20Exploring%20the.pdf', 'Industrial Dye Pollution Paper', 'pdf')" class="text-xs font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0 font-semibold">
+                        <span>Preview PDF</span> <i class="fas fa-eye text-[9px]"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Paper 2 -->
-            <div class="paper-box rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group" data-category="aquatic">
+            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="aquatic">
                 <div>
-                    <div class="h-32 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=400&q=80" alt="Aquatic Ecosystems" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-mono text-teal-700 dark:text-teal-300 font-bold uppercase px-2 py-0.5 rounded bg-teal-500/10">Aquatic Ecology</span>
+                        <i class="far fa-file-pdf text-xs text-teal-500"></i>
                     </div>
-                    <div class="p-3">
-                        <span class="text-[9px] font-mono text-teal-700 dark:text-teal-300 font-bold uppercase block mb-1">Aquatic Ecology</span>
-                        <h3 class="text-xs font-bold text-[#1a1d20] dark:text-white line-clamp-3 leading-tight m-0">Physico-Chemical Parameters of Aquatic Ecosystems</h3>
-                    </div>
+                    <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white leading-snug m-0">Analysis of the Physico-Chemical Parameters of Aquatic Ecosystems</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 m-0">Quantitative analysis of water parameters, dissolved oxygen, pH balance, and bio-indicators in river bodies.</p>
                 </div>
-                <div class="p-3 pt-0">
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Analysis%20of%20the%20physico-chemical%20parameters%20of.pdf', 'Physico-Chemical Parameters Paper', 'pdf')" class="text-[10px] font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0">
-                        <span>Preview PDF</span> <i class="fas fa-eye text-[8px]"></i>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 flex items-center justify-between">
+                    <span class="text-[10px] font-mono text-slate-400">Research Article</span>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Analysis%20of%20the%20physico-chemical%20parameters%20of.pdf', 'Physico-Chemical Parameters Paper', 'pdf')" class="text-xs font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0 font-semibold">
+                        <span>Preview PDF</span> <i class="fas fa-eye text-[9px]"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Paper 3 -->
-            <div class="paper-box rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group" data-category="ethno">
+            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ethno">
                 <div>
-                    <div class="h-32 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=400&q=80" alt="Lotus Remedies" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase px-2 py-0.5 rounded bg-emerald-500/10">Ethnopharmacology</span>
+                        <i class="far fa-file-pdf text-xs text-emerald-500"></i>
                     </div>
-                    <div class="p-3">
-                        <span class="text-[9px] font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase block mb-1">Ethnopharmacology</span>
-                        <h3 class="text-xs font-bold text-[#1a1d20] dark:text-white line-clamp-3 leading-tight m-0">Aquatic Remedies: Ethnopharmacological Study</h3>
-                    </div>
+                    <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white leading-snug m-0">Aquatic Remedies: An Ethnopharmacological Study</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 m-0">Documents traditional aquatic flora &amp; fauna medicinal applications across indigenous communities.</p>
                 </div>
-                <div class="p-3 pt-0">
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Aquatic%20Remedies%20An%20Ethnopharmacological.pdf', 'Aquatic Remedies Paper', 'pdf')" class="text-[10px] font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0">
-                        <span>Preview PDF</span> <i class="fas fa-eye text-[8px]"></i>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 flex items-center justify-between">
+                    <span class="text-[10px] font-mono text-slate-400">Field Study</span>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Aquatic%20Remedies%20An%20Ethnopharmacological.pdf', 'Aquatic Remedies Paper', 'pdf')" class="text-xs font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0 font-semibold">
+                        <span>Preview PDF</span> <i class="fas fa-eye text-[9px]"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Paper 4 -->
-            <div class="paper-box rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group" data-category="environmental">
+            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="environmental">
                 <div>
-                    <div class="h-32 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80" alt="Mass Spec" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-mono text-amber-700 dark:text-amber-400 font-bold uppercase px-2 py-0.5 rounded bg-amber-500/10">Toxicology</span>
+                        <i class="far fa-file-pdf text-xs text-amber-500"></i>
                     </div>
-                    <div class="p-3">
-                        <span class="text-[9px] font-mono text-amber-700 dark:text-amber-400 font-bold uppercase block mb-1">Toxicology</span>
-                        <h3 class="text-xs font-bold text-[#1a1d20] dark:text-white line-clamp-3 leading-tight m-0">Mass Spectrometry in Toxicological Analysis</h3>
-                    </div>
+                    <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white leading-snug m-0">Clinical Applications of Mass Spectrometry in Toxicological Analysis</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 m-0">Reviews mass spectrometry techniques (LC-MS/MS, GC-MS) for targeted metabolite identification.</p>
                 </div>
-                <div class="p-3 pt-0">
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Clinical%20Applications%20of%20Mass%20Spectrometry%20in%20Toxicological.pdf', 'Mass Spectrometry Paper', 'pdf')" class="text-[10px] font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0">
-                        <span>Preview PDF</span> <i class="fas fa-eye text-[8px]"></i>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 flex items-center justify-between">
+                    <span class="text-[10px] font-mono text-slate-400">Review Article</span>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Clinical%20Applications%20of%20Mass%20Spectrometry%20in%20Toxicological.pdf', 'Mass Spectrometry Paper', 'pdf')" class="text-xs font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0 font-semibold">
+                        <span>Preview PDF</span> <i class="fas fa-eye text-[9px]"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Paper 5 -->
-            <div class="paper-box rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group" data-category="ai">
+            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ai">
                 <div>
-                    <div class="h-32 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="AI Bioinformatics" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-mono text-indigo-700 dark:text-indigo-400 font-bold uppercase px-2 py-0.5 rounded bg-indigo-500/10">AI &amp; Bio</span>
+                        <i class="far fa-file-pdf text-xs text-indigo-500"></i>
                     </div>
-                    <div class="p-3">
-                        <span class="text-[9px] font-mono text-indigo-700 dark:text-indigo-400 font-bold uppercase block mb-1">AI &amp; Bio</span>
-                        <h3 class="text-xs font-bold text-[#1a1d20] dark:text-white line-clamp-3 leading-tight m-0">Conversational Interfaces in Bioinformatics</h3>
-                    </div>
+                    <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white leading-snug m-0">Conversational Interfaces in Bioinformatics: Bridging Computational Biology</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 m-0">Explores natural language query pipelines for sequence alignment, genomic retrieval, and structural querying.</p>
                 </div>
-                <div class="p-3 pt-0">
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Conversational%20Interfaces%20in%20Bioinformatics%20Bridging%20Computational.pdf', 'Conversational AI in Bioinformatics Paper', 'pdf')" class="text-[10px] font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0">
-                        <span>Preview PDF</span> <i class="fas fa-eye text-[8px]"></i>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 flex items-center justify-between">
+                    <span class="text-[10px] font-mono text-slate-400">AI Manuscript</span>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Conversational%20Interfaces%20in%20Bioinformatics%20Bridging%20Computational.pdf', 'Conversational AI in Bioinformatics Paper', 'pdf')" class="text-xs font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0 font-semibold">
+                        <span>Preview PDF</span> <i class="fas fa-eye text-[9px]"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Paper 6 -->
-            <div class="paper-box rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group" data-category="ethno">
+            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ethno">
                 <div>
-                    <div class="h-32 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1546445317-29f4545f9d52?auto=format&fit=crop&w=400&q=80" alt="Cultural Zoology" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-mono text-rose-700 dark:text-rose-400 font-bold uppercase px-2 py-0.5 rounded bg-rose-500/10">Ethnozoology</span>
+                        <i class="far fa-file-pdf text-xs text-rose-500"></i>
                     </div>
-                    <div class="p-3">
-                        <span class="text-[9px] font-mono text-rose-700 dark:text-rose-400 font-bold uppercase block mb-1">Ethnozoology</span>
-                        <h3 class="text-xs font-bold text-[#1a1d20] dark:text-white line-clamp-3 leading-tight m-0">Cultural Zoology of Assamese Tribes</h3>
-                    </div>
+                    <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white leading-snug m-0">Cultural Zoology: Unveiling the Ethnozoological Tradition of Assamese Tribes</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 m-0">Ethnographic study analyzing animal-human cultural interactions and traditional fauna utilization in Assam.</p>
                 </div>
-                <div class="p-3 pt-0">
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Cultural%20Zoology%20Unveiling%20The%20Ethnozoological%20Tradition%20Of%20Assamese%20Tribes.pdf', 'Cultural Zoology Paper', 'pdf')" class="text-[10px] font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0">
-                        <span>Preview PDF</span> <i class="fas fa-eye text-[8px]"></i>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 flex items-center justify-between">
+                    <span class="text-[10px] font-mono text-slate-400">Cultural Study</span>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Cultural%20Zoology%20Unveiling%20The%20Ethnozoological%20Tradition%20Of%20Assamese%20Tribes.pdf', 'Cultural Zoology Paper', 'pdf')" class="text-xs font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0 font-semibold">
+                        <span>Preview PDF</span> <i class="fas fa-eye text-[9px]"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Paper 7 -->
-            <div class="paper-box rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group" data-category="ai">
+            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ai">
                 <div>
-                    <div class="h-32 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=400&q=80" alt="GPT Taxonomy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-mono text-sky-700 dark:text-sky-400 font-bold uppercase px-2 py-0.5 rounded bg-sky-500/10">GPT Vision &amp; AI</span>
+                        <i class="far fa-file-pdf text-xs text-sky-500"></i>
                     </div>
-                    <div class="p-3">
-                        <span class="text-[9px] font-mono text-sky-700 dark:text-sky-400 font-bold uppercase block mb-1">GPT Vision &amp; AI</span>
-                        <h3 class="text-xs font-bold text-[#1a1d20] dark:text-white line-clamp-3 leading-tight m-0">GPT Vision Meets Taxonomy</h3>
-                    </div>
+                    <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white leading-snug m-0">GPT Vision Meets Taxonomy: AI Applications in Biological Classification</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 m-0">Evaluates multimodal vision-language models for zero-shot species classification and morphological tagging.</p>
                 </div>
-                <div class="p-3 pt-0">
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/GPT%20Vision%20Meets%20Taxonomy.pdf', 'GPT Vision Meets Taxonomy Paper', 'pdf')" class="text-[10px] font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0">
-                        <span>Preview PDF</span> <i class="fas fa-eye text-[8px]"></i>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 flex items-center justify-between">
+                    <span class="text-[10px] font-mono text-slate-400">Vision AI Study</span>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/GPT%20Vision%20Meets%20Taxonomy.pdf', 'GPT Vision Meets Taxonomy Paper', 'pdf')" class="text-xs font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0 font-semibold">
+                        <span>Preview PDF</span> <i class="fas fa-eye text-[9px]"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Paper 8 -->
-            <div class="paper-box rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group" data-category="ethno">
+            <div class="paper-box p-4 rounded-2xl bg-white dark:bg-[#161b22] border border-[#e5e3dc] dark:border-white/10 flex flex-col justify-between hover:border-sky-500 transition-all" data-category="ethno">
                 <div>
-                    <div class="h-32 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=400&q=80" alt="Green Heritage Assam" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase px-2 py-0.5 rounded bg-emerald-500/10">Meta-Analysis</span>
+                        <i class="far fa-file-pdf text-xs text-emerald-500"></i>
                     </div>
-                    <div class="p-3">
-                        <span class="text-[9px] font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase block mb-1">Meta-Analysis</span>
-                        <h3 class="text-xs font-bold text-[#1a1d20] dark:text-white line-clamp-3 leading-tight m-0">Green Heritage of Assam Meta-analysis</h3>
-                    </div>
+                    <h3 class="text-sm font-bold text-[#1a1d20] dark:text-white leading-snug m-0">Green Heritage of Assam: A Comprehensive Meta-analysis of Traditional Knowledge</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 m-0">Systematic literature meta-analysis evaluating conservation bio-resources across Northeast India.</p>
                 </div>
-                <div class="p-3 pt-0">
-                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Green%20Heritage%20Of%20Assam%20A%20Comprehensive%20Metaanalysis%20Of%20Traditional.pdf', 'Green Heritage Meta-Analysis Paper', 'pdf')" class="text-[10px] font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0">
-                        <span>Preview PDF</span> <i class="fas fa-eye text-[8px]"></i>
+                <div class="mt-4 pt-3 border-t border-[#e5e3dc] dark:border-white/10 flex items-center justify-between">
+                    <span class="text-[10px] font-mono text-slate-400">Meta-Analysis</span>
+                    <button onclick="openLightbox('https://raw.githubusercontent.com/Angsumi/ANGSUMAN/main/documents/publications/Green%20Heritage%20Of%20Assam%20A%20Comprehensive%20Metaanalysis%20Of%20Traditional.pdf', 'Green Heritage Meta-Analysis Paper', 'pdf')" class="text-xs font-mono text-sky-600 dark:text-sky-400 flex items-center gap-1 hover:underline cursor-pointer bg-transparent border-0 p-0 font-semibold">
+                        <span>Preview PDF</span> <i class="fas fa-eye text-[9px]"></i>
                     </button>
                 </div>
             </div>
@@ -731,7 +718,7 @@
     </section>
 
     <!-- Footer Bar -->
-    <footer id="contact" class="py-12 px-6 max-w-[1550px] mx-auto border-t border-[#e5e3dc] dark:border-white/10 text-slate-600 dark:text-slate-300">
+    <footer id="contact" class="py-12 px-6 max-w-[1450px] mx-auto border-t border-[#e5e3dc] dark:border-white/10 text-slate-600 dark:text-slate-300">
         <div class="flex flex-wrap items-center justify-between gap-6">
             
             <!-- Left Info -->

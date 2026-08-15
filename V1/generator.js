@@ -670,6 +670,47 @@ function escapeHtml(str) {
             });
         }
 
+        // Avatar File Upload Listener
+        const avatarFileInput = document.getElementById('clientAvatarFileInput');
+        const removeAvatarBtn = document.getElementById('removeAvatarBtn');
+        const avatarPreviewImg = document.getElementById('avatarPreviewImg');
+        const avatarPlaceholderIcon = document.getElementById('avatarPlaceholderIcon');
+        const avatarUrlHidden = document.getElementById('clientAvatarUrl');
+
+        if (avatarFileInput) {
+            avatarFileInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files[0]) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const dataUrl = event.target.result;
+                        if (avatarUrlHidden) avatarUrlHidden.value = dataUrl;
+                        if (avatarPreviewImg) {
+                            avatarPreviewImg.src = dataUrl;
+                            avatarPreviewImg.style.display = 'block';
+                        }
+                        if (avatarPlaceholderIcon) avatarPlaceholderIcon.style.display = 'none';
+                        if (removeAvatarBtn) removeAvatarBtn.style.display = 'inline-flex';
+                        showToast('Profile photo updated!');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        if (removeAvatarBtn) {
+            removeAvatarBtn.addEventListener('click', () => {
+                if (avatarUrlHidden) avatarUrlHidden.value = '';
+                if (avatarPreviewImg) {
+                    avatarPreviewImg.src = '';
+                    avatarPreviewImg.style.display = 'none';
+                }
+                if (avatarPlaceholderIcon) avatarPlaceholderIcon.style.display = 'block';
+                if (removeAvatarBtn) removeAvatarBtn.style.display = 'none';
+                showToast('Profile photo removed.');
+            });
+        }
+
         // Save Profile Button
         const saveProfileBtn = document.getElementById('saveProfileBtn');
         if (saveProfileBtn) {
@@ -722,6 +763,27 @@ function escapeHtml(str) {
         if (document.getElementById('clientTitle')) document.getElementById('clientTitle').value = client.title || '';
         if (document.getElementById('clientTagline')) document.getElementById('clientTagline').value = client.tagline || '';
         if (document.getElementById('clientAvatarUrl')) document.getElementById('clientAvatarUrl').value = client.avatarUrl || '';
+
+        // Avatar Thumbnail Preview populate
+        const avatarPreviewImg = document.getElementById('avatarPreviewImg');
+        const avatarPlaceholderIcon = document.getElementById('avatarPlaceholderIcon');
+        const removeAvatarBtn = document.getElementById('removeAvatarBtn');
+
+        if (client.avatarUrl) {
+            if (avatarPreviewImg) {
+                avatarPreviewImg.src = client.avatarUrl;
+                avatarPreviewImg.style.display = 'block';
+            }
+            if (avatarPlaceholderIcon) avatarPlaceholderIcon.style.display = 'none';
+            if (removeAvatarBtn) removeAvatarBtn.style.display = 'inline-flex';
+        } else {
+            if (avatarPreviewImg) {
+                avatarPreviewImg.src = '';
+                avatarPreviewImg.style.display = 'none';
+            }
+            if (avatarPlaceholderIcon) avatarPlaceholderIcon.style.display = 'block';
+            if (removeAvatarBtn) removeAvatarBtn.style.display = 'none';
+        }
         if (document.getElementById('clientEmail')) document.getElementById('clientEmail').value = client.email || '';
         if (document.getElementById('clientPhone')) document.getElementById('clientPhone').value = client.phone || '';
         if (document.getElementById('clientLocation')) document.getElementById('clientLocation').value = client.location || '';

@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     populateProfile(profile);
+    renderKeyStats(profile.stats);
     renderCategories(docs);
     renderDocuments(docs);
     setupFilters(docs);
@@ -44,30 +45,70 @@ function checkSecurityLock(correctPin) {
 
 function populateProfile(profile) {
     const nameEl = document.getElementById('clientName');
+    const nameHeroEl = document.getElementById('clientNameHero');
     const titleEl = document.getElementById('clientTitle');
+    const taglineEl = document.getElementById('clientTagline');
     const bioEl = document.getElementById('clientBio');
     const locationEl = document.getElementById('clientLocation');
     const emailEl = document.getElementById('clientEmail');
     const phoneEl = document.getElementById('clientPhone');
+    const avatarHeaderEl = document.getElementById('brandAvatarWrap');
+    const avatarHeroEl = document.getElementById('heroAvatarWrap');
     const badgeContainer = document.getElementById('badgeContainer');
+    const socialRowEl = document.getElementById('socialPillRow');
 
-    if (nameEl) nameEl.textContent = profile.fullName || 'Client Vault';
+    const fullName = profile.fullName || 'Client Vault';
+    if (nameEl) nameEl.textContent = fullName;
+    if (nameHeroEl) nameHeroEl.textContent = fullName;
     if (titleEl) titleEl.textContent = profile.title || 'Personal Document Portfolio';
+    if (taglineEl) taglineEl.textContent = profile.tagline || '';
     if (bioEl) bioEl.textContent = profile.bio || '';
     if (locationEl && profile.location) locationEl.innerHTML = '<i class="fas fa-map-marker-alt"></i> ' + escapeHtml(profile.location);
     if (emailEl && profile.email) emailEl.innerHTML = '<i class="fas fa-envelope"></i> ' + escapeHtml(profile.email);
     if (phoneEl && profile.phone) phoneEl.innerHTML = '<i class="fas fa-phone"></i> ' + escapeHtml(profile.phone);
 
+    if (profile.avatarUrl) {
+        if (avatarHeaderEl) avatarHeaderEl.innerHTML = '<img src="' + profile.avatarUrl + '" class="brand-avatar" alt="' + escapeHtml(fullName) + '">';
+        if (avatarHeroEl) avatarHeroEl.innerHTML = '<img src="' + profile.avatarUrl + '" class="hero-avatar-large" alt="' + escapeHtml(fullName) + '">';
+    } else {
+        const initials = fullName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        if (avatarHeaderEl) avatarHeaderEl.innerHTML = '<div class="brand-avatar-placeholder">' + initials + '</div>';
+        if (avatarHeroEl) avatarHeroEl.innerHTML = '<div class="brand-avatar-placeholder" style="width: 80px; height: 80px; font-size: 2rem;">' + initials + '</div>';
+    }
+
     if (badgeContainer && profile.badges) {
         const badges = profile.badges.split(',').map(b => b.trim()).filter(Boolean);
         badgeContainer.innerHTML = badges.map(b => '<span class="status-pill"><i class="fas fa-award"></i> ' + escapeHtml(b) + '</span>').join('');
     }
+
+    if (socialRowEl) {
+        const socials = [];
+        if (profile.linkedin) socials.push('<a href="' + profile.linkedin + '" target="_blank" class="social-icon-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>');
+        if (profile.github) socials.push('<a href="' + profile.github + '" target="_blank" class="social-icon-btn"><i class="fab fa-github"></i> GitHub</a>');
+        if (profile.researchgate) socials.push('<a href="' + profile.researchgate + '" target="_blank" class="social-icon-btn"><i class="fas fa-microscope"></i> ResearchGate</a>');
+        if (profile.orcid) socials.push('<a href="' + profile.orcid + '" target="_blank" class="social-icon-btn"><i class="fas fa-id-badge"></i> ORCID</a>');
+        if (profile.website) socials.push('<a href="' + profile.website + '" target="_blank" class="social-icon-btn"><i class="fas fa-globe"></i> Website</a>');
+        if (profile.twitter) socials.push('<a href="' + profile.twitter + '" target="_blank" class="social-icon-btn"><i class="fab fa-x-twitter"></i> X/Twitter</a>');
+        socialRowEl.innerHTML = socials.join('');
+    }
+}
+
+function renderKeyStats(stats) {
+    const gridEl = document.getElementById('keyStatsGrid');
+    if (!gridEl) return;
+    if (!stats || stats.length === 0) { gridEl.style.display = 'none'; return; }
+    gridEl.style.display = 'grid';
+    gridEl.innerHTML = stats.map(stat => `
+        <div class="stat-box">
+            <div class="stat-val">${escapeHtml(stat.value)}</div>
+            <div class="stat-lbl">${escapeHtml(stat.label)}</div>
+        </div>
+    `).join('');
 }
 
 function renderCategories(docs) {
     const categoryBar = document.getElementById('categoryBar');
     if (!categoryBar) return;
-
     const categories = ['All', ...new Set(docs.map(d => d.category))];
     categoryBar.innerHTML = categories.map((cat, i) => `
         <button class="filter-pill-btn ${i === 0 ? 'active' : ''}" data-cat="${escapeHtml(cat)}">
@@ -79,16 +120,13 @@ function renderCategories(docs) {
 function renderDocuments(docsToRender) {
     const grid = document.getElementById('documentGrid');
     if (!grid) return;
-
     if (!docsToRender || docsToRender.length === 0) {
         grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">No documents available in this category.</div>';
         return;
     }
-
     grid.innerHTML = docsToRender.map(doc => {
         const isPdf = doc.fileType === 'pdf' || (doc.fileName && doc.fileName.endsWith('.pdf'));
         const thumbUrl = doc.dataUrl || doc.filePath || 'assets/doc-placeholder.png';
-
         return `
             <div class="client-doc-card">
                 <div class="card-header-box">
@@ -120,16 +158,13 @@ function renderDocuments(docsToRender) {
     }).join('');
 
     document.querySelectorAll('.preview-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            openLightbox(btn.dataset.url, btn.dataset.title, btn.dataset.type);
-        });
+        btn.addEventListener('click', () => openLightbox(btn.dataset.url, btn.dataset.title, btn.dataset.type));
     });
 }
 
 function setupFilters(allDocs) {
     const searchInput = document.getElementById('searchInput');
     let currentCategory = 'All';
-
     document.querySelectorAll('#categoryBar .filter-pill-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             document.querySelectorAll('#categoryBar .filter-pill-btn').forEach(b => b.classList.remove('active'));
@@ -139,9 +174,7 @@ function setupFilters(allDocs) {
         });
     });
 
-    if (searchInput) {
-        searchInput.addEventListener('input', () => filterDocs());
-    }
+    if (searchInput) searchInput.addEventListener('input', () => filterDocs());
 
     function filterDocs() {
         const query = searchInput ? searchInput.value.toLowerCase() : '';
@@ -158,13 +191,8 @@ function setupLightbox() {
     const modal = document.getElementById('lightboxModal');
     const closeBtn = document.getElementById('closeLightbox');
     if (!modal) return;
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-    }
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.remove('active');
-    });
+    if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 }
 
 function openLightbox(url, title, type) {
@@ -172,7 +200,6 @@ function openLightbox(url, title, type) {
     const titleEl = document.getElementById('lightboxTitle');
     const bodyEl = document.getElementById('lightboxBody');
     if (!modal) return;
-
     if (titleEl) titleEl.textContent = title;
     if (bodyEl) {
         if (type === 'pdf') {
@@ -208,9 +235,7 @@ function setupPdfBinder(docs) {
         binderModal.classList.add('active');
     });
 
-    if (closeBinderBtn) {
-        closeBinderBtn.addEventListener('click', () => binderModal.classList.remove('active'));
-    }
+    if (closeBinderBtn) closeBinderBtn.addEventListener('click', () => binderModal.classList.remove('active'));
 
     if (compileBtn) {
         compileBtn.addEventListener('click', () => {

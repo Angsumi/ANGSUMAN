@@ -1801,9 +1801,14 @@ function escapeHtml(str) {
                     <div class="brand-sub">Verified Digital Document Vault</div>
                 </div>
             </div>
-            <button class="btn-card" id="openBinderBtn">
-                <i class="fas fa-file-pdf text-amber-500"></i> Combined PDF Binder
-            </button>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <button class="btn-card" id="openGlobalCustomDownloadBtn">
+                    <i class="fas fa-sliders-h text-emerald-500"></i> Custom Format & Size Studio
+                </button>
+                <button class="btn-card" id="openBinderBtn">
+                    <i class="fas fa-file-pdf text-amber-500"></i> Combined PDF Binder
+                </button>
+            </div>
         </div>
     </header>
 
@@ -1871,6 +1876,78 @@ function escapeHtml(str) {
                 <div id="binderDocList"></div>
                 <button class="btn-card" id="compilePdfBtn" style="background: var(--accent-primary); color: #fff; justify-content: center; padding: 0.75rem;">
                     <i class="fas fa-file-download"></i> Download Combined PDF Dossier
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="lightbox-overlay" id="customDownloadModal">
+        <div class="lightbox-modal" style="max-width: 580px;">
+            <div class="lightbox-header">
+                <h3 style="font-size: 1.1rem; font-weight: 700;"><i class="fas fa-sliders-h text-emerald-500"></i> Custom Format & Size Download Studio</h3>
+                <button class="btn-card" id="closeCustomDownload">&times;</button>
+            </div>
+            <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.35rem;">Select Document to Customize</label>
+                    <select id="clientModalDocSelect" class="search-input" style="width: 100%;"></select>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.35rem;">Export Format</label>
+                        <select id="clientModalFormat" class="search-input" style="width: 100%;">
+                            <option value="jpg">Optimized JPG (.jpg)</option>
+                            <option value="png">High-Res PNG (.png)</option>
+                            <option value="pdf">PDF Document (.pdf)</option>
+                            <option value="webp">WebP Compact (.webp)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.35rem;">Size Preset</label>
+                        <select id="clientModalPreset" class="search-input" style="width: 100%;">
+                            <option value="custom">Custom Dimensions</option>
+                            <option value="original">Original Aspect Ratio</option>
+                            <option value="passport">Passport Photo (35x45mm)</option>
+                            <option value="a4">Standard A4 Document</option>
+                            <option value="idcard">Identity Card (85x54mm)</option>
+                            <option value="square">Square Aspect (1:1)</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="background: rgba(0,0,0,0.03); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-size: 0.8rem; font-weight: 700;">Exact Canvas Dimensions</span>
+                        <label style="font-size: 0.75rem; color: var(--text-muted); cursor: pointer;">
+                            <input type="checkbox" id="clientModalLockAspect" checked> Lock Aspect Ratio
+                        </label>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Width (px)</span>
+                            <input type="number" id="clientModalWidth" class="search-input" value="800" style="width: 100%;">
+                        </div>
+                        <div>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Height (px)</span>
+                            <input type="number" id="clientModalHeight" class="search-input" value="600" style="width: 100%;">
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.35rem; margin-top: 0.65rem; flex-wrap: wrap;">
+                        <button type="button" class="btn-card modal-scale-btn" data-scale="0.25">25%</button>
+                        <button type="button" class="btn-card modal-scale-btn" data-scale="0.50">50%</button>
+                        <button type="button" class="btn-card modal-scale-btn" data-scale="0.75">75%</button>
+                        <button type="button" class="btn-card modal-scale-btn" data-scale="1.00">100%</button>
+                        <button type="button" class="btn-card modal-scale-btn" data-scale="1.50">150%</button>
+                    </div>
+                </div>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-main); display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+                        <span>Image Compression Quality</span>
+                        <span id="clientModalQualityVal" style="color: var(--accent-primary); font-weight: 700;">85%</span>
+                    </label>
+                    <input type="range" id="clientModalQuality" min="0.1" max="1.0" step="0.05" value="0.85" style="width: 100%; accent-color: var(--accent-primary);">
+                </div>
+                <button class="btn-card" id="triggerClientCustomDownload" style="background: var(--accent-primary); color: #fff; justify-content: center; padding: 0.75rem; font-size: 0.95rem; font-weight: 700;">
+                    <i class="fas fa-download"></i> 1-Click Download Custom File Now
                 </button>
             </div>
         </div>

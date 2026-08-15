@@ -1,4 +1,4 @@
-// Standalone Client Document-Portfolio Web Engine v2
+// Standalone Client Document-Portfolio Web Engine v3 - Enhanced Custom Format & Size Downloads
 
 document.addEventListener('DOMContentLoaded', () => {
     const data = window.CLIENT_DATA || {};
@@ -24,10 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCategories(docs);
     renderDocuments(docs);
 
-    // Filter, Lightbox & PDF Binder Handlers
+    // Filter, Lightbox, PDF Binder & Custom Download Handlers
     setupFilters(docs);
     setupLightbox();
     setupPdfBinder(docs);
+    setupCustomDownloadModal(docs);
 });
 
 function checkSecurityLock(correctPin) {
@@ -72,35 +73,32 @@ function populateProfile(profile) {
     if (titleEl) titleEl.textContent = profile.title || 'Personal Document Portfolio';
     if (taglineEl) taglineEl.textContent = profile.tagline || '';
     if (bioEl) bioEl.textContent = profile.bio || '';
-    if (locationEl && profile.location) locationEl.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${escapeHtml(profile.location)}`;
-    if (emailEl && profile.email) emailEl.innerHTML = `<i class="fas fa-envelope"></i> ${escapeHtml(profile.email)}`;
-    if (phoneEl && profile.phone) phoneEl.innerHTML = `<i class="fas fa-phone"></i> ${escapeHtml(profile.phone)}`;
+    if (locationEl && profile.location) locationEl.innerHTML = '<i class="fas fa-map-marker-alt"></i> ' + escapeHtml(profile.location);
+    if (emailEl && profile.email) emailEl.innerHTML = '<i class="fas fa-envelope"></i> ' + escapeHtml(profile.email);
+    if (phoneEl && profile.phone) phoneEl.innerHTML = '<i class="fas fa-phone"></i> ' + escapeHtml(profile.phone);
 
-    // Render Avatar / Photo
     if (profile.avatarUrl) {
-        if (avatarHeaderEl) avatarHeaderEl.innerHTML = `<img src="${profile.avatarUrl}" class="brand-avatar" alt="${escapeHtml(fullName)}">`;
-        if (avatarHeroEl) avatarHeroEl.innerHTML = `<img src="${profile.avatarUrl}" class="hero-avatar-large" alt="${escapeHtml(fullName)}">`;
+        if (avatarHeaderEl) avatarHeaderEl.innerHTML = '<img src="' + profile.avatarUrl + '" class="brand-avatar" alt="' + escapeHtml(fullName) + '">';
+        if (avatarHeroEl) avatarHeroEl.innerHTML = '<img src="' + profile.avatarUrl + '" class="hero-avatar-large" alt="' + escapeHtml(fullName) + '">';
     } else {
         const initials = fullName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-        if (avatarHeaderEl) avatarHeaderEl.innerHTML = `<div class="brand-avatar-placeholder">${initials}</div>`;
-        if (avatarHeroEl) avatarHeroEl.innerHTML = `<div class="brand-avatar-placeholder" style="width: 80px; height: 80px; font-size: 2rem;">${initials}</div>`;
+        if (avatarHeaderEl) avatarHeaderEl.innerHTML = '<div class="brand-avatar-placeholder">' + initials + '</div>';
+        if (avatarHeroEl) avatarHeroEl.innerHTML = '<div class="brand-avatar-placeholder" style="width: 80px; height: 80px; font-size: 2rem;">' + initials + '</div>';
     }
 
-    // Render Badges
     if (badgeContainer && profile.badges) {
         const badges = profile.badges.split(',').map(b => b.trim()).filter(Boolean);
-        badgeContainer.innerHTML = badges.map(b => `<span class="status-pill"><i class="fas fa-award"></i> ${escapeHtml(b)}</span>`).join('');
+        badgeContainer.innerHTML = badges.map(b => '<span class="status-pill"><i class="fas fa-award"></i> ' + escapeHtml(b) + '</span>').join('');
     }
 
-    // Render Social Icon Pills
     if (socialRowEl) {
         const socials = [];
-        if (profile.linkedin) socials.push(`<a href="${profile.linkedin}" target="_blank" class="social-icon-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>`);
-        if (profile.github) socials.push(`<a href="${profile.github}" target="_blank" class="social-icon-btn"><i class="fab fa-github"></i> GitHub</a>`);
-        if (profile.researchgate) socials.push(`<a href="${profile.researchgate}" target="_blank" class="social-icon-btn"><i class="fas fa-microscope"></i> ResearchGate</a>`);
-        if (profile.orcid) socials.push(`<a href="${profile.orcid}" target="_blank" class="social-icon-btn"><i class="fas fa-id-badge"></i> ORCID</a>`);
-        if (profile.website) socials.push(`<a href="${profile.website}" target="_blank" class="social-icon-btn"><i class="fas fa-globe"></i> Website</a>`);
-        if (profile.twitter) socials.push(`<a href="${profile.twitter}" target="_blank" class="social-icon-btn"><i class="fab fa-x-twitter"></i> X/Twitter</a>`);
+        if (profile.linkedin) socials.push('<a href="' + profile.linkedin + '" target="_blank" class="social-icon-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>');
+        if (profile.github) socials.push('<a href="' + profile.github + '" target="_blank" class="social-icon-btn"><i class="fab fa-github"></i> GitHub</a>');
+        if (profile.researchgate) socials.push('<a href="' + profile.researchgate + '" target="_blank" class="social-icon-btn"><i class="fas fa-microscope"></i> ResearchGate</a>');
+        if (profile.orcid) socials.push('<a href="' + profile.orcid + '" target="_blank" class="social-icon-btn"><i class="fas fa-id-badge"></i> ORCID</a>');
+        if (profile.website) socials.push('<a href="' + profile.website + '" target="_blank" class="social-icon-btn"><i class="fas fa-globe"></i> Website</a>');
+        if (profile.twitter) socials.push('<a href="' + profile.twitter + '" target="_blank" class="social-icon-btn"><i class="fab fa-x-twitter"></i> X/Twitter</a>');
         socialRowEl.innerHTML = socials.join('');
     }
 }
@@ -166,12 +164,15 @@ function renderDocuments(docsToRender) {
                         ${doc.expiryDate ? `<span><i class="fas fa-hourglass-end"></i> Expires: ${escapeHtml(doc.expiryDate)}</span>` : ''}
                     </div>
                 </div>
-                <div class="card-action-bar">
+                <div class="card-action-bar" style="flex-wrap: wrap; gap: 0.4rem;">
                     <button class="btn-card preview-btn" data-url="${thumbUrl}" data-title="${escapeHtml(doc.title)}" data-type="${isPdf ? 'pdf' : 'img'}">
                         <i class="fas fa-eye"></i> Preview
                     </button>
+                    <button class="btn-card custom-dl-btn" data-id="${doc.id}">
+                        <i class="fas fa-sliders-h text-emerald-500"></i> Custom Format/Size
+                    </button>
                     <a href="${thumbUrl}" download="${escapeHtml(doc.title)}.${doc.fileType || 'pdf'}" class="btn-card">
-                        <i class="fas fa-download"></i> Download
+                        <i class="fas fa-download"></i> Direct Download
                     </a>
                 </div>
             </div>
@@ -183,6 +184,8 @@ function renderDocuments(docsToRender) {
             openLightbox(btn.dataset.url, btn.dataset.title, btn.dataset.type);
         });
     });
+
+    setupCustomDownloadModal(docsToRender);
 }
 
 function setupFilters(allDocs) {
@@ -309,6 +312,103 @@ function setupPdfBinder(docs) {
             } else {
                 alert('PDF compilation library ready.');
             }
+        });
+    }
+}
+
+function setupCustomDownloadModal(docs) {
+    const modal = document.getElementById('customDownloadModal');
+    const closeBtn = document.getElementById('closeCustomDownload');
+    const docNameEl = document.getElementById('customModalDocName');
+    const formatSelect = document.getElementById('clientModalFormat');
+    const widthInput = document.getElementById('clientModalWidth');
+    const heightInput = document.getElementById('clientModalHeight');
+    const qualitySlider = document.getElementById('clientModalQuality');
+    const qualityValEl = document.getElementById('clientModalQualityVal');
+    const triggerBtn = document.getElementById('triggerClientCustomDownload');
+
+    let activeDoc = null;
+
+    if (!modal) return;
+
+    if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+
+    if (qualitySlider && qualityValEl) {
+        qualitySlider.addEventListener('input', () => {
+            qualityValEl.textContent = `${Math.round(parseFloat(qualitySlider.value) * 100)}%`;
+        });
+    }
+
+    document.querySelectorAll('.custom-dl-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const docId = btn.dataset.id;
+            activeDoc = docs.find(d => d.id === docId);
+            if (!activeDoc) return;
+
+            if (docNameEl) docNameEl.textContent = `Customizing: ${activeDoc.title}`;
+            if (activeDoc.dataUrl) {
+                const img = new Image();
+                img.onload = () => {
+                    if (widthInput) widthInput.value = img.width;
+                    if (heightInput) heightInput.value = img.height;
+                };
+                img.src = activeDoc.dataUrl;
+            }
+            modal.classList.add('active');
+        });
+    });
+
+    if (triggerBtn) {
+        triggerBtn.addEventListener('click', () => {
+            if (!activeDoc || !activeDoc.dataUrl) {
+                alert('Document data unavailable.');
+                return;
+            }
+
+            const targetWidth = parseInt(widthInput.value) || 800;
+            const targetHeight = parseInt(heightInput.value) || 600;
+            const targetFormat = formatSelect.value;
+            const quality = parseFloat(qualitySlider.value);
+
+            const canvas = document.createElement('canvas');
+            canvas.width = targetWidth;
+            canvas.height = targetHeight;
+            const ctx = canvas.getContext('2d');
+
+            const img = new Image();
+            img.onload = () => {
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(0, 0, targetWidth, targetHeight);
+                ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+
+                if (targetFormat === 'pdf' && window.jspdf) {
+                    const { jsPDF } = window.jspdf;
+                    const pdf = new jsPDF(targetWidth > targetHeight ? 'l' : 'p', 'pt', [targetWidth, targetHeight]);
+                    const imgData = canvas.toDataURL('image/jpeg', quality);
+                    pdf.addImage(imgData, 'JPEG', 0, 0, targetWidth, targetHeight);
+                    const link = document.createElement('a');
+                    link.href = pdf.output('bloburl');
+                    link.download = `${activeDoc.title}_${targetWidth}x${targetHeight}.pdf`;
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+                } else {
+                    let mimeType = 'image/jpeg';
+                    let ext = 'jpg';
+                    if (targetFormat === 'png') { mimeType = 'image/png'; ext = 'png'; }
+                    if (targetFormat === 'webp') { mimeType = 'image/webp'; ext = 'webp'; }
+                    const dataUrl = canvas.toDataURL(mimeType, quality);
+                    const link = document.createElement('a');
+                    link.href = dataUrl;
+                    link.download = `${activeDoc.title}_${targetWidth}x${targetHeight}.${ext}`;
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+                }
+                modal.classList.remove('active');
+            };
+            img.src = activeDoc.dataUrl;
         });
     }
 }

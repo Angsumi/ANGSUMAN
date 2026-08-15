@@ -1047,83 +1047,188 @@ function escapeHtml(str) {
 
     function setupProcessingStudio() {
         const applyBtn = document.getElementById('applyProcessingBtn');
-        if (!applyBtn) return;
+        const downloadBtn = document.getElementById('downloadCustomFileBtn');
+        const docSelect = document.getElementById('processDocSelect');
+        const presetSelect = document.getElementById('processPresetSelect');
+        const formatSelect = document.getElementById('processFormatSelect');
+        const widthInput = document.getElementById('customWidthPx');
+        const heightInput = document.getElementById('customHeightPx');
+        const lockAspectCb = document.getElementById('customLockAspect');
+        const qualitySlider = document.getElementById('processQualitySlider');
+        const qualityDisplay = document.getElementById('qualityValDisplay');
+        const scaleBtns = document.querySelectorAll('.scale-btn');
 
-        applyBtn.addEventListener('click', () => {
+        let originalImgWidth = 800;
+        let originalImgHeight = 600;
+
+        // Quality slider update display
+        if (qualitySlider && qualityDisplay) {
+            qualitySlider.addEventListener('input', () => {
+                const pct = Math.round(parseFloat(qualitySlider.value) * 100);
+                qualityDisplay.textContent = `${pct}% ${pct >= 80 ? '(High Quality)' : pct >= 50 ? '(Compressed)' : '(Low File Size)'}`;
+            });
+        }
+
+        // When document is selected, load its original dimensions
+        if (docSelect) {
+            docSelect.addEventListener('change', () => {
+                const client = getActiveClient();
+                if (!client) return;
+                const doc = client.documents.find(d => d.id === docSelect.value);
+                if (doc && doc.dataUrl) {
+                    const img = new Image();
+                    img.onload = () => {
+                        originalImgWidth = img.width;
+                        originalImgHeight = img.height;
+                        if (widthInput) widthInput.value = img.width;
+                        if (heightInput) heightInput.value = img.height;
+                    };
+                    img.src = doc.dataUrl;
+                }
+            });
+        }
+
+        // Preset selection logic
+        if (presetSelect) {
+            presetSelect.addEventListener('change', () => {
+                const preset = presetSelect.value;
+                if (preset === 'passport') { if (widthInput) widthInput.value = 413; if (heightInput) heightInput.value = 531; }
+                else if (preset === 'a4') { if (widthInput) widthInput.value = 595; if (heightInput) heightInput.value = 842; }
+                else if (preset === 'idcard') { if (widthInput) widthInput.value = 504; if (heightInput) heightInput.value = 318; }
+                else if (preset === 'square') { if (widthInput) widthInput.value = 500; if (heightInput) heightInput.value = 500; }
+                else if (preset === 'fullhd') { if (widthInput) widthInput.value = 1920; if (heightInput) heightInput.value = 1080; }
+                else if (preset === 'original') { if (widthInput) widthInput.value = originalImgWidth; if (heightInput) heightInput.value = originalImgHeight; }
+            });
+        }
+
+        // Aspect ratio lock calculation
+        if (widthInput && heightInput) {
+            widthInput.addEventListener('input', () => {
+                if (lockAspectCb && lockAspectCb.checked && originalImgWidth > 0) {
+                    const ratio = originalImgHeight / originalImgWidth;
+                    const w = parseInt(widthInput.value) || 0;
+                    heightInput.value = Math.round(w * ratio);
+                }
+            });
+
+            heightInput.addEventListener('input', () => {
+                if (lockAspectCb && lockAspectCb.checked && originalImgHeight > 0) {
+                    const ratio = originalImgWidth / originalImgHeight;
+                    const h = parseInt(heightInput.value) || 0;
+                    widthInput.value = Math.round(h * ratio);
+                }
+            });
+        }
+
+        // Quick scale buttons
+        scaleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const scale = parseFloat(btn.dataset.scale);
+                if (widthInput) widthInput.value = Math.round(originalImgWidth * scale);
+                if (heightInput) heightInput.value = Math.round(originalImgHeight * scale);
+            });
+        });
+
+        // Generate Custom Canvas Function
+        function processCustomCanvas(callback) {
             const client = getActiveClient();
-            const docId = document.getElementById('processDocSelect').value;
-            const targetFormat = document.getElementById('processFormatSelect').value;
-            const preset = document.getElementById('processPresetSelect').value;
-            const quality = parseFloat(document.getElementById('processQualitySelect').value);
-
+            const docId = docSelect ? docSelect.value : '';
             if (!client || !docId) {
-                alert('Please select a document to process.');
+                alert('Please select a document from the dropdown list.');
                 return;
             }
 
             const doc = client.documents.find(d => d.id === docId);
-            if (!doc) return;
+            if (!doc || !doc.dataUrl) {
+                alert('Selected document preview is unavailable.');
+                return;
+            }
+
+            const targetWidth = parseInt(widthInput ? widthInput.value : 800) || originalImgWidth || 800;
+            const targetHeight = parseInt(heightInput ? heightInput.value : 600) || originalImgHeight || 600;
+            const targetFormat = formatSelect ? formatSelect.value : 'jpg';
+            const quality = parseFloat(qualitySlider ? qualitySlider.value : 0.85);
 
             const canvas = document.createElement('canvas');
+            canvas.width = targetWidth;
+            canvas.height = targetHeight;
             const ctx = canvas.getContext('2d');
+
             const img = new Image();
-
             img.onload = () => {
-                let targetWidth = img.width;
-                let targetHeight = img.height;
-
-                if (preset === 'passport') {
-                    targetWidth = 413;
-                    targetHeight = 531;
-                } else if (preset === 'a4') {
-                    targetWidth = 595;
-                    targetHeight = 842;
-                } else if (preset === 'idcard') {
-                    targetWidth = 504;
-                    targetHeight = 318;
-                } else if (preset === 'square') {
-                    targetWidth = 500;
-                    targetHeight = 500;
-                }
-
-                canvas.width = targetWidth;
-                canvas.height = targetHeight;
                 ctx.fillStyle = '#FFFFFF';
                 ctx.fillRect(0, 0, targetWidth, targetHeight);
                 ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
 
-                let mimeType = 'image/jpeg';
-                let newExt = 'jpg';
-                if (targetFormat === 'png') { mimeType = 'image/png'; newExt = 'png'; }
-                if (targetFormat === 'webp') { mimeType = 'image/webp'; newExt = 'webp'; }
+                if (targetFormat === 'pdf' && window.jspdf) {
+                    const { jsPDF } = window.jspdf;
+                    const pdf = new jsPDF(targetWidth > targetHeight ? 'l' : 'p', 'pt', [targetWidth, targetHeight]);
+                    const imgData = canvas.toDataURL('image/jpeg', quality);
+                    pdf.addImage(imgData, 'JPEG', 0, 0, targetWidth, targetHeight);
+                    const pdfBlob = pdf.output('bloburl');
+                    callback({ blobUrl: pdfBlob, dataUrl: imgData, fileType: 'pdf', fileName: `${doc.title}_${targetWidth}x${targetHeight}.pdf`, doc, targetWidth, targetHeight });
+                } else {
+                    let mimeType = 'image/jpeg';
+                    let ext = 'jpg';
+                    if (targetFormat === 'png') { mimeType = 'image/png'; ext = 'png'; }
+                    if (targetFormat === 'webp') { mimeType = 'image/webp'; ext = 'webp'; }
 
-                const outputDataUrl = canvas.toDataURL(mimeType, quality);
-                const processedDoc = {
-                    id: 'doc_' + Date.now(),
-                    title: `${doc.title} (${preset.toUpperCase()} ${newExt.toUpperCase()})`,
-                    category: doc.category,
-                    authority: doc.authority,
-                    issueDate: doc.issueDate,
-                    expiryDate: doc.expiryDate,
-                    privacy: doc.privacy,
-                    fileType: newExt,
-                    fileName: 'doc_variant_' + Math.random().toString(36).substring(2, 9) + '.' + newExt,
-                    description: `Processed variant format: ${preset} size`,
-                    dataUrl: outputDataUrl
-                };
-
-                client.documents.push(processedDoc);
-                saveDataToStorage();
-                renderDocumentGrid();
-                populateProcessingDropdown();
-
-                document.getElementById('processingPreviewArea').style.display = 'block';
-                document.getElementById('processingOutputContent').innerHTML = `<img src="${outputDataUrl}" style="max-width: 100%; max-height: 350px; border-radius: 8px; border: 1px solid var(--border-color);">`;
-                showToast(`Generated ${preset} size ${newExt.toUpperCase()} variant!`);
+                    const dataUrl = canvas.toDataURL(mimeType, quality);
+                    callback({ dataUrl, fileType: ext, fileName: `${doc.title}_${targetWidth}x${targetHeight}.${ext}`, doc, targetWidth, targetHeight });
+                }
             };
-
             img.src = doc.dataUrl;
-        });
+        }
+
+        // 1-Click Immediate Download Handler
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', () => {
+                processCustomCanvas((res) => {
+                    const downloadAnchor = document.createElement('a');
+                    downloadAnchor.href = res.blobUrl || res.dataUrl;
+                    downloadAnchor.download = res.fileName;
+                    document.body.appendChild(downloadAnchor);
+                    downloadAnchor.click();
+                    downloadAnchor.remove();
+                    showToast(`Downloaded custom file: ${res.fileName}`);
+                });
+            });
+        }
+
+        // Save as Variant in Client Vault Handler
+        if (applyBtn) {
+            applyBtn.addEventListener('click', () => {
+                processCustomCanvas((res) => {
+                    const client = getActiveClient();
+                    const newDoc = {
+                        id: 'doc_' + Date.now(),
+                        title: `${res.doc.title} (${res.targetWidth}x${res.targetHeight} ${res.fileType.toUpperCase()})`,
+                        category: res.doc.category,
+                        authority: res.doc.authority,
+                        issueDate: res.doc.issueDate,
+                        expiryDate: res.doc.expiryDate,
+                        privacy: res.doc.privacy,
+                        fileType: res.fileType,
+                        fileName: 'doc_custom_' + Math.random().toString(36).substring(2, 9) + '.' + res.fileType,
+                        description: `Custom format variant: ${res.targetWidth}x${res.targetHeight} px`,
+                        dataUrl: res.dataUrl || res.blobUrl
+                    };
+
+                    client.documents.push(newDoc);
+                    saveDataToStorage();
+                    renderDocumentGrid();
+                    populateProcessingDropdown();
+
+                    const previewArea = document.getElementById('processingPreviewArea');
+                    const outputContent = document.getElementById('processingOutputContent');
+                    if (previewArea) previewArea.style.display = 'block';
+                    if (outputContent) {
+                        outputContent.innerHTML = `<img src="${res.dataUrl || res.blobUrl}" style="max-width: 100%; max-height: 350px; border-radius: 8px; border: 1px solid var(--border-color);">`;
+                    }
+                    showToast(`Saved ${res.targetWidth}x${res.targetHeight} ${res.fileType.toUpperCase()} variant to client vault!`);
+                });
+            });
+        }
     }
 
     function populateProcessingDropdown() {

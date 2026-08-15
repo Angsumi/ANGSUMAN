@@ -280,40 +280,73 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Target Format Variant</label>
+                        <label class="form-label">Target Export Format</label>
                         <select id="processFormatSelect" class="form-select">
-                            <option value="original">Maintain Original Format</option>
-                            <option value="pdf">Convert to PDF (.pdf)</option>
-                            <option value="png">Convert to High-Res PNG (.png)</option>
-                            <option value="jpg">Convert to Optimized JPG (.jpg)</option>
-                            <option value="webp">Convert to WebP (.webp)</option>
+                            <option value="jpg">Optimized JPG (.jpg)</option>
+                            <option value="png">High-Res PNG (.png)</option>
+                            <option value="pdf">Convert to PDF Document (.pdf)</option>
+                            <option value="webp">WebP Compact Image (.webp)</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Standard Aspect Ratio & Size Preset</label>
+                        <label class="form-label">Aspect Ratio & Size Preset</label>
                         <select id="processPresetSelect" class="form-select">
-                            <option value="original">Original Aspect Ratio (Full Resolution)</option>
-                            <option value="passport">Passport Photo Size (35mm x 45mm)</option>
-                            <option value="a4">Standard A4 Document (210mm x 297mm)</option>
-                            <option value="idcard">Identity Card Ratio (85.6mm x 54mm)</option>
-                            <option value="square">Square Avatar (1:1)</option>
+                            <option value="custom" selected>Custom Dimensions (Set Exact W x H in px)</option>
+                            <option value="original">Original Aspect Ratio & Resolution</option>
+                            <option value="passport">Passport Photo Size (35mm x 45mm / 413x531 px)</option>
+                            <option value="a4">Standard A4 Document (210mm x 297mm / 595x842 px)</option>
+                            <option value="idcard">Identity Card Ratio (85.6mm x 54mm / 504x318 px)</option>
+                            <option value="square">Square Aspect Ratio (1:1 / 500x500 px)</option>
+                            <option value="fullhd">Full HD Presentation (1920x1080 px)</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Resolution & Compression Quality</label>
-                        <select id="processQualitySelect" class="form-select">
-                            <option value="1.0">Original Maximum Quality (100%)</option>
-                            <option value="0.85" selected>Web Optimized (85% - Recommended)</option>
-                            <option value="0.65">Compact Compressed Variant (65%)</option>
-                        </select>
+                    <!-- Custom Dimensions Control Box -->
+                    <div class="form-group full-width" id="customDimensionsPanel" style="background: var(--bg-card); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin: 0;"><i class="fas fa-ruler-combined text-emerald-400"></i> Custom Canvas Dimensions & Scaling</h4>
+                            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); cursor: pointer;">
+                                <input type="checkbox" id="customLockAspect" checked> Lock Aspect Ratio
+                            </label>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 1rem; align-items: center;">
+                            <div>
+                                <label class="form-label">Custom Width (Pixels)</label>
+                                <input type="number" id="customWidthPx" class="form-input" placeholder="800" min="50" max="8000">
+                            </div>
+                            <div>
+                                <label class="form-label">Custom Height (Pixels)</label>
+                                <input type="number" id="customHeightPx" class="form-input" placeholder="600" min="50" max="8000">
+                            </div>
+                            <div>
+                                <label class="form-label">Quick Scale</label>
+                                <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+                                    <button type="button" class="btn btn-secondary btn-sm scale-btn" data-scale="0.25">25%</button>
+                                    <button type="button" class="btn btn-secondary btn-sm scale-btn" data-scale="0.50">50%</button>
+                                    <button type="button" class="btn btn-secondary btn-sm scale-btn" data-scale="0.75">75%</button>
+                                    <button type="button" class="btn btn-secondary btn-sm scale-btn" data-scale="1.00">100%</button>
+                                    <button type="button" class="btn btn-secondary btn-sm scale-btn" data-scale="1.50">150%</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label" style="display: flex; justify-content: space-between;">
+                            <span>Compression & File Quality Slider</span>
+                            <span id="qualityValDisplay" style="color: var(--accent-emerald); font-weight: 700;">85% (Web Optimized)</span>
+                        </label>
+                        <input type="range" id="processQualitySlider" min="0.1" max="1.0" step="0.05" value="0.85" style="width: 100%; accent-color: var(--accent-emerald);">
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
-                    <button class="btn btn-primary" id="applyProcessingBtn">
-                        <i class="fas fa-magic"></i> Generate Format/Size Variant
+                <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.25rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary" id="downloadCustomFileBtn" style="background: linear-gradient(135deg, #10B981, #059669); font-size: 0.95rem;">
+                        <i class="fas fa-download"></i> 1-Click Download Custom File
+                    </button>
+                    <button class="btn btn-secondary" id="applyProcessingBtn">
+                        <i class="fas fa-plus-circle"></i> Save Variant to Client Vault
                     </button>
                 </div>
 

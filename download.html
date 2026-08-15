@@ -8,17 +8,52 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: ['selector', '[data-theme="dark"]'],
+        theme: {
+          extend: {
+            colors: {
+              slateCanvas: 'var(--bg-canvas)',
+              slateCard: 'var(--bg-card)',
+              slateCardHover: 'var(--bg-card-hover)',
+              slateBorder: 'var(--border-subtle)',
+              accentTeal: 'var(--accent-teal)',
+            },
+            fontFamily: {
+              serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+              sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            }
+          }
+        }
+      }
+    </script>
     <style>
         .download-header {
             text-align: center;
-            padding: 140px 20px 40px;
+            padding: 130px 20px 30px;
+        }
+        .download-header .name {
+            font-family: var(--font-serif);
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+        }
+        .download-header .summary {
+            color: var(--text-muted);
+            max-width: 680px;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         .search-box {
             max-width: 600px;
-            margin: 1.5rem auto 0;
+            margin: 1.75rem auto 0;
             position: relative;
         }
         .search-input {
@@ -1173,5 +1208,6 @@
             img.src = currentImgUrl;
         }
     </script>
+    <script src="script.js"></script>
 </body>
 </html>

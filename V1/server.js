@@ -151,6 +151,20 @@ const server = http.createServer((req, res) => {
     });
 });
 
+server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.log(`\n==================================================`);
+        console.log(` [Notice] Vault Studio Server is ALREADY RUNNING on Port ${PORT}!`);
+        console.log(` You can directly open in your browser: http://localhost:${PORT}/generator.html`);
+        console.log(`==================================================\n`);
+        process.exit(0);
+    } else {
+        console.error('Server error:', err);
+    }
+});
+
 server.listen(PORT, () => {
-    console.log(`Vault Studio Server running at http://localhost:${PORT}/`);
+    console.log(`\n==================================================`);
+    console.log(` Vault Studio Server active at: http://localhost:${PORT}/generator.html`);
+    console.log(`==================================================\n`);
 });

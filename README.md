@@ -2,10 +2,11 @@
 
 [![Portfolio Website](https://img.shields.io/badge/Live_Portfolio-https%3A%2F%2Fangsumi.github.io%2FANGSUMAN%2F-0284c7?style=for-the-badge&logo=google-chrome&logoColor=white)](https://angsumi.github.io/ANGSUMAN/)
 [![Document Center](https://img.shields.io/badge/Download_Center-https%3A%2F%2Fangsumi.github.io%2FANGSUMAN%2Fdownload.html-2d6a4f?style=for-the-badge&logo=github-pages&logoColor=white)](https://angsumi.github.io/ANGSUMAN/download.html)
+[![PDF Binder Tool](https://img.shields.io/badge/PDF_Binder_Tool-https%3A%2F%2Fangsumi.github.io%2FANGSUMAN%2Fpdf--binder.html-d97706?style=for-the-badge&logo=adobe-acrobat-reader&logoColor=white)](https://angsumi.github.io/ANGSUMAN/pdf-binder.html)
 [![CSIR NET JRF](https://img.shields.io/badge/CSIR--UGC_NET_JRF-AIR_180_(97.50%25)-d97706?style=for-the-badge&logo=academy&logoColor=white)](https://angsumi.github.io/ANGSUMAN/#credentials)
 [![IELTS Academic](https://img.shields.io/badge/IELTS_Academic-Overall_7.0_(C1)-4f46e5?style=for-the-badge&logo=english&logoColor=white)](https://angsumi.github.io/ANGSUMAN/#credentials)
 
-Welcome to the official repository for **Angsuman Das** — Bioinformatician, Genomic Data Science Researcher, and Educator. This repository serves as the centralized source code and digital repository for my interactive web portfolio, peer-reviewed scientific publications, official academic credentials, and document download center.
+Welcome to the official repository for **Angsuman Das** — Bioinformatician, Genomic Data Science Researcher, and Educator. This repository serves as the centralized source code and digital repository for my interactive web portfolio, peer-reviewed scientific publications, official academic credentials, document download center, and multi-document PDF binder tool.
 
 ---
 
@@ -15,6 +16,7 @@ Welcome to the official repository for **Angsuman Das** — Bioinformatician, Ge
 - [Web Application & Pages](#-web-application--pages)
   - [1. Main Portfolio Landing Page (`index.html`)](#1-main-portfolio-landing-page-indexhtml)
   - [2. Document Download Center & Converter (`download.html`)](#2-document-download-center--converter-downloadhtml)
+  - [3. Unified Multi-Document PDF Binder Tool (`pdf-binder.html`)](#3-unified-multi-document-pdf-binder-tool-pdf-binderhtml)
 - [Key Features & Interactivity](#-key-features--interactivity)
 - [Repository Directory Structure](#-repository-directory-structure)
 - [Document Catalog Summary](#-document-catalog-summary)
@@ -36,12 +38,12 @@ I am a **CSIR-UGC NET JRF qualified researcher** (Rank 180 in Life Sciences) wit
 
 ## 🌐 Web Application & Pages
 
-The web application is engineered as a responsive, dual-theme single-page portfolio with a companion document download center.
+The web application is engineered as a responsive, dual-theme single-page portfolio with a companion document download center and an intelligent PDF binder tool.
 
 ### 1. Main Portfolio Landing Page (`index.html`)
 The main portfolio is structured into **6 dedicated, full-width sections**, each with a prominent section header matching the top navigation bar:
 
-- **Hero Section (`#hero`)**: Features status badges (CSIR NET AIR 180, Available for Research), name, summary bio, action buttons, and a 5-box key statistics grid (*NET Rank, ADRE Selection, 8+ Publications, IELTS Score, M.Sc. CGPA*).
+- **Hero Section (`#hero`)**: Features status badges (CSIR NET AIR 180, Available for Research), name, summary bio, action buttons (*Download Center, PDF Binder Tool, Preview Resume*), and a 5-box key statistics grid (*NET Rank, ADRE Selection, 8+ Publications, IELTS Score, M.Sc. CGPA*).
 - **`01 • ACADEMIC BACKGROUND` (`#about`)**: Full-width 2-column bento grid detailing M.Sc. Zoology, B.Sc. Zoology (Honours), AHSEC 12th Science, and SEBA 10th HSLC degrees with instant marksheets and degree preview triggers.
 - **`02 • VALIDATED EXCELLENCE` (`#credentials`)**: Full-width 3-column grid featuring competitive exam credentials (CSIR NET JRF Award Letter, Johns Hopkins 8-Course Genomic Data Science Specialization, IELTS C1 Band, PGDCA Computer Diploma, SLET Life Sciences, and Fine Arts Diploma).
 - **`03 • TECHNICAL TOOLKIT` (`#skills`)**: Features an interactive real-time skill search bar filtering 18+ technical skills grouped into *Programming & CLI*, *Computational Biology*, and *Biological Sciences*.
@@ -54,10 +56,18 @@ The document center provides an organized repository of 40+ official documents, 
 - **Live Document Search Bar (`#docSearch`)**: Instantly filters the document archive by title or category.
 - **Custom Format & Size Converter (`#convertModal`)**: An integrated client-side document processing tool allowing users to convert any image or document into **PDF, JPG, PNG, or WEBP** formats at **25%, 50%, 75%, or 100% resolution**.
 
+### 3. Unified Multi-Document PDF Binder Tool (`pdf-binder.html`)
+A specialized web tool branching from the front page that allows users to search, select, queue, and compile multiple documents into a single united PDF file:
+- **Search & Multi-Selection**: Search across Aadhaar, PAN, Passport, Marksheets, Degrees, Certificates, and LORs, selecting items with checkboxes.
+- **Page Queue & Re-Ordering**: Interactively move pages up/down or remove items from the selected queue basket.
+- **Page Size & Scaling Controls**: Choose output page format (*A4 Standard, US Letter, Original Image Aspect Ratio*), layout scale (*Fit with Margins, Fill Page, Maintain Aspect Ratio*), and page orientation (*Auto-Detect, Forced Portrait, Forced Landscape*).
+- **United PDF Export Engine**: Compiles all queued pages into a single multi-page PDF (`.pdf`) download using `jsPDF` and Blob canvas rendering.
+
 ---
 
 ## ⚡ Key Features & Interactivity
 
+- 📚 **United PDF Compiler**: Search, select, queue, re-order, and combine multiple documents into a single united multi-page PDF.
 - 🎨 **Soothing Editorial Design System**: Default **Eye-Soothing Warm Light Theme** (`#FAF9F5` base canvas) designed to eliminate eye strain, with soft sage/sky teal accents.
 - 🌙 **Dual-Theme Toggle Engine**: Top header toggle button (`#themeToggleBtn`) switches between Soothing Warm Light and Serene Slate Dark Mode (`#0D1117`) with `localStorage` persistence.
 - 🖼️ **In-Page Document Lightbox Modal**: Clicking "Preview PDF" or "View" opens an interactive modal directly over the page to inspect high-resolution certificates, marksheets, or PDFs without leaving the site.
@@ -73,6 +83,7 @@ The document center provides an organized repository of 40+ official documents, 
 ANGSUMAN/
 ├── index.html                   # Main Portfolio Landing Page
 ├── download.html                # Document Download Center & Custom Converter
+├── pdf-binder.html              # Unified Multi-Document PDF Binder Web Tool
 ├── style.css                    # Dual-Theme Soothing CSS Design System
 ├── script.js                   # Interactivity Engine (Theme, Lightbox, Search, Filters)
 ├── comprehensive_resume_data.txt# Detailed Text Summary of All Qualifications & Marks
@@ -113,8 +124,8 @@ ANGSUMAN/
 
 - **HTML5 & Semantic Structure**: Accessible markup with strict ARIA labels, semantic tags, and descriptive metadata.
 - **Tailwind CSS (CDN) & Vanilla CSS**: Custom CSS design system using CSS variables (`:root` and `[data-theme="dark"]`), subtle micro-animations, diffuse shadows, and responsive grid utilities.
-- **JavaScript (ES6+)**: Modular script handling theme toggling, `IntersectionObserver` reveal animations, tab filtering, real-time input filtering, and modal lifecycle.
-- **Client-Side PDF & Canvas Processing**: `jsPDF` library combined with HTML5 Canvas `toDataURL` for converting images/documents to custom scales and formats.
+- **JavaScript (ES6+)**: Modular script handling theme toggles, reveal animations, tab filtering, real-time input filtering, and modal lifecycle.
+- **Client-Side PDF & Canvas Processing**: `jsPDF` library combined with HTML5 Canvas `toDataURL` for converting images/documents to custom scales and compiling multi-page unified PDFs.
 - **Iconography & Fonts**: Google Fonts (*Plus Jakarta Sans, Cormorant Garamond, JetBrains Mono*), FontAwesome 6.5.1, and Devicon.
 
 ---

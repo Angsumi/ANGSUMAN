@@ -20,15 +20,15 @@ I am a passionate researcher with a background in Zoology (M.Sc., Rajiv Gandhi U
 
 This repository is meticulously organized to host all my professional and academic credentials:
 
-- **`ACADEMIC/`**: Contains my degree certificates and detailed marksheets (10th, 12th, B.Sc., M.Sc.).
-- **`Certificates_and_Diplomas/`**: Includes my PGDCA diploma, Genomic Data Science specialization, and other certifications.
-- **`Exam_Certificates_and_Marksheets/`**: Houses scorecards and certificates for competitive exams like CSIR-UGC NET (JRF), IELTS, and SLET.
-- **`Work_and_Experience/`**: Contains experience letters, internship certificates, and workshop participations (including THB College and RASA Life Science Informatics).
-- **`Published_Papers/`**: A collection of my research publications and proposals.
-- **`LOR_and_Recommendations/`**: Letters of recommendation from academic guides and supervisors.
-- **`Identity_and_Personal/`**: Organized personal identification and demographic documents.
-- **`Study_Materials/`**: Academic notes and resources related to ecology, evolution, developmental biology, and data science.
-- **`RESUME/`**: My compiled CV/Resume.
+- **`documents/academic/`**: Contains my degree certificates and detailed marksheets (10th, 12th, B.Sc., M.Sc.).
+- **`documents/certificates/`**: Includes my PGDCA diploma, Genomic Data Science specialization, and other certifications.
+- **`documents/competitive_exams/`**: Houses scorecards and certificates for competitive exams like CSIR-UGC NET (JRF), IELTS, and SLET.
+- **`documents/work_and_experience/`**: Contains experience letters, internship certificates, and workshop participations (including THB College and RASA Life Science Informatics).
+- **`documents/publications/`**: A collection of my research publications and proposals.
+- **`documents/recommendations/`**: Letters of recommendation from academic guides and supervisors.
+- **`documents/identity_and_personal/`**: Organized personal identification and demographic documents.
+- **`documents/study_materials/`**: Academic notes and resources related to ecology, evolution, developmental biology, and data science.
+- **`documents/resume/`**: My compiled CV/Resume.
 
 > **Note**: For a detailed text summary of all my credentials, marks, and experience, please refer to the [`comprehensive_resume_data.txt`](./comprehensive_resume_data.txt) file included in the root directory.
 

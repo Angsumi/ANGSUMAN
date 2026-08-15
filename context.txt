@@ -4,15 +4,15 @@ This repository (`https://github.com/Angsumi/ANGSUMAN`, live at `https://Angsumi
 
 # Directory Structure
 
-*   **`ACADEMIC/`**: Academic transcripts, degree certificates, and marksheets (10th, 12th, B.Sc., M.Sc.).
-*   **`Certificates_and_Diplomas/`**: PGDCA diploma, Genomic Data Science specialization, and additional certifications.
-*   **`Exam_Certificates_and_Marksheets/`**: Scorecards and certificates for CSIR-UGC NET JRF, IELTS Academic, and SLET.
-*   **`Identity_and_Personal/`**: Passports, ID cards, PRC, and demographic documents.
-*   **`LOR_and_Recommendations/`**: Letters of Recommendation from academic guides, professors, and supervisors.
-*   **`Published_Papers/`**: Research papers, review articles, and scientific publications.
-*   **`RESUME/`**: Compiled CV and resume documents.
-*   **`Study_Materials/`**: Scikit-Learn cheat sheet, Pandas notes, data science program guides, and study materials.
-*   **`Work_and_Experience/`**: Offer letters, appointment letters, teaching experience certificates, and workshop certificates.
+*   **`documents/academic/`**: Academic transcripts, degree certificates, and marksheets (10th, 12th, B.Sc., M.Sc.).
+*   **`documents/certificates/`**: PGDCA diploma, Genomic Data Science specialization, and additional certifications.
+*   **`documents/competitive_exams/`**: Scorecards and certificates for CSIR-UGC NET JRF, IELTS Academic, and SLET.
+*   **`documents/identity_and_personal/`**: Passports, ID cards, PRC, and demographic documents.
+*   **`documents/recommendations/`**: Letters of Recommendation from academic guides, professors, and supervisors.
+*   **`documents/publications/`**: Research papers, review articles, and scientific publications.
+*   **`documents/resume/`**: Compiled CV and resume documents.
+*   **`documents/study_materials/`**: Scikit-Learn cheat sheet, Pandas notes, data science program guides, and study materials.
+*   **`documents/work_and_experience/`**: Offer letters, appointment letters, teaching experience certificates, and workshop certificates.
 *   **`images/`**: Web asset images used in the portfolio interface.
 *   **`index.html`**: Primary interactive portfolio landing page.
 *   **`download.html`**: Interactive document viewer and credential download portal.
